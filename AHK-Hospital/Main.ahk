@@ -4,7 +4,6 @@
 ; /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
 ; |  AHK Больница  | by Agzes | 02.04.23  |
 ; |         https://e-z.bio/agzes         |
-; |               v.1.2.1.0               |
 ; \_______________________________________/
 
 
@@ -230,8 +229,7 @@ class _BtnColor extends Gui.Button
 greetings(GuiObject?, eventInfo?)
 {      
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(500)
     SendInput("Здравствуйте, чем я могу вам помочь? {ENTER}")
@@ -244,8 +242,7 @@ give_pill(GuiObject?, eventInfo?)
     r1 := Random(1, 3)
     temp := list[r1]
     temp2 := "/do " . temp . " в руках у мед. работника"
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(500) ;
     SendInput("/mee осмотрел пациента, затем выявил проблему и приступил искать лекарство или таблетку в своей аптечке {Enter}")
@@ -277,8 +274,7 @@ sell_pill(GuiObject?, eventInfo?)
     list2 := ["красную аптечку","аптечку с красным крестом","аптечку"]
     temp3 := list2[r1]
     temp4 := "/mee открыв " . temp3 . " и найдя нужное лекарство передаёт человеку напротив, затем подписывает листок на котором написана дата выдачи, а также имя и фамилия врача который его выдал"
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(500) ;
     SendInput(temp2 " {Enter}")
@@ -299,8 +295,7 @@ bruise(GuiObject?, eventInfo?)
     r1 := Random(1, 3)
     temp := list[r1]
     temp2 := "/do " . temp . " в руках у мед. работника"
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(300) ;
     SendInput(temp2 " {Enter}")
@@ -325,8 +320,7 @@ bruise(GuiObject?, eventInfo?)
 ammonia(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(300) ;
     SendInput("/mee открывает аптечку и достает нашатырный спирт вместе с ваткой, затем открывает крышку банки и немного смочив ватку подносит её перед носом человека без сознания, ожидая когда он придет в себя {Enter}")
@@ -348,8 +342,7 @@ ammonia(GuiObject?, eventInfo?)
 stretcher(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(500)
     SendInput("/mee осмотрел пострадавшего и убедивщись что его можно перевозить, затем аккуратно укладывает его на носилки {ENTER}")
@@ -362,8 +355,7 @@ stretcher(GuiObject?, eventInfo?)
 defibrillator(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1850)
     SendInput("/mee достает дефибриллятор и ставит рядом с пациентом на твердую и устойчивую поверхность{ENTER}")
@@ -392,8 +384,7 @@ inject(GuiObject?, eventInfo?)
     r1 := Random(1, 3)
     temp := list[r1]
     temp2 := "/do " . temp . " в руках у мед. работника"
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(300) ;
     SendInput(temp2 " {Enter}")
@@ -418,8 +409,7 @@ inject(GuiObject?, eventInfo?)
 dropper(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(700)
     SendInput("/mee ставит стойку для капельницы около кровати, проверая устойчивая ли стойка для капельницы {ENTER}")
@@ -440,8 +430,7 @@ dropper(GuiObject?, eventInfo?)
 medcard(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(100) ;
     SendInput("/mee взяв паспорт из рук гражданна и держа его в руках, сверяет данные и проверяет фотографию, после чего, берёт чистую и незаполненную медкарту из аптечки и начинает заполнять по паспортным данным {ENTER}")
@@ -462,8 +451,7 @@ medcard(GuiObject?, eventInfo?)
 extract(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(100) ;
     SendInput("/mee осмотрел пациента увидел что с ним всё хорошо, берёт незаполненную справку из сумки которая весит на плече и записывает имя человека на него, затем убирает справку в сумку {ENTER}")
@@ -480,8 +468,7 @@ extract(GuiObject?, eventInfo?)
 medical_examination(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1850)
     SendInput("/mee сняв стетоскоп со своей шеи и приподняв рубашку человеку напротив, начинает прослушивать дыхание{ENTER}")
@@ -514,8 +501,7 @@ medical_examination(GuiObject?, eventInfo?)
 prof_suitability(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(100) ;
     SendInput("/mee снимает стетоскоп со своей шеи, начинает проверять дыхание, затем берёт тонометр и измеряет давление {ENTER}")
@@ -549,8 +535,7 @@ prof_suitability(GuiObject?, eventInfo?)
 twist(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(750)
     SendInput("/mee резким движением взяв руку неадекватного пациента и скрутил за его спину повалив его прижав к поверхности, подставил свое колено к спине пациента зажимая его {ENTER}")
@@ -575,8 +560,7 @@ twist(GuiObject?, eventInfo?)
 calm(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(300)
     SendInput("/mee засунув руку в карман и нащупав шприц с успокаивающим, незаметно достает его и приоткрывает колпачок приспускает воздух из шприца слегка нажав, вкалывает в плечо пациента и приспускает медленно лекарство придерживая пациента {ENTER}")
@@ -585,8 +569,7 @@ calm(GuiObject?, eventInfo?)
 blood_vien(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1000)
     SendInput("/mee одевает перчатки и достает жгут из медицинской сумки{ENTER}")
@@ -652,8 +635,7 @@ blood(GuiObject?, eventInfo?)
 wound(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1850)
     SendInput("/mee надевает стерильные перчатки и начинает осматривать рану у пациента{ENTER}")
@@ -694,8 +676,7 @@ wound(GuiObject?, eventInfo?)
 wound_plus(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1850)
     SendInput("/mee подготовив операционный стол и пациента, раскладывает нужные инструменты перед собой и одевает стерильные перчатки{ENTER}")
@@ -724,8 +705,7 @@ wound_plus(GuiObject?, eventInfo?)
 bullet(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1850)
     SendInput("/mee подготавливает инструменты и надевает стерильные перчатки {ENTER}")
@@ -774,8 +754,7 @@ bullet(GuiObject?, eventInfo?)
 rengen(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1850)
     SendInput("/mee включает рентген и нажимает кнопку пуска{ENTER}")
@@ -792,8 +771,7 @@ rengen(GuiObject?, eventInfo?)
 dislocation(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1850)
     SendInput("/mee одевает перчатки, подготавливает салфетки и ампулу с обезболивающим, надломив ампулу и взяв шприц вскрытый из новой пачки, набирает обезболивающее из ампулы{ENTER}")
@@ -810,8 +788,7 @@ dislocation(GuiObject?, eventInfo?)
 close_fracture(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1000) ;
     SendInput("/todo Включив рентген и сняв снимки смотрит на них, затем ставит диагноз с дальнейшим исправлением : У вас закрытый перелом. {ENTER}")
@@ -841,8 +818,7 @@ close_fracture(GuiObject?, eventInfo?)
 open_fracture(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(3000) ;
     SendInput("/todo Включив рентген, смотрит на монитор и ставит диагноз с дальнейшим исправлением : У вас открытый перелом. {ENTER}")
@@ -884,8 +860,7 @@ open_fracture(GuiObject?, eventInfo?)
 gypsum(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
     Sleep(1850)
     SendInput("/mee взяв тару и бутылку с водой из шкафа, наливает воду из бутылки в тару{ENTER}")
@@ -914,8 +889,7 @@ gypsum(GuiObject?, eventInfo?)
 lecture(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(100) ;
     SendInput("Гиппократ – великий древнегреческий врач и философ, вошедший в историю как “отец медицины”. Его медицинские трактаты оказали огромное влияние на медицинскую науку и практику. В биографии Гиппократа есть немало ярких и  трагических моментов, которые  {ENTER}")
@@ -940,8 +914,7 @@ lecture(GuiObject?, eventInfo?)
 regulation1(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(100) ;
     SendInput("Вы готовы сдать тест по уставу?  {ENTER}")
@@ -986,8 +959,7 @@ regulation3(GuiObject?, eventInfo?)
 regulation4(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(100) ;
     SendInput("Вы сдали тест на Устав и термины Больницы. {ENTER}")
@@ -996,8 +968,7 @@ regulation4(GuiObject?, eventInfo?)
 oath(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(100) ;
     SendInput("Вы дали клятву Гиппократа. {ENTER}")
@@ -1024,8 +995,7 @@ assingments(GuiObject?, eventInfo?)
 practice(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(100) ;
     SendInput("/do Манекен лежит в шкафу {ENTER}")
@@ -1042,8 +1012,7 @@ practice(GuiObject?, eventInfo?)
 practice2(GuiObject?, eventInfo?)
 {   
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(100) ;
     SendInput("Вы сдали практику на парамедика. {ENTER}")
@@ -1052,8 +1021,7 @@ practice2(GuiObject?, eventInfo?)
 oath_start(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(100) ;
     SendInput("Вы готовы дать клятву Гиппократа? {ENTER}")
@@ -1062,8 +1030,7 @@ oath_start(GuiObject?, eventInfo?)
 pmp1_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/todo Внимательно осматривая пациента и обнаруживая вывих в области сустава : У вас вывих сустава, сейчас вам помогу. {ENTER}")
@@ -1081,8 +1048,7 @@ pmp1_(GuiObject?, eventInfo?)
 pmp2_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee быстро берет из аптечки шину, бинты и накладывает ее с двух боковых сторон от конечности, дабы иммобилизовать ее, после чего обматывает бинтами {ENTER}")
@@ -1092,8 +1058,7 @@ pmp2_(GuiObject?, eventInfo?)
 pmp3_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee открывает аптечку и достает от туда жгут, после чего накладывает его на место выше места кровотечения, после же берет из аптечки шину, бинты и накладывает ее в места, где не выступают кости и обматывает бинтами {ENTER}")
@@ -1103,8 +1068,7 @@ pmp3_(GuiObject?, eventInfo?)
 pmp4_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("Для начала сядьте и облокотилась немного вперед, это нужно для того чтобы кровь не попадал в горло и не вызывала кашель {ENTER}")
@@ -1126,8 +1090,7 @@ pmp4_(GuiObject?, eventInfo?)
 pmp5_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee взял из мед.сумки бандаж, подошел к пациенту и одел на него бандаж {ENTER}")
@@ -1145,8 +1108,7 @@ pmp5_(GuiObject?, eventInfo?)
 pmp6_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee взял из мед.сумки антисептический спрей и продезинфицировал им место ранения {ENTER}")
@@ -1168,8 +1130,7 @@ pmp6_(GuiObject?, eventInfo?)
 pmp7_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee осмотрел лицо и губы на синюшный оттенок, после же достал стетоскоп и надевая его принялся слушать пациента на наличие сухого кашля {ENTER}")
@@ -1179,8 +1140,7 @@ pmp7_(GuiObject?, eventInfo?)
 pmp8_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me резко достает из мед.сумки стерильный дренажный шланг и осматривает его, а после точным движением вводит дренажный шланг в плевральную полость, а после подключает к дренажной системе {ENTER}")
@@ -1194,8 +1154,7 @@ pmp8_(GuiObject?, eventInfo?)
 pmp9_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee открывает аптечку и достает от туда жгут, после чего накладывает его на место выше места кровотечения и попутно продезинфицировал место ранения {ENTER}")
@@ -1205,8 +1164,7 @@ pmp9_(GuiObject?, eventInfo?)
 pmp10_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me аккуратно уложил пострадавшего на спину, достал из своей аптечки одеяло, и накрыл одеялом пострадавшего {ENTER}")
@@ -1228,8 +1186,7 @@ pmp10_(GuiObject?, eventInfo?)
 pmp11_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee подбежав к пострадавшему человеку, ставит медицинскую аптечку рядом, после чего осматривает гражданина снаружи {ENTER}")
@@ -1251,8 +1208,7 @@ pmp11_(GuiObject?, eventInfo?)
 pmp12_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me подходит к человеку и опускает свой взгляд на место ожога внимательно анализируя и стараясь поставить стадию {ENTER}")
@@ -1266,8 +1222,7 @@ pmp12_(GuiObject?, eventInfo?)
 pmp13_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me открывает аптечку, надевает медицинские перчатки и  достает гидротермический пакет, но прежде чем применить его, врач нажимает, аккуратно перемешивает компоненты внутри, затем прикладывает его к пораженной области тела, чуть надавливая на него {ENTER}")
@@ -1285,8 +1240,7 @@ pmp13_(GuiObject?, eventInfo?)
 pmp14_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me открывает аптечку, надевает медицинские перчатки и  достает гидротермический пакет, но прежде чем применить его, врач нажимает, аккуратно перемешивает компоненты внутри, затем прикладывает его к пораженной области тела, чуть надавливая на него {ENTER}")
@@ -1300,8 +1254,7 @@ pmp14_(GuiObject?, eventInfo?)
 pmp15_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee ставит и открывает аптечку рядом с собой, осматривает ранение пострадавшего, разрывает чуть одежду в районе огнестрела, ставит жгут, взяв из аптечки антисептик, обрабатывает свои руки и одевает перчатки {ENTER}")
@@ -1319,8 +1272,7 @@ pmp15_(GuiObject?, eventInfo?)
 pmp16_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee подойдя к пациенту внимательно осмотрел место потери конечности, после открыл аптечку и вытащил от туда медицинский жгут {ENTER}")
@@ -1346,8 +1298,7 @@ pmp16_(GuiObject?, eventInfo?)
 pmp17_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee быстра надев перчатки и маску достал из аптечки все нужное для укола и резким, а также точным движением ввел шприц в мышечную ткань пациента, рядом с местом ранения и надавил на конец шприца для введения препарата внутрь человека {ENTER}")
@@ -1361,8 +1312,7 @@ pmp17_(GuiObject?, eventInfo?)
 pmp18_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee быстра надев перчатки и маску достал из аптечки слабый раствор антисептика и прошелся им по месту ранения, а после бинтами замотал рану в несколько слоев {ENTER}")
@@ -1372,8 +1322,7 @@ pmp18_(GuiObject?, eventInfo?)
 pmp19_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me достает необходимое оборудование и инструменты, такие как портативный кислородный баллон, дефибриллятор, интубационный набор и медицинский арсенал для первой помощи {ENTER}")
@@ -1391,8 +1340,7 @@ pmp19_(GuiObject?, eventInfo?)
 pmp20_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee поставил мед.сумку рядом с пациентом, надел перчатки и внимательно осмотрел место укуса {ENTER}")
@@ -1414,8 +1362,7 @@ pmp20_(GuiObject?, eventInfo?)
 pmp21_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee надел стерильные перчатки и аккуратно осмотрел место укуса {ENTER}")
@@ -1449,8 +1396,7 @@ pmp21_(GuiObject?, eventInfo?)
 pmp22_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("Переводим пациента в палату и смотрим за его состоянием, даем горячий чай, а так же при необходимости даем антигистаминные средства {ENTER}")
@@ -1468,8 +1414,7 @@ pmp22_(GuiObject?, eventInfo?)
 pmp23_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee достаёт из кармана халата перчатки, надевает их на руки, положив руки на щёки пациента, вставил два больших пальца в ротовую полость пациента, что-бы зафиксировать язык в нужное положение, а так-же пощупать перелом, после вытаскивает пальцы из рта {ENTER}")
@@ -1503,8 +1448,7 @@ pmp23_(GuiObject?, eventInfo?)
 pmp24_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee быстро подходит к пациенту и осматривает ранение, после же достает хлоргексидин и промывает им место кровотечения, после накладывает несколько слоев бинт и закрепляет их пластырем и прикладывает пакет со льдом для сжатия сосудов {ENTER}")
@@ -1514,8 +1458,7 @@ pmp24_(GuiObject?, eventInfo?)
 pmp25_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me пальцем надавливает на место кровотечения, после другой рукой берет жгут и накладывает его выше ранения, помечая время, после берет стерильную марлевую повязку и тампонирует ее, если есть возможность сжать конечность пациенту, то делает это {ENTER}")
@@ -1525,8 +1468,7 @@ pmp25_(GuiObject?, eventInfo?)
 pmp26_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me увидев в воде человека, быстро побежал к нему и принялся вытаскивать пострадавшего на берег, после быстро оценивает его состояние {ENTER}")
@@ -1544,8 +1486,7 @@ pmp26_(GuiObject?, eventInfo?)
 pmp27_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee поставил мед.сумку на землю и вытащил от туда быстро действущий углевод, а именно бутылку сока и передал пациенту {ENTER}")
@@ -1555,8 +1496,7 @@ pmp27_(GuiObject?, eventInfo?)
 pmp28_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me немедленно вводит инсулин в быстро действующую зону, а именно передняя поверхность живота, рассчитывая необходимую дозу для нормализации уровня глюкозы {ENTER}")
@@ -1570,8 +1510,7 @@ pmp28_(GuiObject?, eventInfo?)
 pmp29_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/do В мед.сумке врача было : 1 литр бутылки воды, пакетик сахара, пакетик соли, трубочка для питья, большой одноразовый стакан и больничные простыни {ENTER}")
@@ -1601,8 +1540,7 @@ pmp29_(GuiObject?, eventInfo?)
 pmp30_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me проводит быстрый общий осмотр, обращая внимание на цвет кожи, наличие отеков, частоту и характер дыхания {ENTER}")
@@ -1616,8 +1554,7 @@ pmp30_(GuiObject?, eventInfo?)
 pmp31_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/me достает из мед.сумки небольшой ингалятор для астматиков и вводит в него бронходилататором, а после прикладывает ко рту пациента {ENTER}")
@@ -1627,8 +1564,7 @@ pmp31_(GuiObject?, eventInfo?)
 pmp32_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/todo Доставая из мед.сумки таблетку эпинефрина, бутылку обычной воды и передавая ее пациенту : Быстрее пейте и отек сойдет {ENTER}")
@@ -1638,8 +1574,7 @@ pmp32_(GuiObject?, eventInfo?)
 pmp33_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee осматривает пациента, встает позади него чуть наклонив вперед")
@@ -1661,8 +1596,7 @@ pmp33_(GuiObject?, eventInfo?)
 pmp34_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee укладывает пострадавшего в удобное положение, запрокидывая голову пациента назад, после обрабатывает свои руки антисептиком и одевает перчатки {ENTER}")
@@ -1676,8 +1610,7 @@ pmp34_(GuiObject?, eventInfo?)
 pmp35_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee подошел к пациенту и переложил его на бок, дабы исключить западение языка, а под ноги кинул свою куртку скомканную в клубок, после ослабил давление одежды и поднес два пальца к шее, а именно к сонной артерии пострадавшего {ENTER}")
@@ -1691,8 +1624,7 @@ pmp35_(GuiObject?, eventInfo?)
 pmp36_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee открывает аптечку, достает нашатырный спирт прихватив ватку и смочив ватку подносит слегка махнув перед носом человека без сознания, ожидая когда он придет в себя {ENTER}")
@@ -1702,8 +1634,7 @@ pmp36_(GuiObject?, eventInfo?)
 pmp37_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee поставив ладони на вытянутых руках, строго вертикально на груди пострадавшего начинает проводить технику непрямого массажа сердца 30 раз {ENTER}")
@@ -1725,8 +1656,7 @@ pmp37_(GuiObject?, eventInfo?)
 pmp38_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee открывает аптечку, достает шприц с адреналином, поставив жгут выше локтя на руке пациента, достает спиртовую салфетку и распечатав ее протирает место укола и вводит иглу шприца в вену приспуская вещество, после продолжает СЛР {ENTER}")
@@ -1736,8 +1666,7 @@ pmp38_(GuiObject?, eventInfo?)
 pmp39_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee достает из кармана халата фонарик, включает его и проверяет глазное яблоко на чувствительность к свету {ENTER}")
@@ -1759,8 +1688,7 @@ pmp39_(GuiObject?, eventInfo?)
 pmp40_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee поставил мед.аптечку на землю, открыл ее и достал от туда Нитроглицерин, после же передал пациенту {ENTER}")
@@ -1778,8 +1706,7 @@ pmp40_(GuiObject?, eventInfo?)
 pmp41_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee рассмотрел крепление ремня или галстука и помог пациенту ослабить их натяжение {ENTER}")
@@ -1793,8 +1720,7 @@ pmp41_(GuiObject?, eventInfo?)
 pmp42_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput('/mee открыв аптечку ставит на пол, ищет шприц и ампулу "Морфин", после набирает нужную дозу морфина, щупает руку в поиске вены после вводит препарат в кровеносную систему {ENTER}')
@@ -1808,8 +1734,7 @@ pmp42_(GuiObject?, eventInfo?)
 pmp43_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee быстро достает из аптечки бутылку воды, специальный марлевый бинт и небольшой пакет с холодным льдом, после просит пациента открыть рот и взять в рот воду, сполоснуть и выплюнуть {ENTER}")
@@ -1823,8 +1748,7 @@ pmp43_(GuiObject?, eventInfo?)
 pmp44_(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/mee присев к пациенту поставив аптечку рядом поворачивает его на правый бок взявшись за левую руку и левую ногу согнув при этом на 90 градусов и подкладывает его руку ему под голову, проверяет стопор колена и правильного положения пациента {ENTER}")
@@ -1846,8 +1770,7 @@ pmp44_(GuiObject?, eventInfo?)
 calls(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/calls {ENTER}")
@@ -1857,8 +1780,7 @@ calls(GuiObject?, eventInfo?)
 pass_accept(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/pass accept {ENTER}")
@@ -1868,8 +1790,7 @@ pass_accept(GuiObject?, eventInfo?)
 med_heal(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/med heal  100")
@@ -1883,8 +1804,7 @@ med_heal(GuiObject?, eventInfo?)
 drops_time(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/drops time {ENTER}")
@@ -1894,8 +1814,7 @@ drops_time(GuiObject?, eventInfo?)
 gps_cancel(GuiObject?, eventInfo?)
 {
     hide_ui()
-    Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
     Sleep(3000) ;
     SendInput("/gps cancel {ENTER}")
@@ -1950,8 +1869,178 @@ med_tools(GuiObject?, eventInfo?)
     Run("https://discord.com/channels/1215940333486080060/1216099736881467492")
     Return
 }
-
-
+knife(GuiObject?, eventInfo?)
+{
+    hide_ui()
+    SendMessage(0x50, , 0x4190419, , "A")
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me готовит операционную для извлечения ножа, раскладывая необходимые инструменты на стерильном столе {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do На столе лежат скальпель, пинцет, зажимы, антисептик и швы. Операционная готова {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me моет и дезинфицирует руки, надевает стерильные перчатки, маску и хирургический халат {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("Сейчас я введу анестезию, чтобы вы не чувствовали боли. {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me вводит местную анестезию вокруг раны, проверяя её действие. Пациент не чувствует боли {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Анестезия начинает действовать, область вокруг раны немеет {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me тщательно обрабатывает кожу вокруг раны антисептиком, готовя её к операции {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me делает аккуратный разрез вокруг ножевой раны, чтобы минимизировать повреждения при извлечении {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Кожа вокруг раны обработана, разрез сделан для облегчения извлечения ножа {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me осторожно захватывает нож за рукоятку и начинает аккуратно вытаскивать его {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me извлекает нож, держа его за рукоятку, и кладет в металлический лоток {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Нож успешно извлечен, рана открыта для обработки {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me тщательно очищает рану антисептиком, останавливает кровотечение при помощи зажимов и тампонов {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me проверяет, не повреждены ли внутренние органы или крупные сосуды, используя специальные инструменты {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Внутренние органы и сосуды не повреждены, хирург продолжает обработку раны {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me накладывает несколько швов, чтобы закрыть разрез и восстановить целостность тканей {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Швы аккуратно наложены, рана закрыта {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me наносит антисептический раствор на швы и накладывает стерильную повязку {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Повязка плотно прилегает к ране, защищая её от инфекции {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("Операция завершена. Следуйте рекомендациям по уходу за раной и приходите на осмотр через несколько дней. {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me убирает использованные инструменты и снимает перчатки, завершая операцию {ENTER}")
+    Sleep(2500) ;
+    Return
+}
+peluvoe(GuiObject?, eventInfo?)
+{
+    hide_ui()
+    SendMessage(0x50, , 0x4190419, , "A")
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me готовит операционную для извлечения пули, раскладывая необходимые инструменты на стерильном столе {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do На столе лежат скальпель, пинцет, зажимы, антисептик и швы. Операционная готова {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me моет и дезинфицирует руки, надевает стерильные перчатки, маску и хирургический халат {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("Сейчас я введу анестезию, чтобы вы не чувствовали боли. {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me вводит местную анестезию вокруг раны, проверяя её действие. Пациент не чувствует боли {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Анестезия начинает действовать, область вокруг раны немеет {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me тщательно обрабатывает кожу вокруг раны антисептиком, готовя её к операции {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me делает аккуратный разрез вокруг раны, чтобы расширить доступ к пуле {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Рана слегка расширена, открывая доступ к пуле {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me осторожно использует пинцет для захвата и извлечения пули {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me извлекает пулю, держа её пинцетом, и помещает в металлический лоток {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Пуля успешно извлечена, рана готова к обработке {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me тщательно очищает рану антисептиком, останавливает кровотечение при помощи зажимов {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me накладывает несколько швов, чтобы закрыть разрез {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Швы аккуратно наложены, рана закрыта {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me наносит антисептический раствор на швы и накладывает стерильную повязку {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/do Повязка плотно прилегает к ране, защищая её от инфекции {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("Операция завершена. Следуйте рекомендациям по уходу за раной и приходите на осмотр через несколько дней. {ENTER}")
+    Sleep(2500) ;
+    SendInput("{е}")
+    Sleep(2500) ;
+    SendInput("/me убирает использованные инструменты и снимает перчатки, завершая операцию {ENTER}")
+    Sleep(2500) ;
+    Return
+}
 
 
 DirCreate(A_Temp . "\ahk-hospital")
@@ -2002,11 +2091,13 @@ hide_ui()
         menu_ui.Hide()
         Sleep(100)
         MouseClick("Left")
-        Sleep(1000) ;
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+        SendMessage(0x50, , 0x4190419, , "A")
         Sleep(100)
         SendInput("{Esc}")
         
+    } else 
+    {
+        Sleep(1000)
     }
     
 }
@@ -2071,6 +2162,15 @@ Rare.Title := "AHK | Редкое"
 Rare.Opt("+AlwaysOnTop")
 Rare.BackColor := 0x1C1C1C
 Rare.Add("Text", "cWhite", "AHK | Больница                                         By Agzes")
+
+an := Rare.AddButton("w250 h20", "Alt + U | Ножевое")
+an.SetBackColor(0x4e4e4e, 0x1C1C1C)
+an.OnEvent("Click", knife)
+
+an := Rare.AddButton("w250 h20", "Alt + B | Пулевое")
+an.SetBackColor(0x4e4e4e, 0x1C1C1C)
+an.OnEvent("Click", peluvoe)
+
 an := Rare.AddButton("w250 h20", "Alt + N | Носилки")
 an.SetBackColor(0x4e4e4e, 0x1C1C1C)
 an.OnEvent("Click", stretcher)
@@ -2600,159 +2700,166 @@ Numpad5::{
     menu_ui.Show("AutoSize")
 }
 !c::{
-    Send("{Ctrl Up}")
     calls()
+    Return
 }
 !r::{
-    Send("{Ctrl Up}")
     pass_accept()
+    Return
+}
+!u::{
+    knife()
+    Return
+}
+!b::{
+    peluvoe()
+    Return
 }
 !e::{
-    Send("{Ctrl Up}")
     med_heal()
+    Return
 }
 !q::{
-    Send("{Ctrl Up}")
     greetings()
+    Return
 }
 !t::{
-    Send("{Ctrl Up}")
     give_pill()
+    Return
 }
 !l::{
-    Send("{Ctrl Up}")
     sell_pill()
+    Return
 }
 !y::{
-    Send("{Ctrl Up}")
     bruise()
+    Return
 }
 !h::{
-    Send("{Ctrl Up}")
     ammonia()
+    Return
 }
 !n::{
-    Send("{Ctrl Up}")
     stretcher()
+    Return
 }
 !d::{
-    Send("{Ctrl Up}")
     defibrillator()
+    Return
 }
 !i::{
-    Send("{Ctrl Up}")
     inject()
+    Return
 }
 !k::{
-    Send("{Ctrl Up}")
     dropper()
+    Return
 }
 !m::{
-    Send("{Ctrl Up}")
     medcard()
+    Return
 }
 !v::{
-    Send("{Ctrl Up}")
     extract()
+    Return
 }
 !o::{
-    Send("{Ctrl Up}")
     medical_examination()
+    Return
 }
 !p::{
-    Send("{Ctrl Up}")
     prof_suitability()
+    Return
 }
 !g::{
-    Send("{Ctrl Up}")
     twist()
+    Return
 }
 !j::{
-    Send("{Ctrl Up}")
     calm()
+    Return
 }
 !s::{
-    Send("{Ctrl Up}")
     gps_cancel()
+    Return
 }
 !1::{
-    Send("{Ctrl Up}")
     blood_vien()
+    Return
 }
 !2::{
-    Send("{Ctrl Up}")
     blood()
+    Return
 }
 !3::{
-    Send("{Ctrl Up}")
     wound()
+    Return
 }
 !4::{
-    Send("{Ctrl Up}")
     wound_plus()
+    Return
 }
 !5::{
-    Send("{Ctrl Up}")
     bullet()
+    Return
 }
 !6::{
-    Send("{Ctrl Up}")
     rengen()
+    Return
 }
 !7::{
-    Send("{Ctrl Up}")
     dislocation()
+    Return
 }
 !8::{
-    Send("{Ctrl Up}")
     close_fracture()
+    Return
 }
 !9::{
-    Send("{Ctrl Up}")
     open_fracture()
+    Return
 }
 !0::{
-    Send("{Ctrl Up}")
     gypsum()
+    Return
 }
 ^!1::{
-    Send("{Ctrl Up}")
     lecture()
+    Return
 }
 ^!2::{
-    Send("{Ctrl Up}")
     regulation1()
+    Return
 }
 ^!3::{
-    Send("{Ctrl Up}")
     regulation2()
+    Return
 }
 ^!4::{
-    Send("{Ctrl Up}")
     regulation3()
+    Return
 }
 ^!5::{
-    Send("{Ctrl Up}")
     regulation4()
+    Return
 }
 ^!6::{
-    Send("{Ctrl Up}")
     oath()
+    Return
 }
 ^!7::{
-    Send("{Ctrl Up}")
     assingments()
+    Return
 }
 ^!8::{
-    Send("{Ctrl Up}")
     practice()
+    Return
 }
 ^!9::{
-    Send("{Ctrl Up}")
     practice2()
+    Return
 }
 ^!0::{
-    Send("{Ctrl Up}")
     oath_start()
+    Return
 }
-

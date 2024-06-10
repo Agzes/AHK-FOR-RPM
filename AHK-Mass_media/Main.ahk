@@ -574,8 +574,7 @@ if !FileExist(cfg_file){
     notify.AddText("cWhite","
     (Ltrim join`r`n
 AHK | СМИ | Список изменений:
-special version for ixar_ixar2009
-made with love by Agzes!
+made with love by Agzes! [WertyKnack]
     )")
     FileAppend("non_first_start", cfg_file, "utf-8")
 }

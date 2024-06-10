@@ -1,4 +1,4 @@
-# AHK-Hospital
+![hospital](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/2643bf14-d905-4847-9270-9b284c455680)
 A small project made on autohotkey v.2.0 for medical worker wagering on roleplay projects [only Russian language!]
 For player of RPM (Minecraft RolePlay Server)
 

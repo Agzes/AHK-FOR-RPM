@@ -428,7 +428,7 @@ Main := Gui()
 Main.Title := "AHK | Основное"
 Main.Opt("+AlwaysOnTop")
 Main.BackColor := 0x1C1C1C
-Main.Add("Text", "cWhite", "AHK | СМИ                                                                   By Agzes")
+Main.Add("Text", "cWhite", "AHK | СМИ                                  By Agzes")
 
 aq := Main.AddButton("w200 h20", "NumPad2 | Приветствие")
 aq.SetBackColor(0x4e4e4e, 0x1C1C1C)

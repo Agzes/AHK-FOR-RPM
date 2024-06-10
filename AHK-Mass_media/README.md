@@ -1,4 +1,4 @@
-# AHK-Mass_media
+![massmedia](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/eb501f1c-53a0-4d3b-bae0-364451080292)
 A small project made on autohotkey v.2.0 for mass media worker wagering on roleplay projects
 
 

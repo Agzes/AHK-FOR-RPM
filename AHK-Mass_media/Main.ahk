@@ -234,27 +234,6 @@ greetings(GuiObject?, eventInfo?) {
     Return
 }
 
-call_write(GuiObject?, eventInfo?) {
-    hide_ui()
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
-    Sleep(100)
-    SendInput("Звонить/Писать SMS по номеру ниже.")
-    Return
-}
-price(GuiObject?, eventInfo?) {
-    hide_ui()
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
-    Sleep(100)
-    SendInput("Цена:Договорная")
-    Return
-}
-money(GuiObject?, eventInfo?) {
-    hide_ui()
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
-    Sleep(100)
-    SendInput("Бюджет:Свободный")
-    Return
-}
 billboard(GuiObject?, eventInfo?) {
     hide_ui()
     ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
@@ -311,22 +290,6 @@ lecture(GuiObject?, eventInfo?) {
     SendInput("/n Правильное оформление: Продам резиновые/пенопластовые/игрушечные/силиконовые/патроны {ENTER}")
     Return
 }
-workbook(GuiObject?, eventInfo?) {
-    hide_ui()
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
-    SendInput("{t}")
-    Sleep(850)
-    SendInput("/mee снимая сумку с плеч открывает сумку, достаёт трудовую книжку, передаёт трудовую человеку напротив.{ENTER}")
-    Return
-}
-med_card(GuiObject?, eventInfo?) {
-    hide_ui()
-    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
-    SendInput("{t}")
-    Sleep(850)
-    SendInput("/mee снимая сумку с плеч, открывает сумку, доставая мед.карту, передаёт мед.карту человеку напротив.{ENTER}")
-    Return
-}
 back(GuiObject?, eventInfo?) {
     hide_ui()
     ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
@@ -343,10 +306,74 @@ ad_edit(GuiObject?, eventInfo?) {
     SendInput("/ad edit{ENTER}")
     Return
 }
+stahirovka(GuiObject?, eventInfo?) {
+    hide_ui()
+    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("Рабочее время у нас с 9:00-19:00, обеденный перерыв 11:00-11:30.  Воскресенье выходной день.{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("В рабочее время сотрудники должны находиться в радиоцентре.{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("Обязательно соблюдение субординации, уважайте своих коллег.{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("Старший состав должен помогать новичкам фракции и следить за составом в целом.{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("Запрещено выпрашивать повышение и давать взятки.{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("Стажировка окончена.{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("/n F2 или же своё приложение для скриншота экрана{ENTER}")
+    Return
+}
+lecua(GuiObject?, eventInfo?){
+    hide_ui()
+    ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("С должности Редактор - вы имеете право редактировать объявления, писать статьи.{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("С должности Журналист - вы обязаны брать интервью у граждан города, собирать информацию для её распространения.{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("С должности Репортёр - вы обязаны отправляться на место события и сообщать информацию старшему составу, делать репортажи{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("С должности Ведущий - вы обязаны проводить эфиры, следить за младшим составом, вы доверенный человек Директору{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("С должности Гл.Редактор - вы обязаны следить за редакцией объявлений, составом, вам доступно всё что и должностням ниже, вы правая рука Директора. {ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("Вы прослушали лекцию!{ENTER}")
+    Sleep(1000) ; 
+    SendInput("{t}")
+    Sleep(1000)
+    SendInput("/n F2 или же своё приложение для скриншота экрана{ENTER}")
+    Return
+}
 
 DirCreate(A_Temp . "\ahk-news")
 cfg_file:=A_Temp . "\ahk-news\config.cfg"
-temp_file:=A_Temp . "\ahk-news\temp.cfg"
+temp_file:=A_Temp . "\ahk-news\tempp.cfg"
 if !FileExist(temp_file){
     FileAppend("", temp_file, "utf-8")
 }
@@ -359,7 +386,7 @@ if FileExist(cfg_file){
 
 restart_ui(GuiObject?, eventInfo?)
 {   
-    temp_file:=A_Temp . "\ahk-news\temp.cfg"
+    temp_file:=A_Temp . "\ahk-news\tempp.cfg"
     e := "
   (Ltrim join`r`n
 restart
@@ -403,52 +430,35 @@ Main.Opt("+AlwaysOnTop")
 Main.BackColor := 0x1C1C1C
 Main.Add("Text", "cWhite", "AHK | СМИ                                                                   By Agzes")
 
-aq := Main.AddButton("w300 h20", "Alt + Q | Приветствие")
+aq := Main.AddButton("w200 h20", "NumPad2 | Приветствие")
 aq.SetBackColor(0x4e4e4e, 0x1C1C1C)
 aq.OnEvent("Click", greetings)
 
-a1 := Main.AddButton('w300 h20', 'Alt + 1 | "Звонить/Писать SMS по номеру ниже." ')
-a1.SetBackColor(0x4e4e4e, 0x1C1C1C)
-a1.OnEvent("Click", call_write)
-
-a2 := Main.AddButton("w300 h20", 'Alt + 2 | Цена:Договорная')
-a2.SetBackColor(0x4e4e4e, 0x1C1C1C)
-a2.OnEvent("Click", price)
-
-a3 := Main.AddButton("w300 h20", "Alt + 3 | Бюджет:Свободный")
-a3.SetBackColor(0x4e4e4e, 0x1C1C1C)
-a3.OnEvent("Click", money)
-
-ab := Main.AddButton("w300 h20", "Alt + B | Объявление на билборд")
-ab.SetBackColor(0x4e4e4e, 0x1C1C1C)
-ab.OnEvent("Click", billboard)
-
-a5 := Main.AddButton("w300 h20", "Alt + 5 | NumPad5 | Лекция о запрещенных продажах")
-a5.SetBackColor(0x4e4e4e, 0x1C1C1C)
-a5.OnEvent("Click", lecture)
-
-
-
-at := Main.AddButton("w300 h20", "Alt + T | Труд. Книга (дать)")
-at.SetBackColor(0x4e4e4e, 0x1C1C1C)
-at.OnEvent("Click", workbook)
-
-am := Main.AddButton("w300 h20", "Alt + M | Мед. Карта (дать)")
-am.SetBackColor(0x4e4e4e, 0x1C1C1C)
-am.OnEvent("Click", med_card)
-
-az := Main.AddButton("w300 h20", "Alt + Z | Забрать документы")
-az.SetBackColor(0x4e4e4e, 0x1C1C1C)
-az.OnEvent("Click", back)
-
-a0 := Main.AddButton("w300 h20", 'Alt + 0 | "/ad edit" ')
+a0 := Main.AddButton("w200 h20", 'NumPad3 | "/ad edit" ')
 a0.SetBackColor(0x4e4e4e, 0x1C1C1C)
 a0.OnEvent("Click", ad_edit)
 
+az := Main.AddButton("w200 h20", "NumPad4 | Забрать документы")
+az.SetBackColor(0x4e4e4e, 0x1C1C1C)
+az.OnEvent("Click", back)
 
+ab := Main.AddButton("w200 h20", "Объявление на билборд")
+ab.SetBackColor(0x4e4e4e, 0x1C1C1C)
+ab.OnEvent("Click", billboard)
 
+a5 := Main.AddButton("w200 h20", "Лекция о запрещенных продажах")
+a5.SetBackColor(0x4e4e4e, 0x1C1C1C)
+a5.OnEvent("Click", lecture)
 
-a0 := Main.AddButton("w300 h20", 'РП ТЕРМИНЫ')
+sta := Main.AddButton("w200 h20", "Стажировка")
+sta.SetBackColor(0x4e4e4e, 0x1C1C1C)
+sta.OnEvent("Click", stahirovka)
+
+lec := Main.AddButton("w200 h20", "Лекция")
+lec.SetBackColor(0x4e4e4e, 0x1C1C1C)
+lec.OnEvent("Click", lecua) 
+
+a0 := Main.AddButton("w200 h20", 'РП ТЕРМИНЫ')
 a0.SetBackColor(0x4e4e4e, 0x1C1C1C)
 a0.OnEvent("Click", open_rp_termin)
 
@@ -564,7 +574,8 @@ if !FileExist(cfg_file){
     notify.AddText("cWhite","
     (Ltrim join`r`n
 AHK | СМИ | Список изменений:
-
+special version for ixar_ixar2009
+made with love by Agzes!
     )")
     FileAppend("non_first_start", cfg_file, "utf-8")
 }
@@ -584,59 +595,39 @@ notify.Show("AutoSize")
 
 
 FileDelete(temp_file)
-F1::{
-    Main.Show("AutoSize")
-}
-F10::{
-    restart_ui()
-}
 Numpad0::{
     Reload()
 }
 Numpad1::{
     Main.Show("AutoSize")
 }
+Numpad2::{
+    greetings()
+    Return
+}
+Numpad4::{
+    back()
+    Return
+}
+Numpad3::{
+    ad_edit()
+    Return
+}
 !q::{
     greetings()
     Return
 }
-!1::{
-    call_write()
-    Return
-}
-!2::{
-    price()
-    Return
-}
-!3::{
-    money()
-    Return
-}
 !b::{
-    billboard()
-    Return
-}
-!5::{
-    lecture()
-    Return
-}
-Numpad5::{
-    lecture()
-    Return
-}
-!t::{
-    workbook()
-    Return
-}
-!m::{
-    med_card()
-    Return
-}
-!z::{
     back()
     Return
 }
-!0::{
+!e::{
     ad_edit()
     Return
+}
+F10::{
+    Reload()
+}
+F4::{
+    Main.Show("AutoSize")
 }

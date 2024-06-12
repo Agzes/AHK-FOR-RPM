@@ -772,13 +772,10 @@ ekzam(GuiObject?, eventInfo?){
 get_permision(GuiObject?, eventInfo?){
     hide_ui()
     ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
-    SendInput("{t}")
-    Sleep(100)
-    SendInput("/mee взял документ разрешающий перевозить сотрудников мэрии с рук сотрудника CPD и положил в карман {ENTER}")
-    return
+    
 }
 hide_ui() {
-    If WinExist("AHK | Дополнительно") or WinExist("AHK | Основное"){    
+    If WinExist("AHK | RP Термины") or WinExist("AHK | Основное"){    
         vodila.Hide()
         telo.Hide()
         sekr.Hide()
@@ -964,7 +961,7 @@ cudia.Add("Button", "w300 x5 y40 " , "Alt+Q | Приветствие").OnEvent("
 cudia.Add("Button", "w300 x5 y75 " , "Alt+1 | Показать удостоверение").OnEvent("Click", pass)
 cudia.Add("Button", "w300 x5 y110" , "Начать суд").OnEvent("Click", start_sud)
 cudia.Add("Button", "w300 x5 y145" , "Закончить суд").OnEvent("Click", end_sud)
-cudia.AddText("cWhite   x5 y180","   AHK | Meria | сделано Agzes[WertyKnack] с ❤")
+cudia.AddText("cWhite   x5 y215","   AHK | Meria | сделано Agzes[WertyKnack] с ❤")
 SetWindowTheme(cudia)
 
 
@@ -1021,39 +1018,9 @@ main.Add("Button", "w300 x5  y565" , "Закончить суд").OnEvent("Click
 main.AddText("cWhite   x5 y600","   AHK | Meria | сделано Agzes[WertyKnack] с ❤")
 SetWindowTheme(main)
 
-dop := Gui()
-SetWindowAttribute(guber)
-dop.Opt("+AlwaysOnTop")
-dop.Title := "AHK | Дополнительно"
-dop.BackColor := 0x202020
-dop.SetFont("s16", "Impact")
-dop.AddText("cWhite x10 y7","( ⚆_⚆ ) Дополнительно")
-dop.SetFont("s10", "Segoe UI")
-dop.Add("Button", "w300 w300 x5 y40 " , "Взять разрешение на перевозку").OnEvent("Click", get_permision)
-dop.Add("Button", "w300 w300 x5 y75 " , "что планируется измениться в штате").OnEvent("Click", lecture_change_in_rpm)
-dop.Add("Button", "w300 w300 x5 y110 " , "вред наркоты, алкоголя и табака").OnEvent("Click", lecture_alco)
-dop.Add("Button", "w300 w300 x5 y145 " , "важность соблюдения УК АК").OnEvent("Click", ak_yk)
-dop.AddText("cWhite   x5 y180","   AHK | Meria | сделано Agzes[WertyKnack] с ❤")
-SetWindowTheme(guber)
 
-CloseNotifyOpen(GuiObject?, eventInfo?){
-    notify.Hide()
-}
 
-notify := Gui()
-SetWindowAttribute(notify)
-notify.Opt("+AlwaysOnTop")
-notify.Title := "AHK | Уведомление! "
-notify.BackColor := 0x202020
-notify.SetFont("s16", "Impact")
-notify.AddText("cWhite","                           ( .❛ ᴗ ❛. )")
-notify.SetFont("s11", "Segoe UI")
-notify.AddText("cWhite   y37 x10","Привет! " rp_name_data)
-notify.SetFont("s10", "Segoe UI")
-notify_btn := notify.Add("Button", "w300 x7 y72" , "ОК")
-notify_btn.OnEvent("Click", CloseNotifyOpen)
-SetWindowTheme(notify)
-notify.Show("w315")
+
 
 F4::{
     if (rp_role_data == "Водитель")
@@ -1072,9 +1039,6 @@ F4::{
         vice.Show("w310")
     if (rp_role_data == "Губернатор")
         guber.Show("w310")
-}
-F6::{
-    dop.Show("w310")
 }
 F8::{
     main.Show("w310")

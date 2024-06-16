@@ -1,6 +1,7 @@
 ![header](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/97b0f655-a117-42ff-a4b9-9acb4f4d665b)
 ![hospital](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/2643bf14-d905-4847-9270-9b284c455680)
 ![massmedia](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/eb501f1c-53a0-4d3b-bae0-364451080292)
+![meria](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/e914ddbb-ac44-41bb-bcb6-1f59b05ded5e)
 
 ---
 

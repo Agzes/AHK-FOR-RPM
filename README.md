@@ -7,6 +7,7 @@
 
 ### AHK-Hospital -> {1.2.1.0-Fix} - [Информация](https://github.com/Agzes/AHK-FOR-RPM/tree/main/AHK-Hospital) | [Скачать](https://github.com/Agzes/AHK-FOR-RPM/releases/download/Hospital-1.2.1.0-FIX/1.2.1.0-AHK_Hospital_By_Agzes.exe)
 ### AHK-Mass_Media -> {beta 1.0} -  [Информация](https://github.com/Agzes/AHK-FOR-RPM/tree/main/AHK-Mass_media) | [Скачать](https://github.com/Agzes/AHK-FOR-RPM/releases/download/Mass_media-1.0-beta/BETA-1.0-AHK-Mass-media-by-Agzes.exe)
+### AHK-Meria -> {1.1.1} - [Информация](https://github.com/Agzes/AHK-FOR-RPM/tree/main/AHK-Meria) | [Скачать](https://github.com/Agzes/AHK-FOR-RPM/releases/download/Meria-1.1.1/ahk-meria-1.1.1.exe)
 
 ---
 

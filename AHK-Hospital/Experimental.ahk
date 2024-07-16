@@ -470,31 +470,31 @@ medical_examination(GuiObject?, eventInfo?)
     hide_ui()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(2250)
+    Sleep(100)
     SendInput("/mee сняв стетоскоп со своей шеи и приподняв рубашку человеку напротив, начинает прослушивать дыхание{ENTER}")
-    Sleep(3050)
+    Sleep(4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(4000)
     SendInput("/mee обойдя со спины продолжает прослушивать дыхание{ENTER}")
-    Sleep(3050)
+    Sleep(4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(4000)
     SendInput("/todo Опустив рубашку пациенту и повесив обратно стетоскоп себе на шею : Дыхание чистое.{ENTER}")
-    Sleep(3050)
+    Sleep(4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(4000)
     SendInput("/do На плече висит медицинская сумка{ENTER}")
-    Sleep(3050)
+    Sleep(7000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(7000)
     SendInput("/mee достав тонометр из медицинской сумки и надев манжет на руку пациента выше локтя,  начинает накачивать воздух в манжет, измеряет давление смотря на манометр{ENTER}")
-    Sleep(3050)
+    Sleep(7000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(7000)
     SendInput("/todo Измерив давление, снимая манжет с руки пациента : Давление в норме.{ENTER}")
-    Sleep(3050)
+    Sleep(7000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(4000)
     SendInput("/todo Подписывает справку, передав человеку напротив : Вы прошли мед.осмотр, вы здоровы.{ENTER}")
     Return
 }
@@ -505,29 +505,29 @@ prof_suitability(GuiObject?, eventInfo?)
     SendInput("{t}")
     Sleep(100) ;
     SendInput("/mee снимает стетоскоп со своей шеи, начинает проверять дыхание, затем берёт тонометр и измеряет давление {ENTER}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("/todo Убирая все на свое место : Дыхание и давление у вас в норме. {ENTER}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("/mee достаёт из кармана халата фонарик и начинает поочерёдно светить в глаза, смотря на реакцию зрачка {ENTER}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("/todo Выключив фонарик, вовзращая его в карман медицинского халата : Всё в порядке. {ENTER}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("/mee достав отоскоп из медицинской сумки, держит ухо пациента слегка натянутым, прислонив отоскоп в каждое ухо по очереди, осматривает слуховой аппарат {ENTER}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("/todo Закончив осмотр слухового аппарата и спрятав отоскоп в медицинскую сумку : Слуховой аппарат в норме. {ENTER}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(7000) ;
     SendInput("/todo Выписывает справку, после чего передаёт человеку напротив : Вы здоровы и прошли осмотр на проф.пригодность. {ENTER}")
     Sleep(100)
     Return
@@ -743,7 +743,7 @@ bullet(GuiObject?, eventInfo?)
     SendInput("/mee взяв бинты начинает забинтовывать {ENTER}")
     Sleep(2250) ;
     SendInput("{t}")
-    Sleep(70225000) ;
+    Sleep(7000) ;
     SendInput("/do Рана зашита. Бинты наложены {ENTER}")
     Sleep(2250) ; 
     SendInput("{t}")

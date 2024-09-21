@@ -11,5 +11,7 @@
 
 ---
 
-ui tutorial: Для работы в полноэкранном режиме майнкрафта необходимо установить мод {[Forge](https://www.curseforge.com/minecraft/mc-mods/borderless/download/3483843?clckid=fa2172be) | [Fabric](https://www.curseforge.com/minecraft/mc-mods/borderless-mining/download/3033277?clckid=91a62c44)}
+Для работы в полноэкранном режиме майнкрафта необходимо установить мод {[Forge](https://www.curseforge.com/minecraft/mc-mods/borderless/download/3483843?clckid=fa2172be) | [Fabric](https://www.curseforge.com/minecraft/mc-mods/borderless-mining/download/3033277?clckid=91a62c44)}
 
+<br><br><br><br>
+<h6 align="center">Made with 💟 by Agzes</h6>

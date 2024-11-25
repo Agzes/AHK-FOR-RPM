@@ -1,4 +1,7 @@
-# V2 в разработке, поддержка v1.*.*.* прекращена
+<h2 align="center">💫</h6>
+<img src="https://github.com/user-attachments/assets/2207af41-7c64-4825-8f1b-40ce01719a0a" alt="image" width="1000">
+
+<h1 align="center">V2 в разработке, поддержка v1.*.*.* прекращена</h6>
 
 ![header](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/97b0f655-a117-42ff-a4b9-9acb4f4d665b)
 ![hospital](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/2643bf14-d905-4847-9270-9b284c455680)

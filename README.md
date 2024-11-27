@@ -1,4 +1,5 @@
 <h2 align="center">💫</h6>
+<img src="https://github.com/user-attachments/assets/9a25e4fb-e7f8-43b1-ba74-cdbb6a46d909" alt="image" width="1000">
 <img src="https://github.com/user-attachments/assets/2207af41-7c64-4825-8f1b-40ce01719a0a" alt="image" width="1000">
 
 <h1 align="center">V2 в разработке, поддержка v1.*.*.* прекращена</h6>

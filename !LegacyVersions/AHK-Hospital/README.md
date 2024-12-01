@@ -1,10 +1,11 @@
+# [Legacy] -> данная версия является устаревшей и не поддерживается, рекомендуется использовать версию v2
+
 ![hospital](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/2643bf14-d905-4847-9270-9b284c455680)
-A small project made on autohotkey v.2.0 for medical worker wagering on roleplay projects [only Russian language!]
-For player of RPM (Minecraft RolePlay Server)
 
 
 
-binds:
+
+
 ```
                Основное
 Alt+Q - Приветствие
@@ -65,6 +66,10 @@ Numpad3 | F8 - UI | Меню [ПМП | Команды | Проверка]
 Numpad5 | F9 - UI | Редкое | Операции
 Numpad0 | F10 - Перезапуск
 ```
+
+<details><summary> Change-Logs (v.1.1 - v.1.2)  </summary>
+<br>
+
 v.1.2 change log:
 ```
 [+] Кнопки теперь выглядят лучше!
@@ -134,8 +139,4 @@ v.1.1 change log:
     [•] /do - так как сервер сам ставит точки
     [•] /mee - так как не положено (правило)
 ```
-
-ui tutorial: Для работы в полноэкранном режиме майнкрафта необходимо установить мод {[Forge](https://www.curseforge.com/minecraft/mc-mods/borderless/download/3483843?clckid=fa2172be) | [Fabric](https://www.curseforge.com/minecraft/mc-mods/borderless-mining/download/3033277?clckid=91a62c44)}
-
-
-![image](https://github.com/Agzes/AHK-Hospital/assets/103037173/c0de7b99-0b58-446f-81c3-902ff62a9594)
+</details>

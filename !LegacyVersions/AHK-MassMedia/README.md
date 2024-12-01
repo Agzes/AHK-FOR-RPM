@@ -1,5 +1,7 @@
+# [Legacy] -> данная версия является устаревшей и не поддерживается
+
 ![massmedia](https://github.com/Agzes/AHK-FOR-RPM/assets/103037173/eb501f1c-53a0-4d3b-bae0-364451080292)
-A small project made on autohotkey v.2.0 for mass media worker wagering on roleplay projects
+
 
 
 ```Alt + Q - Приветствие
@@ -20,7 +22,3 @@ F1 | NumPad1 - Интерфейс
 ```
 F10 | NumPad0 - Перезапуск
 ```
-ui tutorial: Для работы в полноэкранном режиме майнкрафта необходимо установить мод {[Forge](https://www.curseforge.com/minecraft/mc-mods/borderless/download/3483843?clckid=fa2172be) | [Fabric](https://www.curseforge.com/minecraft/mc-mods/borderless-mining/download/3033277?clckid=91a62c44)}
-
-
-![image](https://github.com/Agzes/AHK-Hospital/assets/103037173/c0de7b99-0b58-446f-81c3-902ff62a9594)

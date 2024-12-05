@@ -1,3 +1,3 @@
 `           [Изменения] ⤵         ` \
-          FIRST VERSION 
+          FIRST VERSION \
 `                                 ` 

@@ -3,11 +3,11 @@
 ; /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
 ; |      AHK Hospital v2  | by Agzes      |
 ; |         https://e-z.bio/agzes         |
-; \_______________________________________/ 
+; \_______________________________________/
 
 
 #SingleInstance Force
-#Include !CreateImageButton.ahk 
+#Include !CreateImageButton.ahk
 #Include !WinDarkUI.ahk
 #Include !GuiEnchancerKit.ahk
 #Include !ScroolBar.ahk
@@ -20,8 +20,8 @@ LogAdd(Text) {
 }
 LogAdd("[status] Инициализация")
 
-program_version := 2.0
-code_version := 1
+program_version := 2.1
+code_version := 2
 HotKeyStatus := true
 CurrentPage := "SBT01"
 Font := "Segoe UI"
@@ -32,11 +32,22 @@ Role := ""
 Name := ""
 FocusMethod := 1
 BeforeEsc := 1
-BeforeCheck := 0 
+BeforeCheck := 0
 BeforeLimit := 0
 ShowStatus := 1
 UpdateCheck := 1
 
+S100 := 100
+S250 := 250
+
+S300 := 300 
+S500 := 500 
+S700 := 700 
+S800 := 800 
+S1000 := 1000 
+S2000 := 2000 
+S3000 := 3000 
+S4000 := 4000 
 
 global R_G_Binds := [
     'F4',  ; "[UI] Основное",
@@ -138,7 +149,7 @@ global G_Binds_Name := [
     "/gps cancel"
 ]
 
-global G_Binds  := [
+global G_Binds := [
     'F4',  ; "[UI] Основное",
     'F6',  ; "[UI] Обучение мл. состава",
     'F8',  ; "[UI] Редкое, операции",
@@ -189,6 +200,57 @@ global G_Binds  := [
 ]
 
 LogAdd("[status] получение файлов конфига")
+try {
+    LogAdd("[info] получение файлов конфига `"S100`" ")
+    global S100 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S100")
+    LogAdd("[info] `"S100`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S250`" ")
+    global S250 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S250")
+    LogAdd("[info] `"S250`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S300`" ")
+    global S300 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S300")
+    LogAdd("[info] `"S300`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S500`" ")
+    global S500 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S500")
+    LogAdd("[info] `"S500`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S700`" ")
+    global S700 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S700")
+    LogAdd("[info] `"S700`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S800`" ")
+    global S800 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S800")
+    LogAdd("[info] `"S800`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S1000`" ")
+    global S1000 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S1000")
+    LogAdd("[info] `"S1000`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S2000`" ")
+    global S2000 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S2000")
+    LogAdd("[info] `"S2000`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S3000`" ")
+    global S3000 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S3000")
+    LogAdd("[info] `"S3000`" найдено")
+}
+try {
+    LogAdd("[info] получение файлов конфига `"S4000`" ")
+    global S4000 := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S4000")
+    LogAdd("[info] `"S4000`" найдено")
+}
+
 try {
     LogAdd("[info] получение файлов конфига `"Binds`" ")
     global G_Binds := StrSplit(RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "Binds"), A_Space)
@@ -271,7 +333,7 @@ UseGDIP() {
     Static GdipObject := 0
     If !IsObject(GdipObject) {
         GdipToken := 0
-        SI := Buffer(24, 0) 
+        SI := Buffer(24, 0)
         NumPut("UInt", 1, SI)
         If DllCall("Gdiplus.dll\GdiplusStartup", "PtrP", &GdipToken, "Ptr", SI, "Ptr", 0, "UInt") {
             MsgBox("GDI+ could not be started!`n`nThe program will exit!", A_ThisFunc, 262160)
@@ -301,11 +363,11 @@ SettingsTabSelect(BtnCtrl, *) {
     OldCurrentPage := CurrentPage
     CurrentPageData := GetPageData(BtnCtrl.Name)
     CurrentPage := BtnCtrl.Name
-    
+
     for key in OldPageData {
         key.Opt("Hidden")
     }
-    
+
     for key in CurrentPageData {
         key.Opt("-Hidden")
     }
@@ -339,50 +401,50 @@ LogAdd("[status] Инициализация интерфейса")
 
 ButtonStyles := Map()
 
-ButtonStyles["dark"] :=             [[0xFF171717, 0xFF1A1A1A, 0xFFFFFFFF, 3, 0xFF1A1A1A, 1],
-                                     [0xFF262626, 0xFF1A1A1A, 0xFFFFFFFF, 3, 0xFF1A1A1A, 1],
-                                     [0xFF2F2F2F, 0xFF1A1A1A, 0xFFFFFFFF, 3, 0xFF1A1A1A, 1],
-                                     [0xFF626262, 0xFF474747, 0xFFFFFFFF, 3, 0xFF474747, 1]]
-     
-ButtonStyles["tab"] :=              [[0xFF171717, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF262626, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF2F2F2F, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF626262, 0xFF474747, 0xFFFFFFFF, 3, 0xFF474747, 2]]
+ButtonStyles["dark"] := [[0xFF171717, 0xFF1A1A1A, 0xFFFFFFFF, 3, 0xFF1A1A1A, 1],
+    [0xFF262626, 0xFF1A1A1A, 0xFFFFFFFF, 3, 0xFF1A1A1A, 1],
+    [0xFF2F2F2F, 0xFF1A1A1A, 0xFFFFFFFF, 3, 0xFF1A1A1A, 1],
+    [0xFF626262, 0xFF474747, 0xFFFFFFFF, 3, 0xFF474747, 1]]
 
-ButtonStyles["fake_for_group"] :=   [[0xFF171717, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF262626, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF2F2F2F, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF171717, 0xFF474747, 0xFFFFFFFF, 3, 0xFF202020, 2]]
+ButtonStyles["tab"] := [[0xFF171717, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF262626, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF2F2F2F, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF626262, 0xFF474747, 0xFFFFFFFF, 3, 0xFF474747, 2]]
 
-ButtonStyles["fake_for_hotkey"] :=  [[0xFF1b1b1b, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF262626, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF2F2F2F, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFF1b1b1b, 0xFF474747, 0xFFFFFFFF, 3, 0xFF202020, 2]]
+ButtonStyles["fake_for_group"] := [[0xFF171717, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF262626, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF2F2F2F, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF171717, 0xFF474747, 0xFFFFFFFF, 3, 0xFF202020, 2]]
 
-ButtonStyles["binds"] :=            [[0xFF191919, 0xFF181818, 0xFFBEBEBE, 5, 0xFF191919, 2],
-                                     [0xFF262626, 0xFF181818, 0xFFBEBEBE, 5, 0xFF191919, 2],
-                                     [0xFF2F2F2F, 0xFF181818, 0xFFBEBEBE, 5, 0xFF191919, 2],
-                                     [0xFF626262, 0xFF474747, 0xFFBEBEBE, 5, 0xFF191919, 2]]
-                                     
-ButtonStyles["reset"] :=            [[0xFF1b1b1b, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
-                                     [0xFFFF4444, 0xFFCC0000, 0xFFFFFFFF, 3, 0xFFCC0000, 2],
-                                     [0xFFFF6666, 0xFFFF0000, 0xFFFFFFFF, 3, 0xFFFF0000, 2],
-                                     [0xFF1b1b1b, 0xFF474747, 0xFFFFFFFF, 3, 0xFF202020, 2]]
+ButtonStyles["fake_for_hotkey"] := [[0xFF1b1b1b, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF262626, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF2F2F2F, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFF1b1b1b, 0xFF474747, 0xFFFFFFFF, 3, 0xFF202020, 2]]
 
-ButtonStyles["to_settings"] :=      [[0xFF171717, 0xFF1A1A1A, 0xFFFFFFFF, 0, 0xFF1A1A1A, 1],
-                                     [0xFF262626, 0xFF1A1A1A, 0xFFFFFFFF, 0, 0xFF1A1A1A, 1],
-                                     [0xFF2F2F2F, 0xFF1A1A1A, 0xFFFFFFFF, 0, 0xFF1A1A1A, 1],
-                                     [0xFF626262, 0xFF474747, 0xFFFFFFFF, 0, 0xFF474747, 1]]
+ButtonStyles["binds"] := [[0xFF191919, 0xFF181818, 0xFFBEBEBE, 5, 0xFF191919, 2],
+    [0xFF262626, 0xFF181818, 0xFFBEBEBE, 5, 0xFF191919, 2],
+    [0xFF2F2F2F, 0xFF181818, 0xFFBEBEBE, 5, 0xFF191919, 2],
+    [0xFF626262, 0xFF474747, 0xFFBEBEBE, 5, 0xFF191919, 2]]
 
-ButtonStyles["secondary"] :=        [[0xFF6C757D, 0xFF5A6268, 0xFFFFFFFF, 3, 0xFF5A6268, 1], 
-                                     [0xFF5A6268, 0xFF4E555B, 0xFFFFFFFF, 3, 0xFF4E555B, 1], 
-                                     [0xFF808B96, 0xFF6C757D, 0xFFFFFFFF, 3, 0xFF6C757D, 1], 
-                                     [0xFFA0ACB8, 0xFF808B96, 0xFFFFFFFF, 3, 0xFF808B96, 1]] 
+ButtonStyles["reset"] := [[0xFF1b1b1b, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2],
+    [0xFFFF4444, 0xFFCC0000, 0xFFFFFFFF, 3, 0xFFCC0000, 2],
+    [0xFFFF6666, 0xFFFF0000, 0xFFFFFFFF, 3, 0xFFFF0000, 2],
+    [0xFF1b1b1b, 0xFF474747, 0xFFFFFFFF, 3, 0xFF202020, 2]]
+
+ButtonStyles["to_settings"] := [[0xFF171717, 0xFF1A1A1A, 0xFFFFFFFF, 0, 0xFF1A1A1A, 1],
+    [0xFF262626, 0xFF1A1A1A, 0xFFFFFFFF, 0, 0xFF1A1A1A, 1],
+    [0xFF2F2F2F, 0xFF1A1A1A, 0xFFFFFFFF, 0, 0xFF1A1A1A, 1],
+    [0xFF626262, 0xFF474747, 0xFFFFFFFF, 0, 0xFF474747, 1]]
+
+ButtonStyles["secondary"] := [[0xFF6C757D, 0xFF5A6268, 0xFFFFFFFF, 3, 0xFF5A6268, 1],
+    [0xFF5A6268, 0xFF4E555B, 0xFFFFFFFF, 3, 0xFF4E555B, 1],
+    [0xFF808B96, 0xFF6C757D, 0xFFFFFFFF, 3, 0xFF6C757D, 1],
+    [0xFFA0ACB8, 0xFF808B96, 0xFFFFFFFF, 3, 0xFF808B96, 1]]
 
 UseGDIP()
 LogAdd("[status] Инициализация GDIP")
 
-SettingsUI := GuiExt("", "AHK | Hospital v2 ")
+SettingsUI := GuiExt("", "!AHK | Hospital v2 ")
 SettingsUI.SetFont("cWhite s" FontSize, Font)
 SettingsUI.BackColor := 0x171717
 SettingsUI.OnEvent('Size', UpdateScrollBars.Bind(SettingsUI))
@@ -400,20 +462,20 @@ SBT03 := SettingsUI.AddButton("xm+3 y+4 w180 h36 0x100 vSBT03 x6", "  " Chr(0xE1
 SBT03.OnEvent("Click", SettingsTabSelect)
 CreateImageButton(SBT03, 0, ButtonStyles["tab"]*)
 
-SBT04 := SettingsUI.AddButton("xm+3 y308 w180 h36 0x100 vSBT04 x6","  " Chr(0xE10C) "   Информация")
+SBT04 := SettingsUI.AddButton("xm+3 y308 w180 h36 0x100 vSBT04 x6", "  " Chr(0xE10C) "   Информация")
 SBT04.OnEvent("Click", SettingsTabSelect)
 CreateImageButton(SBT04, 0, ButtonStyles["tab"]*)
 
 GitHubOpen(Element, *) {
     Run("https://github.com/Agzes/AHK-FOR-RPM")
 }
-SBTB02 := SettingsUI.AddButton("xm+3 y268 w56 h36 0x100 Center vSBTB02 x6",  Chr(0xE1CF) ) ; github
+SBTB02 := SettingsUI.AddButton("xm+3 y268 w56 h36 0x100 Center vSBTB02 x6", Chr(0xE1CF)) ; github
 SBTB02.OnEvent("Click", GitHubOpen)
 CreateImageButton(SBTB02, 0, ButtonStyles["tab"]*)
 ReloadFromUI(Element, *) {
     Reload()
 }
-SBTB03 := SettingsUI.AddButton("xm+3 y268 w56 h36 0x100 Center vSBTB03 x+6", Chr(0xE117) ) ; reload
+SBTB03 := SettingsUI.AddButton("xm+3 y268 w56 h36 0x100 Center vSBTB03 x+6", Chr(0xE117)) ; reload
 SBTB03.OnEvent("Click", ReloadFromUI)
 CreateImageButton(SBTB03, 0, ButtonStyles["tab"]*)
 PlayPause(Element, *) {
@@ -434,7 +496,7 @@ PlayPause(Element, *) {
         OnOrOffHotKeys("on")
     }
 }
-SBTB04 := SettingsUI.AddButton("xm+3 y268 w56 h36 0x100 Center vSBTB04 x+6", Chr(0xE103) ) ; pause/play
+SBTB04 := SettingsUI.AddButton("xm+3 y268 w56 h36 0x100 Center vSBTB04 x+6", Chr(0xE103)) ; pause/play
 SBTB04.OnEvent("Click", PlayPause)
 CreateImageButton(SBTB04, 0, ButtonStyles["tab"]*)
 
@@ -504,7 +566,7 @@ SettingsUI.SetFont("cWhite s" 13, Font)
 SMP_GREETINGS := SettingsUI.AddText("x194 y44 w438 h30 +Center", "Привет, " UserName "!")
 
 SettingsUI.SetFont("cGray s" 8, Font)
-SMP_VERSION := SettingsUI.AddText("x338 y325", "AHK-FOR-RPM: v2.0" ' I ' "RP: v2.0.0")
+SMP_VERSION := SettingsUI.AddText("x338 y325", "AHK-FOR-RPM: v2.1" ' I ' "RP: v2.0.1")
 SettingsUI.SetFont("cWhite s" FontSize - 1, Font)
 
 LogAdder() {
@@ -529,17 +591,17 @@ SMP_LOGS.add("", "")
 LogAdder()
 
 WaitForBind(Options := "T5")
-{   
+{
     LogSent("[info] [bind-sys] ожидаю привязки...")
     global ih := InputHook(Options)
     if !InStr(Options, "V")
         ih.VisibleNonText := false
-    ih.KeyOpt("{All}", "E") 
+    ih.KeyOpt("{All}", "E")
     ih.KeyOpt("{LCtrl}{RCtrl}{LAlt}{RAlt}{LShift}{RShift}{LWin}{RWin}", "-E")
     ih.Start()
     ih.Wait()
     LogSent("[info] [bind-sys] получено сочетание: " StrReplace(StrReplace(ih.EndMods . ih.EndKey, "<", ""), ">", ""))
-    return StrReplace(StrReplace( ih.EndMods . ih.EndKey  , "<", ""), ">", "")
+    return StrReplace(StrReplace(ih.EndMods . ih.EndKey, "<", ""), ">", "")
 }
 
 
@@ -556,7 +618,7 @@ SaveBindCfg() {
 }
 
 CurrentBindsRecords := ""
-BindHotkey(BtnObj){
+BindHotkey(BtnObj) {
     global CurrentBindsRecords
     BtnObj.Text := Chr(0xE15B)
     CreateImageButton(BtnObj, 0, ButtonStyles["fake_for_hotkey"]*)
@@ -569,7 +631,7 @@ BindHotkey(BtnObj){
         ttt := GuiCtrlFromHwnd(ttt)
         ttt.Text := BindToHotkey(tbind)
         SaveBindCfg()
-    } 
+    }
     BtnObj.Text := Chr(0xE104)
     CreateImageButton(BtnObj, 0, ButtonStyles["fake_for_hotkey"]*)
     CurrentBindsRecords := ""
@@ -613,7 +675,7 @@ ExportBinds(Element, *) {
         export := export HotkeyToBind(el.Text) " "
     }
     PathToFile := FileSelect("S", "Hospital_cfg.txt", "Сохранение файла конфигурации", "AHK_FOR_RPM Config file (*.txt*)")
-    if PathToFile = ""{
+    if PathToFile = "" {
 
     }
     else {
@@ -656,7 +718,7 @@ BindItems := []
 BindHwnd := []
 for bind in G_Binds {
     temp_for_bind_init += 1
-    t := SettingsUI.AddButton("Hidden x198 y+3 w25 h25 vEBIND_" temp_for_bind_init " ",  Chr(0xE104))
+    t := SettingsUI.AddButton("Hidden x198 y+3 w25 h25 vEBIND_" temp_for_bind_init " ", Chr(0xE104))
     t.OnEvent("Click", BindHotkeyButton)
     CreateImageButton(t, 0, ButtonStyles["fake_for_hotkey"]*)
     BindItems.Push(t.Hwnd)
@@ -680,7 +742,7 @@ SBP_Import := SettingsUI.AddButton("Hidden x198 h30 w155 y+10 ", Chr(0xE118) "  
 CreateImageButton(SBP_Import, 0, ButtonStyles["fake_for_hotkey"]*)
 SBP_Import.OnEvent("Click", ImportBinds)
 
-SBP_Export := SettingsUI.AddButton("Hidden x359 h30 w155 y" SBP_Import.Y , Chr(0xE11C) "  Экспорт")
+SBP_Export := SettingsUI.AddButton("Hidden x359 h30 w155 y" SBP_Import.Y, Chr(0xE11C) "  Экспорт")
 CreateImageButton(SBP_Export, 0, ButtonStyles["fake_for_hotkey"]*)
 SBP_Export.OnEvent("Click", ExportBinds)
 
@@ -727,10 +789,10 @@ CreateImageButton(SSP_P1_SAVEBUTTON, 0, ButtonStyles["fake_for_hotkey"]*)
 
 UiMethodList := ["WinActivate [`"Minecarft`"] (" Chr(0xE113) ")", "WinActivate [`"javaw.exe`"] (" Chr(0xE113) ")", "MouseClick (Old)"]
 SSP_P2_UIMETHOD_LABEL := SettingsUI.AddText("Hidden x420 y50", Chr(0xE12A) " Метод фокусировки на игре ↴")
-SSP_P2_UIMETHOD_BG := SettingsUI.AddButton("Hidden x420 y70 Disabled w203 h25 Left", "  ᐁ I "  UiMethodList[FocusMethod])
+SSP_P2_UIMETHOD_BG := SettingsUI.AddButton("Hidden x420 y70 Disabled w203 h25 Left", "  ᐁ I " UiMethodList[FocusMethod])
 CreateImageButton(SSP_P2_UIMETHOD_BG, 0, ButtonStyles["fake_for_hotkey"]*)
 SSP_P2_UIMETHOD := SettingsUI.AddDropDownList("Hidden x420 y70 w203 +0x4000000", UiMethodList)
-SSP_P2_UIMETHOD.OnEvent("Change", DropDownListWorker )
+SSP_P2_UIMETHOD.OnEvent("Change", DropDownListWorker)
 SSP_P2_UIMETHOD.Text := UiMethodList[FocusMethod]
 
 
@@ -783,7 +845,7 @@ SaveSettingsForUSERDATA(Element, *) {
         MsgBox("Данные успешно сохранены!`nПерезапустите для применения")
     } catch Error as e {
         MsgBox("Ошибка при сохранении!")
-    } 
+    }
 }
 DropDownListWorker(Element, *) {
     SSP_P2_UIMETHOD_BG.Text := "  ᐁ I " UiMethodList[Element.Value]
@@ -859,14 +921,286 @@ SSP_P2_UPDATE.OnEvent("Click", SaveSettingsForDATA)
 SSP_P2_UPDATE.Value := UpdateCheck
 
 SettingsUI.SetFont("cWhite s" FontSize + 3, Font)
-SSP_P3_STATS := SettingsUI.AddText("Hidden x287 y266", Chr(0xE10C) "")
+SSP_P3_STATS := SettingsUI.AddText("Hidden x287 y255", Chr(0xE10C) "")
 SettingsUI.SetFont("cWhite s" FontSize - 3, Font)
-SSP_P3_DESC := SettingsUI.AddText("Hidden x231 y290 w130 Center", "\(ᵔ•ᵔ)/")
+SSP_P3_DESC := SettingsUI.AddText("Hidden x231 y278 w130 Center", "\(ᵔ•ᵔ)/")
 SettingsUI.SetFont("cWhite s" FontSize - 1, Font)
-SSP_P3_BUTTON := SettingsUI.AddButton("Hidden x430 y275", "Проверить обновления")
+SSP_P3_BUTTON := SettingsUI.AddButton("Hidden x216 y295", "Проверить обновления")
 SSP_P3_BUTTON.OnEvent("Click", CheckForUpdate)
 CreateImageButton(SSP_P3_BUTTON, 0, ButtonStyles["fake_for_hotkey"]*)
 
+S100_Warning(Element, *) {
+    MsgBox("Это поле не рекомендуется к изменению!`nИспользуется в: Первых отыгровках, Кд перед командой`nПо умолчанию -> 100")
+}
+S250_Warning(Element, *) {
+    MsgBox("Это поле не рекомендуется к изменению!`nИспользуется в: Кд перед удалением окна Статуса (после всех отыгровок)`nПо умолчанию -> 250")
+}
+S300_Warning(Element, *) {
+    MsgBox("Используется в: Мелких отыгровок`nПо умолчанию -> 300")
+}
+S500_Warning(Element, *) {
+    MsgBox("Используется в: Мелких отыгровок`nПо умолчанию -> 500")
+}
+S700_Warning(Element, *) {
+    MsgBox("Используется в: Коротких отыгровок с большим количетсвом фраз`nПо умолчанию -> 700")
+}
+S800_Warning(Element, *) {
+    MsgBox("Используется в: Коротких отыгровок с большим количетсвом фраз`nПо умолчанию -> 800")
+}
+S1000_Warning(Element, *) {
+    MsgBox("nИспользуется во: Многих отыгровок`nПо умолчанию -> 1000")
+}
+S2000_Warning(Element, *) {
+    MsgBox("Используется в: Средних отыгровок`nПо умолчанию -> 2000")
+}
+S3000_Warning(Element, *) {
+    MsgBox("nИспользуется в: Больших отыгровок`nПо умолчанию -> 3000")
+}
+S4000_Warning(Element, *) {
+    MsgBox("Используется в: Больших отыгровок`nПо умолчанию -> 4000")
+}
+
+TimeSetUI := GuiExt("", "!AHK | Hospital v2 ")
+TimeSetUI.SetFont("cWhite s" FontSize - 1, Font)
+TimeSetUI.BackColor := 0x171717
+CreateImageButton("SetDefGuiColor", 0x171717)
+
+TimeSetUI.AddText("w250 x5 +Center", "(╯▽╰)")
+
+TimeSetUI.SetFont("cWhite s" FontSize - 2, Font)
+S100_250_Label := TimeSetUI.AddText("x5 y+5", "[!] S100-250 ↴")
+TimeSetUI.SetFont("cWhite s" FontSize - 1, Font)
+
+; S100 Setting
+S100_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S100_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S100_Input := TimeSetUI.AddEdit("x5 y" S100_BG.Y " w220", S100)
+S100_Input.SetRounded(3)
+S100_Help := TimeSetUI.AddButton("x230 y" S100_BG.Y " h25 w25", "?")
+S100_Help.OnEvent("Click", S100_Warning)
+CreateImageButton(S100_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+; S250 Setting
+S250_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S250_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S250_Input := TimeSetUI.AddEdit("x5 y" S250_BG.Y " w220", S250)
+S250_Input.SetRounded(3)
+S250_Help := TimeSetUI.AddButton("x230 y" S250_BG.Y " h25 w25", "?")
+S250_Help.OnEvent("Click", S250_Warning)
+CreateImageButton(S250_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+TimeSetUI.SetFont("cWhite s" FontSize - 2, Font)
+S300_800_Label := TimeSetUI.AddText("x5 y+5", "S300-800 ↴")
+TimeSetUI.SetFont("cWhite s" FontSize - 1, Font)
+
+; S300 Setting
+S300_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S300_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S300_Input := TimeSetUI.AddEdit("x5 y" S300_BG.Y " w220", S300)
+S300_Input.SetRounded(3)
+S300_Help := TimeSetUI.AddButton("x230 y" S300_BG.Y " h25 w25", "?")
+S300_Help.OnEvent("Click", S300_Warning)
+CreateImageButton(S300_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+; S500 Setting
+S500_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S500_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S500_Input := TimeSetUI.AddEdit("x5 y" S500_BG.Y " w220", S500)
+S500_Input.SetRounded(3)
+S500_Help := TimeSetUI.AddButton("x230 y" S500_BG.Y " h25 w25", "?")
+S500_Help.OnEvent("Click", S500_Warning)
+CreateImageButton(S500_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+; S700 Setting
+S700_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S700_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S700_Input := TimeSetUI.AddEdit("x5 y" S700_BG.Y " w220", S700)
+S700_Input.SetRounded(3)
+S700_Help := TimeSetUI.AddButton("x230 y" S700_BG.Y " h25 w25", "?")
+S700_Help.OnEvent("Click", S700_Warning)
+CreateImageButton(S700_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+; S800 Setting
+S800_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S800_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S800_Input := TimeSetUI.AddEdit("x5 y" S800_BG.Y " w220", S800)
+S800_Input.SetRounded(3)
+S800_Help := TimeSetUI.AddButton("x230 y" S800_BG.Y " h25 w25", "?")
+S800_Help.OnEvent("Click", S800_Warning)
+CreateImageButton(S800_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+TimeSetUI.SetFont("cWhite s" FontSize - 2, Font)
+S1000_4000_Label := TimeSetUI.AddText("x5 y+5", "S1000-4000 ↴")
+TimeSetUI.SetFont("cWhite s" FontSize - 1, Font)
+
+; S1000 Setting
+S1000_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S1000_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S1000_Input := TimeSetUI.AddEdit("x5 y" S1000_BG.Y " w220", S1000)
+S1000_Input.SetRounded(3)
+S1000_Help := TimeSetUI.AddButton("x230 y" S1000_BG.Y " h25 w25", "?")
+S1000_Help.OnEvent("Click", S1000_Warning)
+CreateImageButton(S1000_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+; S2000 Setting
+S2000_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S2000_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S2000_Input := TimeSetUI.AddEdit("x5 y" S2000_BG.Y " w220", S2000)
+S2000_Input.SetRounded(3)
+S2000_Help := TimeSetUI.AddButton("x230 y" S2000_BG.Y " h25 w25", "?")
+S2000_Help.OnEvent("Click", S2000_Warning)
+CreateImageButton(S2000_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+; S3000 Setting
+S3000_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S3000_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S3000_Input := TimeSetUI.AddEdit("x5 y" S3000_BG.Y " w220", S3000)
+S3000_Input.SetRounded(3)
+S3000_Help := TimeSetUI.AddButton("x230 y" S3000_BG.Y " h25 w25", "?")
+S3000_Help.OnEvent("Click", S3000_Warning)
+CreateImageButton(S3000_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+; S4000 Setting
+S4000_BG := TimeSetUI.AddButton("x5 y+5 Disabled w220 h25", "")
+CreateImageButton(S4000_BG, 0, ButtonStyles["fake_for_hotkey"]*)
+S4000_Input := TimeSetUI.AddEdit("x5 y" S4000_BG.Y " w220", S4000)
+S4000_Input.SetRounded(3)
+S4000_Help := TimeSetUI.AddButton("x230 y" S4000_BG.Y " h25 w25", "?")
+S4000_Help.OnEvent("Click", S4000_Warning)
+CreateImageButton(S4000_Help, 0, ButtonStyles["fake_for_hotkey"]*)
+
+; Multiplier Buttons
+TimeSetUI.SetFont("cWhite s" FontSize - 1, Font)
+x1_Button := TimeSetUI.AddButton("x5 y+5 w50 h25", "x1")
+x1_Button.OnEvent("Click", x100MultiplierClick)
+CreateImageButton(x1_Button, 0, ButtonStyles["fake_for_hotkey"]*)
+
+x125_Button := TimeSetUI.AddButton("x+5 y" x1_Button.y " w45 h25", "x1.25")
+x125_Button.OnEvent("Click", x125MultiplierClick)
+CreateImageButton(x125_Button, 0, ButtonStyles["fake_for_hotkey"]*)
+
+x15_Button := TimeSetUI.AddButton("x+5 y" x1_Button.y " w45 h25", "x1.5")
+x15_Button.OnEvent("Click", x150MultiplierClick)
+CreateImageButton(x15_Button, 0, ButtonStyles["fake_for_hotkey"]*)
+
+x175_Button := TimeSetUI.AddButton("x+5 y" x1_Button.y " w45 h25", "x1.75")
+x175_Button.OnEvent("Click", x175MultiplierClick)
+CreateImageButton(x175_Button, 0, ButtonStyles["fake_for_hotkey"]*)
+
+x2_Button := TimeSetUI.AddButton("x+5 y" x1_Button.y " w45 h25", "x2")
+x2_Button.OnEvent("Click", x200MultiplierClick)
+CreateImageButton(x2_Button, 0, ButtonStyles["fake_for_hotkey"]*)
+
+SaveButton := TimeSetUI.AddButton("x5 y+5 w250 h30", "Сохранить настройки")
+SaveButton.OnEvent("Click", SaveTimeSettings)
+CreateImageButton(SaveButton, 0, ButtonStyles["fake_for_hotkey"]*)
+
+SetWindowAttribute(TimeSetUI)
+SetWindowTheme(TimeSetUI)
+SetWindowColor(TimeSetUI.Hwnd, 0xFFFFFFFF, 0x171717, 0xFF202020)
+
+
+x100MultiplierClick(Element, *) {
+    MultiplierClick(1)
+}
+x125MultiplierClick(Element, *) {
+    MultiplierClick(1.25)
+}
+x150MultiplierClick(Element, *) {
+    MultiplierClick(1.5)
+}
+x175MultiplierClick(Element, *) {
+    MultiplierClick(1.75)
+}
+x200MultiplierClick(Element, *) {
+    MultiplierClick(2)
+}
+
+MultiplierClick(multiplier) {
+    global S100, S250, S300, S700, S1000, S2000, S3000, S4000
+
+    S300 := Round(300 * multiplier)
+    S500 := Round(500 * multiplier)
+    S700 := Round(700 * multiplier)
+    S800 := Round(800 * multiplier)
+    S1000 := Round(1000 * multiplier)
+    S2000 := Round(2000 * multiplier)
+    S3000 := Round(3000 * multiplier)
+    S4000 := Round(4000 * multiplier)
+    
+    S300_Input.Text := S300
+    S500_Input.Text := S500
+    S700_Input.Text := S700
+    S800_Input.Text := S800
+    S1000_Input.Text := S1000
+    S2000_Input.Text := S2000
+    S3000_Input.Text := S3000
+    S4000_Input.Text := S4000
+
+}
+
+SaveTimeSettings(Element, *) {
+    global S100, S250, S300, S500, S700, S800, S1000, S2000, S3000, S4000
+
+    S100 := S100_Input.Text
+    S250 := S250_Input.Text
+    S300 := S300_Input.Text
+    S500 := S500_Input.Text 
+    S700 := S700_Input.Text
+    S800 := S800_Input.Text 
+    S1000 := S1000_Input.Text
+    S2000 := S2000_Input.Text
+    S3000 := S3000_Input.Text
+    S4000 := S4000_Input.Text
+
+    LogSent("[SaveTimeSettings] -> Попытка сохранения")
+    try {
+        RegWrite(S100, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S100")
+        RegWrite(S250, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S250")
+        RegWrite(S300, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S300")
+        RegWrite(S500, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S500") 
+        RegWrite(S700, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S700")
+        RegWrite(S800, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S800") 
+        RegWrite(S1000, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S1000")
+        RegWrite(S2000, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S2000")
+        RegWrite(S3000, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S3000")
+        RegWrite(S4000, "REG_SZ", "HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", "S4000")
+        MsgBox("Настройки времени сохранены!`nПерезапустите для применения")
+        LogSent("[SaveTimeSettings] -> Сохранено")
+    } catch Error as e {
+        MsgBox("Ошибка при сохранении настроек!")
+        LogSent("[SaveTimeSettings] -> Error")
+    }
+}
+
+
+; RpSetUI := GuiExt("", "!AHK | Hospital v2 ")
+; RpSetUI.SetFont("cWhite s" FontSize - 1, Font)
+; RpSetUI.BackColor := 0x171717
+; CreateImageButton("SetDefGuiColor", 0x171717)
+; 
+; RpSetUI.AddText("w250 x5 +Center", "( °o° )")
+; 
+; SetWindowAttribute(RpSetUI)
+; SetWindowColor(RpSetUI.Hwnd, 0xFFFFFFFF, 0x171717, 0xFF202020)
+; RpSetUI.Show("w260 h454")
+
+
+
+SleepTimeMenu(Element, *) {
+    TimeSetUI.Show("w260 h454")
+}
+RPSettings(Element, *) {
+    MsgBox("WIP, Будет доступно в V.2.1 part 2", "Sorry!")
+}
+
+SSP_P4_BUTTON := SettingsUI.AddButton("Hidden x436 y258 w170", Chr(0xE115) " задержка")
+SSP_P4_BUTTON.OnEvent("Click", SleepTimeMenu)
+CreateImageButton(SSP_P4_BUTTON, 0, ButtonStyles["fake_for_hotkey"]*)
+
+SSP_P5_BUTTON := SettingsUI.AddButton("Hidden x436 y293 w170", Chr(0xE115) " отыгровки")
+SSP_P5_BUTTON.OnEvent("Click", RPSettings)
+CreateImageButton(SSP_P5_BUTTON, 0, ButtonStyles["fake_for_hotkey"]*)
 
 ToDev(Element, *) {
     Run("https://e-z.bio/agzes")
@@ -908,7 +1242,7 @@ isScrollBarActive() {
 }
 
 LogSent("[info] запускаю дополнительные скрипты интерфейса")
-A_HotkeyInterval := 2000 
+A_HotkeyInterval := 2000
 A_MaxHotkeysPerInterval := 50
 #HotIf isScrollBarActive()
 WheelUp::
@@ -921,7 +1255,7 @@ WheelDown:: {
 LogSent("[info] конфигурирую данные интерфейса")
 MainPage := [SMP_GREETINGS, SMP_VERSION, SMP_LOGS]
 BindsPage := [SBP_LABEL, SBP_Import, SBP_Export, SBP_Reset]
-SettingsPage := [SSP_LABEL, SSP_PANEL_1, SSP_PANEL_2, SSP_PANEL_3, SSP_P1_NAME, SSP_P1_NAME_BG, SSP_P1_NAME_LABEL, SSP_P1_ROLE, SSP_P1_ROLE_BG, SSP_P1_ROLE_LABEL, SSP_P1_SAVEBUTTON, SSP_P1_USERNAME, SSP_P1_USERNAME_BG, SSP_P1_USERNAME_LABEL, SSP_P2_BEFORERP_LABEL, SSP_P2_CHECKNEED, SSP_P2_CHECKNEED_HELP, SSP_P2_CHECKNEED_TEXT, SSP_P2_ESCNEED, SSP_P2_ESCNEED_HELP, SSP_P2_CHECKNEED_TEXT, SSP_P2_LIMIT, SSP_P2_LIMIT_HELP, SSP_P2_LIMIT_TEXT, SSP_P2_STATUS, SSP_P2_STATUS_HELP, SSP_P2_STATUS_TEXT, SSP_P2_UIMETHOD, SSP_P2_UIMETHOD_BG, SSP_P2_UIMETHOD_LABEL, SSP_P2_UPDATE,SSP_P2_UPDATE_HELP, SSP_P2_UPDATE_TEXT, SSP_P3_BUTTON, SSP_P3_DESC, SSP_P3_STATS, SSP_P2_ESCNEED_TEXT, SSP_P2_OTHER]
+SettingsPage := [SSP_LABEL, SSP_PANEL_1, SSP_PANEL_2, SSP_PANEL_3, SSP_P1_NAME, SSP_P1_NAME_BG, SSP_P1_NAME_LABEL, SSP_P1_ROLE, SSP_P1_ROLE_BG, SSP_P1_ROLE_LABEL, SSP_P1_SAVEBUTTON, SSP_P1_USERNAME, SSP_P1_USERNAME_BG, SSP_P1_USERNAME_LABEL, SSP_P2_BEFORERP_LABEL, SSP_P2_CHECKNEED, SSP_P2_CHECKNEED_HELP, SSP_P2_CHECKNEED_TEXT, SSP_P2_ESCNEED, SSP_P2_ESCNEED_HELP, SSP_P2_CHECKNEED_TEXT, SSP_P2_LIMIT, SSP_P2_LIMIT_HELP, SSP_P2_LIMIT_TEXT, SSP_P2_STATUS, SSP_P2_STATUS_HELP, SSP_P2_STATUS_TEXT, SSP_P2_UIMETHOD, SSP_P2_UIMETHOD_BG, SSP_P2_UIMETHOD_LABEL, SSP_P2_UPDATE, SSP_P2_UPDATE_HELP, SSP_P2_UPDATE_TEXT, SSP_P3_BUTTON, SSP_P3_DESC, SSP_P3_STATS, SSP_P2_ESCNEED_TEXT, SSP_P2_OTHER, SSP_P4_BUTTON, SSP_P5_BUTTON]
 OtherPage := [SOP_CONTACT, SOP_DEV, SOP_GITHUB, SOP_LABEL, SOP_LABEL2]
 
 LogSent("[info] применяю атрибуты и тему для окна")
@@ -949,7 +1283,7 @@ ProgressBar.SetRounded(6)
 
 ShowStatusBar(Element?, *) {
     StatusUI.Show("w300 h32 NA")
-    Sleep(100)
+    Sleep(S100)
     screenWidth := A_ScreenWidth
     x := (screenWidth - StatusUI.W) / 2
     StatusUI.Move(x, 2)
@@ -966,9 +1300,9 @@ SetNStatusBar(Step?, *) {
     global CurrentProgress
     if !SBMaximum
         return
-    
+
     targetProgress := SBMaximumForOne * Step
-    
+
     loop {
         if CurrentProgress < targetProgress {
             global CurrentProgress += 1
@@ -977,9 +1311,9 @@ SetNStatusBar(Step?, *) {
         } else {
             break
         }
-        
+
         ProgressBar.Value := CurrentProgress
-        Sleep(5) 
+        Sleep(5)
     }
 }
 
@@ -1003,7 +1337,7 @@ hide_ui(Element?, *) {
     RareBindUI.Hide()
     PMPBindUI.Hide()
     MenuUI.Hide()
-    Sleep(100)
+    Sleep(S100)
     if FocusMethod = 1 {
         if WinExist("Minecraft") {
             WinShow("Minecraft")
@@ -1017,8 +1351,8 @@ hide_ui(Element?, *) {
     } else {
         MouseClick("Left")
     }
-    Sleep(100)
-    if BeforeEsc and !temp {
+    Sleep(S100)
+    if BeforeEsc and temp {
         SendInput("{Esc}")
     }
 }
@@ -1032,7 +1366,7 @@ greetings(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("Здравствуйте, чем я могу вам помочь? {ENTER}")
     Return
 }
@@ -1056,29 +1390,29 @@ give_pill(Element?, *)
     temp2 := "/do " . temp . " в руках у мед. работника"
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee осмотрел пациента, выявил проблему и приступил искать лекарство или таблетку в своей аптечке {Enter}")
     SetNStatusBar(1)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(300)  ;
+    Sleep(S300)  ;
     SendInput(temp2 " {Enter}")
     SetNStatusBar(2)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("/mee найдя нужное лекарство, достаёт и передает пациенту напротив, затем закрывает аптечку {Enter}")
     SetNStatusBar(3)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/med heal  100")
     SetNStatusBar(4)
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1102,20 +1436,20 @@ sell_pill(Element?, *)
     temp4 := "/mee открыв " . temp3 . " и найдя нужное лекарство передаёт человеку напротив, затем подписывает листок c датой выдачи и данными врача который его выдал"
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput(temp2 " {Enter}")
     SetNStatusBar(1)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput(temp4 " {Enter}")
     SetNStatusBar(2)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/med sell")
     SetNStatusBar(3)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1136,32 +1470,32 @@ bruise(Element?, *)
     temp2 := "/do " . temp . " в руках у мед. работника"
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput(temp2 " {Enter}")
     SetNStatusBar(1)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("/mee открыв свою аптечку ищет и достаёт мазь, затем одевает на свои руки перчатки и осматривает место ушиба пациента {Enter}")
     SetNStatusBar(2)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("/mee открыв крышку тюбика мази, и выдавив на перчатку немного мази начинает намазывать место ушиба пострадавшему, после этого берет бинт распаковав из пачки, забинтовывает место ушиба пациента {Enter}")
     SetNStatusBar(3)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/med heal  100")
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
-ammonia(Element?,*)
+ammonia(Element?, *)
 {
     hide_ui()
     if BeforeCheck {
@@ -1174,25 +1508,25 @@ ammonia(Element?,*)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee открывает аптечку и достает нашатырный спирт вместе с ваткой, затем открывает крышку банки и немного смочив ватку подносит её перед носом человека без сознания, ожидая когда он придет в себя {Enter}")
     SetNStatusBar(1)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("/mee закрывает крышку банки и убирает нашатырь обратно в аптечку, продолжая наблюдать за состоянием пациента {ENTER}")
     SetNStatusBar(2)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("/med heal  100")
     SetNStatusBar(3)
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1213,30 +1547,30 @@ inject(Element?, *)
     temp2 := "/do " . temp . " в руках у мед. работника"
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput(temp2 " {Enter}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee достает из аптечки шприц, спиртовую салфетку и бинт, протирает место для укола спиртовой салфеткой и начинает делать укол аккуратно вводя иглу в мышечную ткань{ENTER}")
     SetNStatusBar(2)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Инъекция была сделана{ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee прикладывая ватку на место укола вытаскивает иглу, убирает ватку и заклеивает место прокола кусочком пластыря {ENTER}")
     SetNStatusBar(4)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/med inject")
     SetNStatusBar(5)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1248,35 +1582,30 @@ med_card(Element?, *)
             return 0
         }
     }
-    SetMStatusBar(5)
+    SetMStatusBar(4)
     if ShowStatus
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee взяв паспорт из рук гражданина и держа его в руках, сверяет данные и проверяет фотографию {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000) ;
-    SendInput("/mee берёт чистую и незаполненную медкарту из аптечки и начинает заполнять по паспортным данным {ENTER}")
+    Sleep(S1000) ;
+    SendInput("/mee доставая планшет, включает его, создаёт новую мед карту и начинает заполнять {ENTER}")
     SetNStatusBar(2)
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("{t}")
-    Sleep(2000) ;
-    SendInput("/todo Заполнив мед. карту, ставит штамп и расписывается, а затем передает посетителю вместе с паспортом : проверяйте. {ENTER}")
+    Sleep(S2000) ;
+    SendInput("/todo заполнив мед. карту, ставит электронный штамп и подпись, а затем передает посетителю ключ доступа с паспортом : проверяйте. {ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S100) ;
     SendInput("{t}")
-    Sleep(1000) ;
-    SendInput("/n Смотреть свою медкарту командой /med card , там можно узнать о зависимостях, есть ли у вас переломы, ушибы, отравление и тд   {ENTER}")
-    SetNStatusBar(4)
-    Sleep(1000) ;
-    SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/med givecard ")
-    SetNStatusBar(5)
-    Sleep(250)
+    SetNStatusBar(4)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1293,19 +1622,19 @@ extract(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee осмотрел пациента убедился что он в порядке, берёт незаполненную справку из сумки на плече и записывает данные человека на него, затем убирает справку в сумку {ENTER}")
     SetNStatusBar(1)
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/med heal  100")
     SetNStatusBar(2)
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1322,40 +1651,40 @@ medical_examination(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee сняв стетоскоп со своей шеи и приподняв рубашку человеку напротив, начинает прослушивать дыхание{ENTER}")
     SetNStatusBar(1)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee обойдя со спины продолжает прослушивать дыхание{ENTER}")
     SetNStatusBar(2)
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/todo Опустив рубашку пациенту и повесив обратно стетоскоп себе на шею : Дыхание чистое.{ENTER}")
     SetNStatusBar(3)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do На плече висит медицинская сумка{ENTER}")
     SetNStatusBar(4)
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/mee достав тонометр из медицинской сумки и надев манжет на руку пациента выше локтя,  начинает накачивать воздух в манжет, измеряет давление смотря на манометр{ENTER}")
     SetNStatusBar(5)
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/todo Измерив давление, снимая манжет с руки пациента : Давление в норме.{ENTER}")
     SetNStatusBar(6)
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/todo Подписывает справку, передав человеку напротив : Вы прошли мед.осмотр, вы здоровы.{ENTER}")
     SetNStatusBar(7)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1372,40 +1701,40 @@ prof_suitability(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee снимает стетоскоп со своей шеи, начинает проверять дыхание, затем берёт тонометр и измеряет давление {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("/todo Убирая все на свое место : Дыхание и давление у вас в норме. {ENTER}")
     SetNStatusBar(2)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("/mee достаёт из кармана халата фонарик и начинает поочерёдно светить в глаза, смотря на реакцию зрачка {ENTER}")
     SetNStatusBar(3)
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("{t}")
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("/todo Выключив фонарик, возвращая его в карман медицинского халата : Всё в порядке. {ENTER}")
     SetNStatusBar(4)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("/mee достав отоскоп из медицинской сумки, держит ухо пациента слегка натянутым, прислонив отоскоп в каждое ухо по очереди, осматривает слуховой аппарат {ENTER}")
     SetNStatusBar(5)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("/todo Закончив осмотр слухового аппарата и спрятав отоскоп в медицинскую сумку : Слуховой аппарат в норме. {ENTER}")
     SetNStatusBar(6)
-    Sleep(3000) ;
+    Sleep(S3000) ;
     SendInput("{t}")
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("/todo Выписывает справку, после чего передаёт человеку напротив : Вы здоровы и прошли осмотр на проф.пригодность. {ENTER}")
     SetNStatusBar(7)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1457,16 +1786,10 @@ t := MainBindUI.AddButton("w250 h30 y+5 x5", "Проф. Пригодность")
 CreateImageButton(t, 0, ButtonStyles["binds"]*)
 t.OnEvent("Click", prof_suitability)
 
-
-
 SetWindowAttribute(MainBindUI)
 SetWindowColor(MainBindUI.Hwnd, 0xFFFFFFFF, 0x171717, 0xFF202020)
 mainbindsy := t.y + 35
 ; MainBindUI.Show("w260 h" mainbindsy)
-
-
-
-
 
 knife(Element?, *)
 {
@@ -1481,110 +1804,110 @@ knife(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/me готовит операционную для извлечения ножа, раскладывая необходимые инструменты на стерильном столе {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do На столе лежат скальпель, пинцет, зажимы, антисептик и швы. Операционная готова {ENTER}")
     SetNStatusBar(2)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me моет и дезинфицирует руки, надевает стерильные перчатки, маску и хирургический халат {ENTER}")
     SetNStatusBar(3)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("Сейчас я введу анестезию, чтобы вы не чувствовали боли. {ENTER}")
     SetNStatusBar(4)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me вводит местную анестезию вокруг раны {ENTER}")
     SetNStatusBar(5)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Анестезия начинает действовать, область вокруг раны немеет {ENTER}")
     SetNStatusBar(6)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me тщательно обрабатывает кожу вокруг раны антисептиком, готовя её к операции {ENTER}")
     SetNStatusBar(7)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me делает аккуратный разрез вокруг ножевой раны, чтобы минимизировать повреждения при извлечении {ENTER}")
     SetNStatusBar(8)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Кожа вокруг раны обработана, разрез сделан для облегчения извлечения ножа {ENTER}")
     SetNStatusBar(9)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me осторожно захватывает нож за рукоятку и начинает аккуратно вытаскивать его {ENTER}")
     SetNStatusBar(10)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me извлекает нож, держа его за рукоятку, и кладет в металлический лоток {ENTER}")
     SetNStatusBar(11)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Нож успешно извлечен, рана открыта для обработки {ENTER}")
     SetNStatusBar(12)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me тщательно очищает рану антисептиком, останавливает кровотечение при помощи зажимов и тампонов {ENTER}")
     SetNStatusBar(13)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me проверяет, не повреждены ли внутренние органы или крупные сосуды, используя специальные инструменты {ENTER}")
     SetNStatusBar(14)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Внутренние органы и сосуды не повреждены, хирург продолжает обработку раны {ENTER}")
     SetNStatusBar(15)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me накладывает несколько швов, чтобы закрыть разрез и восстановить целостность тканей {ENTER}")
     SetNStatusBar(16)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Швы аккуратно наложены, рана закрыта {ENTER}")
     SetNStatusBar(17)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me наносит антисептический раствор на швы и накладывает стерильную повязку {ENTER}")
     SetNStatusBar(18)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Повязка плотно прилегает к ране, защищая её от инфекции {ENTER}")
     SetNStatusBar(19)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("Операция завершена. Следуйте рекомендациям по уходу за раной и приходите на осмотр через несколько дней. {ENTER}")
     SetNStatusBar(20)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me убирает использованные инструменты и снимает перчатки, завершая операцию {ENTER}")
     SetNStatusBar(21)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1601,100 +1924,100 @@ peluvoe(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/me готовит операционную для извлечения пули, раскладывая необходимые инструменты на стерильном столе {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do На столе лежат скальпель, пинцет, зажимы, антисептик и швы. Операционная готова {ENTER}")
     SetNStatusBar(2)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me моет и дезинфицирует руки, надевает стерильные перчатки, маску и хирургический халат {ENTER}")
     SetNStatusBar(3)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("Сейчас я введу анестезию, чтобы вы не чувствовали боли. {ENTER}")
     SetNStatusBar(4)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me вводит местную анестезию вокруг раны {ENTER}")
     SetNStatusBar(5)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Анестезия начинает действовать, область вокруг раны немеет {ENTER}")
     SetNStatusBar(6)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me тщательно обрабатывает кожу вокруг раны антисептиком, готовя её к операции {ENTER}")
     SetNStatusBar(7)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me делает аккуратный разрез вокруг раны, чтобы расширить доступ к пуле {ENTER}")
     SetNStatusBar(8)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Рана слегка расширена, открывая доступ к пуле {ENTER}")
     SetNStatusBar(9)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me осторожно использует пинцет для захвата и извлечения пули {ENTER}")
     SetNStatusBar(10)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me извлекает пулю, держа её пинцетом, и помещает в металлический лоток {ENTER}")
     SetNStatusBar(11)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Пуля успешно извлечена, рана готова к обработке {ENTER}")
     SetNStatusBar(12)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me тщательно очищает рану антисептиком, останавливает кровотечение при помощи зажимов {ENTER}")
     SetNStatusBar(13)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me накладывает несколько швов, чтобы закрыть разрез {ENTER}")
     SetNStatusBar(14)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Швы аккуратно наложены, рана закрыта {ENTER}")
     SetNStatusBar(15)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me наносит антисептический раствор на швы и накладывает стерильную повязку {ENTER}")
     SetNStatusBar(16)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Повязка плотно прилегает к ране, защищая её от инфекции {ENTER}")
     SetNStatusBar(17)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("Операция завершена. Следуйте рекомендациям по уходу за раной и приходите на осмотр через несколько дней. {ENTER}")
     SetNStatusBar(18)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/me убирает использованные инструменты и снимает перчатки, завершая операцию {ENTER}")
     SetNStatusBar(19)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1711,15 +2034,15 @@ stretcher(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee осмотрел пострадавшего и убедившись что его можно перевозить, затем аккуратно укладывает его на носилки {ENTER}")
     SetNStatusBar(1)
-    Sleep(300) ;
+    Sleep(S300) ;
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/do Пострадавший лежит на носилках {ENTER}")
     SetNStatusBar(2)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1736,25 +2059,25 @@ dropper(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee ставит стойку для капельницы около кровати, проверяя устойчивая ли стойка для капельницы {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee взяв нужный флакон лекарства, вставляет в стойку флакон лекарства {ENTER}")
     SetNStatusBar(2)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee взяв жгут ставит его чуть выше изгиба руки пациенту, протирает место для укола спиртовой салфеткой и начинает вводить катетер в набухшую вену, одновременно снимая жгут{ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee берёт пластырь, отмотав 3 см отрывает кусок и закрепляет катетер пригладив пластырь к коже руки пациента{ENTER}")
     SetNStatusBar(4)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1771,30 +2094,30 @@ defibrillator(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee достает дефибриллятор и ставит рядом с пациентом на твердую и устойчивую поверхность{ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee оголив торс от одежды пациента берёт гель из своей аптечки, открыв крышку геля наносит его на правую ключицу, а также на левый бок под грудь{ENTER}")
     SetNStatusBar(2)
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/todo Взяв электроды кладет их на намазанные места гелем : Разряд! {ENTER}")
     SetNStatusBar(3)
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/do Подаётся напряжение, тело человека резко дернулось{ENTER}")
     SetNStatusBar(4)
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/try Пациент реанимирован?{ENTER}")
     SetNStatusBar(5)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1811,30 +2134,30 @@ twist(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee резким движением взяв руку неадекватного пациента и скрутил за его спину повалив его прижав к поверхности, подставил свое колено к спине пациента зажимая его {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Пациенту трудно двигаться {ENTER}")
     SetNStatusBar(2)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee достает свободной рукой из кармана халата шприц с успокаивающим средством, снимая колпачок своими зубами и приспустив воздух вкалывает его в плечо пациента и убирает пустой шприц обратно в карман {ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do На пациента начинает действовать лекарство и он слабеет, успокаивается {ENTER}")
     SetNStatusBar(4)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee поднимает пациента придерживая его руку за спиной {ENTER}")
     SetNStatusBar(5)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1848,7 +2171,7 @@ calm(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee засунув руку в карман и нащупав шприц с успокаивающим, незаметно достает его и приоткрывает колпачок приспускает воздух из шприца слегка нажав, вкалывает в плечо пациента и приспускает медленно лекарство придерживая пациента {ENTER}")
     Return
 }
@@ -1864,70 +2187,70 @@ plast_operation(Element?, *) {
         ShowStatusBar()
     ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/me проверяет записи в мед.карте пациента, убеждаясь, что все необходимые анализы и согласия на операцию оформлены {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/me моет руки, надевает стерильные перчатки, затем проверяет готовность инструментов и материалов, после дезинфицирует операционное поле {ENTER}")
     SetNStatusBar(2)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Операционное поле дезинфицировано, все инструменты и материалы подготовлены {ENTER}")
     SetNStatusBar(3)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/me размечает разметку на коже пациента, учитывая запланированную форму и размер {ENTER}")
     SetNStatusBar(4)
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/me готовит препараты для наркоза и проверяет оборудование для анестезии {ENTER}")
     SetNStatusBar(5)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Подготовительные работы завершены, пациент готов к операции {ENTER}")
     SetNStatusBar(6)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("/me вводит анестезиологический препарат, ожидая пока пациент полностью уснёт под действием наркоза {ENTER}")
     SetNStatusBar(7)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/me делает аккуратный разрез в области под грудью, следуя заранее разработанной разметки {ENTER}")
     SetNStatusBar(8)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/me аккуратно проводит установку имплантов, заранее их стерилизовав, следя за симметрией и правильным положением {ENTER}")
     SetNStatusBar(9)
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Импланты установлены, симметрия правильная, положение ровное {ENTER}")
     SetNStatusBar(10)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/me накладывает швы на операционные разрезы {ENTER}")
     SetNStatusBar(11)
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/me проводит финальную дезинфекцию и накладывает стерильную повязку {ENTER}")
     SetNStatusBar(12)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Операция завершена, пациент постепенно выходит из наркоза {ENTER}")
     SetNStatusBar(13)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
 }
 blood(Element?, *)
@@ -1943,45 +2266,45 @@ blood(Element?, *)
         ShowStatusBar()
     ErrorLevel := SendMessage(0x20, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee одевает перчатки и достаёт из медицинской сумки жгут{ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/todo Наложив жгут на середину плеча : Сжимайте и разжимайте кулак{ENTER}")
     SetNStatusBar(2)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Вена расширилась {ENTER}")
     SetNStatusBar(3)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/todo Взяв иглу и распечатав из пачки, вводит её в вену пациента : Разжимайте кулак.{ENTER}")
     SetNStatusBar(4)
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/mee подставив пробирку к игле и снимает жгут с руки пациента, набирает кровь медленно стекающую в пробирку{ENTER}")
     SetNStatusBar(5)
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Необходимое количество крови набрано {ENTER}")
     SetNStatusBar(6)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/todo Извлекая иглу из вены и прикладывает чистую салфетку к руке пациента : Согните руку в суставе{ENTER}")
     SetNStatusBar(7)
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("{t}")
-    Sleep(2000)
+    Sleep(S2000)
     SendInput("/todo Выкидывает использованную иглу в урну : Ожидайте анализов.{ENTER}")
     SetNStatusBar(8)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -1998,50 +2321,50 @@ wound(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee надевает стерильные перчатки и начинает осматривать рану у пациента{ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee взяв шприц, распечатывает его из новой упаковки, затем берет ампулу, надламывает верхушку и сняв колпачок с иглы шприца набирает лекарство {ENTER}")
     SetNStatusBar(2)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee протерев спиртовой салфеткой место укола, вводит в мышечную ткань иглу, начинает медленно вводить лекарство{ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("/do Укол сделан{ENTER}")
     SetNStatusBar(4)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee вытаскивает иглу и выкидывает шприц в мусорку{ENTER}")
     SetNStatusBar(5)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee взяв антисептик начинает обрабатывать рану, затем берет медицинскую нить и иглу, продевает нить в ушко иглы и взяв пинцет держа иглу зашивает рану{ENTER}")
-    SetNStatusBar(6) 
-    Sleep(1000) ;
+    SetNStatusBar(6)
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("/do Рана зашита{ENTER}")
     SetNStatusBar(7)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee отложив иглу с пинцетом, берет бинт начинает перебинтовывать рану{ENTER}")
     SetNStatusBar(8)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/do Рана перебинтована{ENTER}")
     SetNStatusBar(9)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2058,64 +2381,64 @@ bullet(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee подготавливает инструменты и надевает стерильные перчатки {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee взяв шприц с обезболивающим выпустив воздух из иглы начинает делать укол в районе огнестрела протерев место укола салфеткой {ENTER}")
     SetNStatusBar(2)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee сделав укол, выкидывает шприц в мусорку {ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee берёт скальпель начинает делать надрез {ENTER}")
     SetNStatusBar(4)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee отложив скальпель берет разжим и щипцы, начинает извлекать пулю разжав щипцами ткань {ENTER}")
     SetNStatusBar(5)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee вытащив пулю кладет ее на поднос {ENTER}")
     SetNStatusBar(6)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee обрабатывает рану спреем, подтирает капли вокруг раны стерильной салфеткой {ENTER}")
     SetNStatusBar(7)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee берет медицинскую нить и иглу, продевает нить в ушко иглы и взяв пинцет держа иглу зашивает рану {ENTER}")
-    SetNStatusBar(8) 
-    Sleep(4000) ;
+    SetNStatusBar(8)
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee взяв бинты начинает забинтовывать {ENTER}")
     SetNStatusBar(9)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Рана зашита. Бинты наложены {ENTER}")
-    SetNStatusBar(10) 
-    Sleep(4000) ;
+    SetNStatusBar(10)
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/todo Передавая пулю пациенту : Держите на память. {ENTER}")
     SetNStatusBar(11)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
-close_fracture(Element?, *) 
+close_fracture(Element?, *)
 {
     hide_ui()
     if BeforeCheck {
@@ -2128,34 +2451,34 @@ close_fracture(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/todo Включив рентген и сняв снимки смотрит на них, затем ставит диагноз с дальнейшим исправлением : У вас закрытый перелом. {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee взяв шприц с обезболивающим и салфетку, протерев место укола, выпустив воздух из иглы, начинает делать укол в районе перелома, приложив после на пару секунд салфетку на место укола, затем принимается вправлять кость {ENTER}")
     SetNStatusBar(2)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/do Кость вправлена{ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee подготавливает гипсовый бинт, размачивает и раскладывает рядом на столе, затем берёт бинт и накладывает на место исправленного перелома, подождав пару минут, проверяет подсыхание гипса, затем берёт бинт и начинает накладывать поверх гипса{ENTER}")
     SetNStatusBar(4)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/med heal  100")
     SetNStatusBar(5)
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2172,54 +2495,54 @@ open_fracture(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/todo Включив рентген, смотрит на монитор и ставит диагноз с дальнейшим исправлением : У вас открытый перелом. {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee подготовив операционный стол и пациента, раскладывает нужные инструменты перед собой и одевает стерильные перчатки {ENTER}")
     SetNStatusBar(2)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee ставит катетер, присоединяет трубку с анестезией пациенту, ожидает когда на пациента подействует наркоз {ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee взяв антисептик, начинает обрабатывать рану, затем проводит манипуляции с восстановлением костной ткани {ENTER}")
     SetNStatusBar(4)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee берет медицинскую нить и иглу, продевает нить в ушко иглы и взяв пинцет, держа иглу, зашивает рану, после чего взяв бинты, начинает забинтовывать поврежденную конечность пациента {ENTER}")
     SetNStatusBar(5)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee начинает подготавливать гипсовый бинт, налив воды в тару, размачивает и раскладывает рядом на столе, затем берёт бинт и накладывает на место исправленного перелома {ENTER}")
     SetNStatusBar(6)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("/mee действие лекарства заканчивается и пока пациент приходит в себя, проверяет подсыхание гипса, затем берёт бинт и начинает обматывать гипс {ENTER}")
     SetNStatusBar(7)
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("{t}")
-    Sleep(2000) ;
+    Sleep(S2000) ;
     SendInput("/mee закрепляет конец бинта и снимает катетер с уже закончившим наркозом, затем накладывает повязку {ENTER}")
     SetNStatusBar(8)
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("{t}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/med heal  100")
     SetNStatusBar(9)
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
     SendInput("{Left}")
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2236,20 +2559,20 @@ rengen(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee включает рентген и нажимает кнопку пуска{ENTER}")
     SetNStatusBar(1)
-    Sleep(500) ;
+    Sleep(S500) ;
     SendInput("{t}")
-    Sleep(500)
+    Sleep(S500)
     SendInput("/do Рентген аппарат включён, идет сканирование{ENTER}")
     SetNStatusBar(2)
-    Sleep(500) ;
+    Sleep(S500) ;
     SendInput("{t}")
-    Sleep(500)
+    Sleep(S500)
     SendInput("/mee распечатывает снимок и взяв его из принтера поднеся к свету рассматривает снимок, ставит диагноз{ENTER}")
     SetNStatusBar(3)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2266,20 +2589,20 @@ dislocation(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee одевает перчатки, подготавливает салфетки и ампулу с обезболивающим, надломив ампулу и взяв шприц вскрытый из новой пачки, набирает обезболивающее из ампулы{ENTER}")
     SetNStatusBar(1)
-    Sleep(500) ;
+    Sleep(S500) ;
     SendInput("{t}")
-    Sleep(500)
+    Sleep(S500)
     SendInput("/mee держа шприц с обезболивающим выпустив воздух из иглы начинает делать укол протерев место укола салфеткой{ENTER}")
     SetNStatusBar(2)
-    Sleep(500) ;
+    Sleep(S500) ;
     SendInput("{t}")
-    Sleep(500)
+    Sleep(S500)
     SendInput("/mee взяв конечность пациента начинает потихоньку натягивать на себя и вправляет сустав в нужную сторону{ENTER}")
     SetNStatusBar(3)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2295,50 +2618,50 @@ slrt(Element?, *) {
         ShowStatusBar()
     ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee осматривает пострадавшего, замечая остановку дыхания и отсутствия пульса приложив пальцы к шее лежащего {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee открывает аптечку и достает стерильные перчатки, начинает одевать на свои руки {ENTER}")
     SetNStatusBar(2)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee взяв фонарик из аптечки и приоткрыв рот потерпевшему осматривает ротовую полость на инородные предметы {ENTER}")
     SetNStatusBar(3)
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee выключает фонарик и убирает обратно в аптечку, прихватив из аптечки ручной ИВЛ положив рядом{ENTER}")
     SetNStatusBar(4)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee поставив ладони на вытянутых руках, строго вертикально на груди пострадавшего начинает проводить технику непрямого массажа сердца{ENTER}")
     SetNStatusBar(5)
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee поочередно надавливая на грудь, после возвращения в исходное положение 30 надавливаний {ENTER}")
     SetNStatusBar(6)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee взяв ручной ИВЛ лежащий рядом, прикладывает маску на рот пострадавшего, тем самым приготовив для искусственного дыхания {ENTER}")
     SetNStatusBar(7)
-    Sleep(4000)
+    Sleep(S4000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee придерживая маску начинает сжимать мешок рукой запуская воздух в легкие пострадавшего {ENTER}")
     SetNStatusBar(8)
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee контролируя пульс на сонной артерии и реакцию зрачков на свет приоткрывая веко пострадавшему продолжает делать массаж сердца до появления слабого пульса {ENTER}")
     SetNStatusBar(9)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2354,15 +2677,15 @@ ekgg(Element?, *) {
         ShowStatusBar()
     ErrorLevel := SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{t}")
-    Sleep(100)
+    Sleep(S100)
     SendInput("/mee подготовив пациента, оголив ему грудь от одежды, включает аппарат ЭКГ, затем взяв гель начинает наносить на грудь пациенту и устанавливает присоски {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{t}")
-    Sleep(1000)
+    Sleep(S1000)
     SendInput("/mee распечатывает данные, одной рукой берет край распечатки и изучает сердцебиение {ENTER}")
     SetNStatusBar(2)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2440,16 +2763,10 @@ t := RareBindUI.AddButton("w123 h30 y" t.Y " x133", "ЭКГ")
 CreateImageButton(t, 0, ButtonStyles["binds"]*)
 t.OnEvent("Click", ekgg)
 
-
-
-
 SetWindowAttribute(RareBindUI)
 SetWindowColor(RareBindUI.Hwnd, 0xFFFFFFFF, 0x171717, 0xFF202020)
 rarebindy := t.y + 35
 ; RareBindUI.Show("w260 h" rarebindy)
-
-
-
 
 lecture(Element?, *)
 {
@@ -2464,30 +2781,30 @@ lecture(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
-    SendInput("Гиппократ – великий древнегреческий врач и философ, вошедший в историю как “отец медицины”. Его медицинские трактаты оказали огромное влияние на медицинскую науку и практику. В биографии Гиппократа есть немало ярких и  трагических моментов, которые  {ENTER}")
+    Sleep(S100) ;
+    SendInput("Добрый день, интерны! Ваша работа начинается с получения планшета на складе больницы. Это ваш основной инструмент для оформления медицинских карт. Убедитесь, что планшет исправен, и используйте его для записи данных пациентов. Корректность и точность заполнения медицинских карт крайне важны.  {ENTER}")
     SetNStatusBar(1)
-    Sleep(800) ;
+    Sleep(S800) ;
     SendInput("{е}")
-    Sleep(800) ;
-    SendInput("способствовали развитию его дарования. Гиппократ был первым врачом, отвергшим теорию о том, что болезни на человека насылают боги. Благодаря ему медицина была выделена в отдельную науку. По мнению великого врача, болезнь является следствием влияния  {ENTER}")
+    Sleep(S800) ;
+    SendInput("Изучите устав больницы и строго придерживайтесь дресс-кода. Ваша форма должна быть аккуратной и соответствовать требованиям фракции. Устав поможет вам понять правила поведения, взаимодействия с коллегами и пациентов. Это основа вашей дисциплины и профессионализма. {ENTER}")
     SetNStatusBar(2)
-    Sleep(800) ;
+    Sleep(S800) ;
     SendInput("{е}")
-    Sleep(800) ;
-    SendInput("характера человека, его питания, привычек, а также природных факторов. Гиппократ принадлежал к Косской школе врачей. Ее представители стремились отыскать первопричину патологии.  {ENTER}")
+    Sleep(S800) ;
+    SendInput("Если вы сталкиваетесь с ситуацией, где требуется помощь более квалифицированного специалиста, незамедлительно перенаправляйте пациента. Не стесняйтесь обращаться за советом к старшим сотрудникам — ваша задача обеспечивать качественную первичную помощь. {ENTER}")
     SetNStatusBar(3)
-    Sleep(800) ;
+    Sleep(S800) ;
     SendInput("{е}")
-    Sleep(800) ;
-    SendInput("Для этого за больными организовывалось наблюдение. Врачи создавали специальный режим, способствующий самоизлечению. В это время был “рожден” один из важнейших принципов великого врача – “Не навреди”.  {ENTER}")
+    Sleep(S800) ;
+    SendInput("Во время дежурства за регистратурой будьте внимательны и вежливы. Организуйте приём пациентов, направляйте их к нужным кабинетам и следите за порядком в приёмной зоне. Регистратура — это лицо больницы, и вы играете важную роль в создании доверия у пациентов.  {ENTER}")
     SetNStatusBar(4)
-    Sleep(800) ;
+    Sleep(S800) ;
     SendInput("{е}")
-    Sleep(800) ;
+    Sleep(S800) ;
     SendInput("Вы прослушали лекцию.  {ENTER}")
     SetNStatusBar(5)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2501,7 +2818,7 @@ regulation1(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("Вы готовы сдать тест по уставу?  {ENTER}")
     Return
 }
@@ -2525,7 +2842,7 @@ regulation2(Element?, *)
     item3 := list[r3]
     sentence := "Сначала устав, " . item1 . ", " . item2 . " и " . item3 . "."
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput(sentence " {ENTER}")
 }
 regulation3(Element?, *)
@@ -2548,7 +2865,7 @@ regulation3(Element?, *)
     item3 := list[r3]
     sentence := "Теперь расшифровки, " . item1 . ", " . item2 . " и " . item3 . "."
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput(sentence " {ENTER}")
 }
 regulation4(Element?, *)
@@ -2561,7 +2878,7 @@ regulation4(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("Вы сдали тест на Устав и термины Больницы. {ENTER}")
     Return
 }
@@ -2575,7 +2892,7 @@ oath_start(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("Вы готовы дать клятву Гиппократа? {ENTER}")
     Return
 }
@@ -2589,7 +2906,7 @@ oath(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("Вы дали клятву Гиппократа. {ENTER}")
     Return
 }
@@ -2613,7 +2930,7 @@ assingments(Element?, *)
     item3 := list[r3]
     sentence := "Интерн, " . item1 . ", " . item2 . " и " . item3 . "."
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput(sentence " {ENTER}")
 }
 practice(Element?, *)
@@ -2629,20 +2946,20 @@ practice(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/do Манекен лежит в шкафу {ENTER}")
     SetNStatusBar(1)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("/me достал манекен из шкафа и затем положил на кушетку  {ENTER}")
     SetNStatusBar(2)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("У него закрытый перелом, приступай.  {ENTER}")
     SetNStatusBar(3)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2656,7 +2973,7 @@ practice2(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("Вы сдали практику на парамедика. {ENTER}")
     Return
 }
@@ -2715,8 +3032,7 @@ educbindy := t.y + 35
 ; EducBindUI.Show("w260 h" educbindy)
 
 
-
-open_settings_ui(Element? , *) {
+open_settings_ui(Element?, *) {
     SettingsUI.Show("h350 w640")
 }
 open_pmp_window(Element?, *) {
@@ -2753,12 +3069,8 @@ SetWindowColor(MenuUI.Hwnd, 0xFFFFFFFF, 0x171717, 0xFF202020)
 mainbindy := menu_stopstart.Y + 35
 ; MenuUI.Show("w260 h" mainbindy)
 
-
-
-
-
 pmp1_(Element?, *)
-{   
+{
     hide_ui()
     if BeforeCheck {
         if !WinActive("ahk_exe javaw.exe") and !WinActive("Minecraft") {
@@ -2770,20 +3082,20 @@ pmp1_(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/todo Внимательно осматривая пациента и обнаруживая вывих в области сустава : У вас вывих сустава, сейчас вам помогу. {ENTER}")
     SetNStatusBar(1)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("/mee надевает перчатки, выдавливает небольшое кол-во Лидокаина на ватный диск и начинает промазывать им нужное место для купирования боли {ENTER}")
     SetNStatusBar(2)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("/mee аккуратно устанавливает поврежденный сустав в нормальное положение, применяя мягкий тягостойкий бандаж {ENTER}")
     SetNStatusBar(3)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2797,7 +3109,7 @@ pmp2_(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee быстро берет из аптечки шину, бинты и накладывает ее с двух боковых сторон от конечности, дабы иммобилизовать ее, после чего обматывает бинтами {ENTER}")
     Return
 }
@@ -2811,7 +3123,7 @@ pmp3_(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee открывает аптечку и достает от туда жгут, после чего накладывает его на место выше места кровотечения, после же берет из аптечки шину, бинты и накладывает ее в места, где не выступают кости и обматывает бинтами {ENTER}")
     Return
 }
@@ -2828,20 +3140,20 @@ pmp15_(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee ставит и открывает аптечку рядом с собой, осматривает ранение пострадавшего, разрывает чуть одежду в районе огнестрела, ставит жгут, взяв из аптечки антисептик, обрабатывает свои руки и одевает перчатки {ENTER}")
     SetNStatusBar(1)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("/mee распечатывает из пачки антисептическую салфетку, взяв шприц с обезболивающим и выпустив воздух из иглы протирает салфеткой место укола и вводит иглу с обезболивающим в районе огнестрела {ENTER}")
     SetNStatusBar(2)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(4000) ;
+    Sleep(S4000) ;
     SendInput("/mee осматривает рану на наличие пули и глубины раны, берет из аптечки запечатанную салфетку гемостатик, открывает ее и начинает делать тампонаду раны, останавливая кровотечение, затем берет бинт из аптечки и начинает накладывать тугую повязку {ENTER}")
     SetNStatusBar(3)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2858,15 +3170,15 @@ pmp17_(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee быстра надев перчатки и маску достал из аптечки все нужное для укола и резким, а также точным движением ввел шприц в мышечную ткань пациента, рядом с местом ранения и надавил на конец шприца для введения препарата внутрь человека {ENTER}")
     SetNStatusBar(1)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("/mee взяв ватку смочил ее антисептическим веществом и прошелся им по краю раны, для обработки ранения {ENTER}")
     SetNStatusBar(2)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2880,9 +3192,9 @@ pmp18_(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee быстра надев перчатки и маску достал из аптечки слабый раствор антисептика и прошелся им по месту ранения, а после бинтами замотал рану в несколько слоев {ENTER}")
-    Sleep(100) ;
+    Sleep(S100) ;
     Return
 }
 pmp25_(Element?, *)
@@ -2895,9 +3207,9 @@ pmp25_(Element?, *)
     }
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/me пальцем надавливает на место кровотечения, после другой рукой берет жгут и накладывает его выше ранения, помечая время, после берет стерильную марлевую повязку и тампонирует ее, если есть возможность сжать конечность пациенту, то делает это {ENTER}")
-    Sleep(100) ;
+    Sleep(S100) ;
     Return
 }
 pmp39_(Element?, *)
@@ -2913,25 +3225,25 @@ pmp39_(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee достает из кармана халата фонарик, включает его и проверяет глазное яблоко на чувствительность к свету {ENTER}")
     SetNStatusBar(1)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/try Пациент реагирует на свет фонарика? {ENTER}")
     SetNStatusBar(2)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee достал из аптечки нашатырный спирт и ватку, промочил небольшим кол-вом спирта ватку и принялся водить перед носом пациента {ENTER}")
     SetNStatusBar(3)
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("{е}")
-    Sleep(1000) ;
+    Sleep(S1000) ;
     SendInput("/mee подложил под голову пациента небольшую подушку {ENTER}")
     SetNStatusBar(4)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2948,20 +3260,20 @@ pmp40_(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee поставил мед.аптечку на землю, открыл ее и достал от туда Нитроглицерин, после же передал пациенту {ENTER}")
     SetNStatusBar(1)
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("Возьмите эту таблетку под язык {ENTER}")
     SetNStatusBar(2)
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/do Через несколько минут таблетка подействовала и расширила артерии и снизила давление пациенту {ENTER}")
     SetNStatusBar(3)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -2978,15 +3290,15 @@ pmp41_(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee рассмотрел крепление ремня или галстука и помог пациенту ослабить их натяжение {ENTER}")
     SetNStatusBar(1)
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/do После действий мед.работника к пациенту пошел поток свежего воздуха {ENTER}")
     SetNStatusBar(2)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
@@ -3003,30 +3315,28 @@ pmp44_(Element?, *)
         ShowStatusBar()
     SendMessage(0x50, , 0x4190419, , "A")
     SendInput("{е}")
-    Sleep(100) ;
+    Sleep(S100) ;
     SendInput("/mee присев к пациенту поставив аптечку рядом поворачивает его на правый бок взявшись за левую руку и левую ногу согнув при этом на 90 градусов и подкладывает его руку ему под голову, проверяет стопор колена и правильного положения пациента {ENTER}")
     SetNStatusBar(1)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("/mee открыв аптечку берет стерильные перчатки и одевает на свои руки, опрашивает прохожих и фиксирует с их слов время начала приступа {ENTER}")
     SetNStatusBar(2)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("/mee достает из аптечки шприц с лекарством, сняв колпачок с иглы и приспустив штаны человеку сделала укол в ягодичную мышцу {ENTER}")
     SetNStatusBar(3)
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("{е}")
-    Sleep(700) ;
+    Sleep(S700) ;
     SendInput("/do Ожидает прохождения эпилептического шока, наблюдает состояние здоровья пациента {ENTER}")
     SetNStatusBar(4)
-    Sleep(250)
+    Sleep(S250)
     HideStatusBar()
     Return
 }
-
-
 
 PMPBindUI := GuiExt("", "AHK | Hospital v2 ")
 PMPBindUI.SetFont("cWhite s" FontSize - 1, Font)
@@ -3084,8 +3394,7 @@ SetWindowColor(PMPBindUI.Hwnd, 0xFFFFFFFF, 0x171717, 0xFF202020)
 pmpbindy := t.Y + 35
 ; PMPBindUI.Show("w260 h" pmpbindy)
 
-
-MainBindUIopen(Element?, *){
+MainBindUIopen(Element?, *) {
     MainBindUI.Show("w260 h" mainbindsy)
 }
 EducBindUIopen(Element?, *) {

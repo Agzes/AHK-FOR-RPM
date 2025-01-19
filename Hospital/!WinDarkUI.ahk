@@ -125,7 +125,7 @@ SetWindowTheme(GuiObj, DarkMode := True)
         ; https://www.autohotkey.com/docs/v2/lib/CallbackCreate.htm#ExSubclassGUI
         global WindowProcNew := CallbackCreate(WindowProc)  ; Avoid fast-mode for subclassing.
         global WindowProcOld := DllCall("user32\" SetWindowLong, "Ptr", GuiObj.Hwnd, "Int", GWL_WNDPROC, "Ptr", WindowProcNew, "Ptr")
-        Init := True
+        Init := False ; Need For UI 
     }
 }WindowProc(hwnd, uMsg, wParam, lParam)
 {

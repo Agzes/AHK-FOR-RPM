@@ -1,3 +1,5 @@
+<h4 align="center">[⚠️] Баг с биндами и биндом alt+space в скоре будет исправен <br></h4>
+
 
 <img src="https://github.com/Agzes/AHK-FOR-RPM/blob/main/!ReadMe/Header.png?raw=true" alt="image" width="1000">
 <img src="https://github.com/Agzes/AHK-FOR-RPM/blob/main/!ReadMe/Hospital.png?raw=true" alt="image" width="1000">

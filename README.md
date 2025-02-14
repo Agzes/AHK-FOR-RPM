@@ -5,4 +5,9 @@
 <h4 align="center">для работы в полноэкранном режиме minecraft необходимо скачать мод: <br> <a href="https://www.curseforge.com/minecraft/mc-mods/borderless/download/4858950">[Forge]</a> | <a href="https://www.curseforge.com/minecraft/mc-mods/cubes-without-borders/download/5496358">[Fabric]</a><br></h4>
 
 <br><br><br><br>
+
+<h1 align="center">
+
+Credits: [Agzes/AHK-FOR-RPM/CREDITS.md](https://github.com/Agzes/AHK-FOR-RPM/blob/main/CREDITS.md)
+</h1>
 <h6 align="center">Made with 💟 by Agzes</h6>

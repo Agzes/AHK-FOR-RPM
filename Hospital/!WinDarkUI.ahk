@@ -1,6 +1,6 @@
-#Requires AutoHotkey v2.0
-
-
+; Credits:
+; jNizM - DarkMode (Force or Toggle)
+; https://www.autohotkey.com/boards/viewtopic.php?f=92&t=115952
 
 SetWindowAttribute(GuiObj, DarkMode := True)
 {

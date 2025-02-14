@@ -1,6 +1,6 @@
-#Requires AutoHotkey v2.0
-
-
+; Credits:
+; jNizM - DarkMode (Force or Toggle)
+; https://www.autohotkey.com/boards/viewtopic.php?f=92&t=115952
 
 SetWindowAttribute(GuiObj, DarkMode := True)
 {
@@ -125,7 +125,7 @@ SetWindowTheme(GuiObj, DarkMode := True)
         ; https://www.autohotkey.com/docs/v2/lib/CallbackCreate.htm#ExSubclassGUI
         global WindowProcNew := CallbackCreate(WindowProc)  ; Avoid fast-mode for subclassing.
         global WindowProcOld := DllCall("user32\" SetWindowLong, "Ptr", GuiObj.Hwnd, "Int", GWL_WNDPROC, "Ptr", WindowProcNew, "Ptr")
-        Init := True
+        Init := False ; Need For UI 
     }
 }WindowProc(hwnd, uMsg, wParam, lParam)
 {

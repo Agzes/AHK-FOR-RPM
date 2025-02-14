@@ -1,3 +1,13 @@
+; Credits:
+; just me - POC - Scrollable GUI (2024-07-26)
+; https://www.autohotkey.com/boards/viewtopic.php?f=83&t=112708
+
+; Changes (by Agzes):
+; Added a function to dark style ScroolBar. 
+; Added a function to show and hide ScrollBar. 
+; Added a function to add fixed elements to the GUI. 
+
+
 WS_VSCROLL := 0x200000
 WM_VSCROLL := 0x0115
 
@@ -90,7 +100,6 @@ OnScroll(WP, LP, M, H) {
     Bar := (M = 0x0115) 
     If !Bar
         Return
-
     SI := Buffer(28, 0)
     NumPut("UInt", 28, "UInt", 0x17, SI)
     If !DllCall("GetScrollInfo", "Ptr", H, "Int", Bar, "Ptr", SI)

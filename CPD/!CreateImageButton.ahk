@@ -1,3 +1,7 @@
+; Credits:
+; just me - CreateImageButton() - 2024-01-01
+; https://www.autohotkey.com/boards/viewtopic.php?t=93339
+
 ; ======================================================================================================================
 ; Name:              CreateImageButton()
 ; Function:          Create images and assign them to pushbuttons.

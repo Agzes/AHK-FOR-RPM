@@ -1,3 +1,7 @@
+; Credits:
+; Nikola Perovic - https://github.com/nperovic
+; https://github.com/nperovic/GuiEnhancerKit
+
 /************************************************************************
  * @description Elevate your AHK Gui development with extended methods and properties.  
  * @file GuiEnhancerKit.ahk

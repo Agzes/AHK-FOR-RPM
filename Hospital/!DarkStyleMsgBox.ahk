@@ -1,4 +1,6 @@
-#Requires AutoHotkey v2.0
+; Credits:
+; Nikola Perovic - https://github.com/nperovic
+; https://gist.github.com/nperovic/0b9a511eda773f9304813a6ad9eec137
 
 /************************************************************************
  * @description Apply dark theme to the built-in MsgBox and InputBox.

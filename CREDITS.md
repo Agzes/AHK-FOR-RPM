@@ -9,8 +9,7 @@
 - **GuiEnchancerKit** -  [Nikola Perovic](https://github.com/nperovic) - [GitHub Repository](https://github.com/nperovic/GuiEnhancerKit)
 - **JXON** -  [TheArkive](https://github.com/TheArkive) - [GitHub Repository](https://github.com/TheArkive/JXON_ahk2)
 - **ScroolBar.ahk** - just me - [AHK FORUM | POC - Scrollable GUI (2024-07-26)](https://www.autohotkey.com/boards/viewtopic.php?f=83&t=112708)
-- **WinDarkUI.ahk** - jNizM - [AHK FORUM| DarkMode (Force or Toggle)](https://www.autohotkey.com/boards/viewtopic.php?f=92&t=115952)
-; 
+- **WinDarkUI.ahk** - jNizM - [AHK FORUM| DarkMode (Force or Toggle)](https://www.autohotkey.com/boards/viewtopic.php?f=92&t=115952) 
 
 
 ## License:

@@ -2025,7 +2025,7 @@ ButtonStyles["reset"] := [[0xFF1b1b1b, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2]
 ForceStopRP := False
 IsOldItemIsInput := False
 program_version := 2.1 ; !Don`t change
-code_version := 3 ; !Don`t change
+code_version := 4 ; !Don`t change
 HotKeyStatus := true ; !Don`t change
 CurrentPage := "SBT01"
 Font := "Segoe UI" ; !Change > you can change this font to any other font you like (NEED INSTALL THIS FONT TO SYSTEM)
@@ -3042,6 +3042,9 @@ SetWindowTheme(RpSetUI)
 SetWindowAttribute(RpSetUI)
 SetWindowColor(RpSetUI.Hwnd, 0xFFFFFFFF, 0x171717, 0xFF202020)
 
+ToCredits(Element, *) {
+    Run("https://github.com/Agzes/AHK-FOR-RPM/blob/main/CREDITS.md")
+}
 
 SettingsUI.SetFont("cWhite s" FontSize + 8, Font)
 SOP_LABEL := SettingsUI.AddText("Hidden x203 y114 w200 h30 ", "AHK-FOR-RPM")
@@ -3056,6 +3059,9 @@ SOP_CONTACT.OnEvent("Click", ToMessage)
 SOP_GITHUB := SettingsUI.AddButton("Hidden x520 h30 w107 y308 ", Chr(0xE136) "  GitHub")
 CreateImageButton(SOP_GITHUB, 0, ButtonStyles["fake_for_hotkey"]*)
 SOP_GITHUB.OnEvent("Click", ToGitHub)
+SOP_CREDITS := SettingsUI.AddButton("Hidden x568 h23 w60 y12 ", "credits")
+CreateImageButton(SOP_CREDITS, 0, ButtonStyles["fake_for_hotkey"]*)
+SOP_CREDITS.OnEvent("Click", ToCredits)
 
 
 AutoChatParser() {
@@ -3169,7 +3175,7 @@ MainPage := [SMP_GREETINGS, SMP_VERSION, SMP_LOGS]
 BindsPage := [SBP_LABEL, SBP_Import, SBP_Export, SBP_Reset]
 SettingsPage := [SSP_LABEL, SSP_PANEL_1, SSP_PANEL_2, SSP_PANEL_3, SSP_P1_NAME, SSP_P1_NAME_BG, SSP_P1_NAME_LABEL, SSP_P1_ROLE, SSP_P1_ROLE_BG, SSP_P1_ROLE_LABEL, SSP_P1_SAVEBUTTON, SSP_P1_USERNAME, SSP_P1_USERNAME_BG, SSP_P1_USERNAME_LABEL, SSP_P2_BEFORERP_LABEL, SSP_P2_CHECKNEED, SSP_P2_CHECKNEED_HELP, SSP_P2_CHECKNEED_TEXT, SSP_P2_ESCNEED, SSP_P2_ESCNEED_HELP, SSP_P2_CHECKNEED_TEXT, SSP_P2_LIMIT, SSP_P2_LIMIT_HELP, SSP_P2_LIMIT_TEXT, SSP_P2_STATUS, SSP_P2_STATUS_HELP, SSP_P2_STATUS_TEXT, SSP_P2_UIMETHOD, SSP_P2_UIMETHOD_BG, SSP_P2_UIMETHOD_LABEL, SSP_P2_UPDATE, SSP_P2_UPDATE_HELP, SSP_P2_UPDATE_TEXT, SSP_P3_BUTTON, SSP_P3_DESC, SSP_P3_STATS, SSP_P2_ESCNEED_TEXT, SSP_P2_OTHER, SSP_P4_BUTTON, SSP_P5_BUTTON]
 AutoChatPage := [STB1012, INPUT, ClearButton, SendButton, CounterText]
-OtherPage := [SOP_CONTACT, SOP_DEV, SOP_GITHUB, SOP_LABEL, SOP_LABEL2]
+OtherPage := [SOP_CONTACT, SOP_DEV, SOP_GITHUB, SOP_LABEL, SOP_LABEL2, SOP_CREDITS]
 
 
 LogSent("[info] применяю атрибуты и тему для окна")
@@ -3841,32 +3847,32 @@ pmpbindy := AutoInitUI(PMPBindUI)
 
 Cast(Element?, *) {
     RPAction([
-        ["Chat", "/mee взяв тару и бутылку с водой из шкафа, наливает воду из бутылки в тару {ENTER}" S100, S2000],
-        ["Chat", "/mee берет гипсовый бинт, вскрывает пачку и начинает раскладывать на столе в 6 слоев по одинаковому размеру, скрутив с двух сторон опускает на 3 секунды в воду {ENTER}" S2000, S2000],
-        ["Chat", "/mee отжав лишнюю воду с бинтов, раскладывает на столе и  разглаживает гипсовый бинт {ENTER}" S2000, S2000],
-        ["Chat", "/mee взяв двумя руками бинт прикладывает на место перелома, формирует и разглаживает края {ENTER}" S2000, S2000],
-        ["Chat", "/mee подождав пару минут, проверяет подсыхание гипса надавив пальцами с краю, затем берёт бинт и начинает обматывать гипс, закрепляет конец бинта {ENTER}" S2000, S2000],
-        ["Chat", "/todo Передавая костыли пациенту : Через 3 недели снимем гипс. {ENTER}" S2000, S2000]
+        ["Chat", "/mee взяв тару и бутылку с водой из шкафа, наливает воду из бутылки в тару {ENTER}", S100, S2000],
+        ["Chat", "/mee берет гипсовый бинт, вскрывает пачку и начинает раскладывать на столе в 6 слоев по одинаковому размеру, скрутив с двух сторон опускает на 3 секунды в воду {ENTER}", S2000, S2000],
+        ["Chat", "/mee отжав лишнюю воду с бинтов, раскладывает на столе и  разглаживает гипсовый бинт {ENTER}", S2000, S2000],
+        ["Chat", "/mee взяв двумя руками бинт прикладывает на место перелома, формирует и разглаживает края {ENTER}", S2000, S2000],
+        ["Chat", "/mee подождав пару минут, проверяет подсыхание гипса надавив пальцами с краю, затем берёт бинт и начинает обматывать гипс, закрепляет конец бинта {ENTER}", S2000, S2000],
+        ["Chat", "/todo Передавая костыли пациенту : Через 3 недели снимем гипс. {ENTER}", S2000, S2000]
     ])
 }
 MedHeal(Element?, *) {
     RPAction([
-        ["Chat", "/med heal  " G_Binds_cfg["Global_HealPrice"] "{Left}{Left}{Left}{Left}" S100, S100]
+        ["Chat", "/med heal  " G_Binds_cfg["Global_HealPrice"] "{Left}{Left}{Left}{Left}", S100, S100]
     ])
 }
 GpsCansel(Element?, *) {
     RPAction([
-        ["Chat", "/gps cancel {ENTER}" S100, S100]
+        ["Chat", "/gps cancel {ENTER}", S100, S100]
     ])
 }
 Calls(Element?, *) {
     RPAction([
-        ["Chat", "/calls {ENTER}" S100, S100]
+        ["Chat", "/calls {ENTER}", S100, S100]
     ])
 }
 PassAccept(Element?, *) {
     RPAction([
-        ["Chat", "/pass accept {ENTER}" S100, S100]
+        ["Chat", "/pass accept {ENTER}", S100, S100]
     ])
 }
 

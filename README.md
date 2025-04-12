@@ -1,3 +1,5 @@
+**Патч для Hospital (исправленны ошибки): https://github.com/Agzes/AHK-FOR-RPM/releases/download/Hospital.v.2.1-part2-1/Hospital.exe**
+
 <img src="https://github.com/Agzes/AHK-FOR-RPM/blob/main/!ReadMe/Header.png?raw=true" alt="image" width="1000">
 <img src="https://github.com/Agzes/AHK-FOR-RPM/blob/main/!ReadMe/Hospital.png?raw=true" alt="image" width="1000">
 <img src="https://github.com/Agzes/AHK-FOR-RPM/blob/main/!ReadMe/cpd.png?raw=true" alt="image" width="1000">

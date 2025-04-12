@@ -1,6 +1,8 @@
-# AHK-FOR-RPM | Tools
-
 """
+AHK-FOR-RPM | Tools
+
+Tool for auto rewrite scripts for AHK-FOR-RPM v2
+
 t := ui.AddButton("w250 h30 y+5 x5", "Label")
 CreateImageButton(t, 0, ButtonStyles["binds"]*)
 t.OnEvent("Click", function)

@@ -10,4 +10,6 @@
 
 Credits: [Agzes/AHK-FOR-RPM/CREDITS.md](https://github.com/Agzes/AHK-FOR-RPM/blob/main/CREDITS.md)
 </h1>
-<h6 align="center">Made with 💟 by Agzes</h6>
+<h6 align="center">Made with 💟 by Agzes
+
+![visits](https://visit-counter.vercel.app/counter.png?page=github.com%2FAgzes-AHK-FOR-RPM&s=40&c=6a9bee&bg=00000000&no=2&ff=digi&tb=&ta=)

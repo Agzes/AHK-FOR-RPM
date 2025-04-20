@@ -2013,6 +2013,7 @@ Jxon_Dump(obj, indent := "", lvl := 1) {
 
 #DllLoad "Gdiplus.dll"
 
+
 LogAdd("[status] Инициализация")
 
 ButtonStyles := Map()
@@ -2025,7 +2026,7 @@ ButtonStyles["reset"] := [[0xFF1b1b1b, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2]
 ForceStopRP := False
 IsOldItemIsInput := False
 program_version := 2.1 ; !Don`t change
-code_version := 4 ; !Don`t change
+code_version := 5 ; !Don`t change
 HotKeyStatus := true ; !Don`t change
 CurrentPage := "SBT01"
 Font := "Segoe UI" ; !Change > you can change this font to any other font you like (NEED INSTALL THIS FONT TO SYSTEM)
@@ -2081,6 +2082,7 @@ InitGbinds(i) {
     i["PassAccept"] := ['!r', "/pass accept"]
     i["MedHeal"] := ['!e', "/med heal _ 100"]
     i["GPSCancel"] := ['!s', "/gps cancel"]
+    i["HospitalID"] := ['!f', "Удостоверение [см. Параметры]"]
 } InitGbinds(GBinds)
 
 InitGBindsCfg(i) {
@@ -2095,7 +2097,7 @@ InitGBindsCfg(i) {
 
 global G_Binds := GBinds
 global G_Binds_cfg := GBinds_cfg
-GBindsSortedArray := ["ForceStop", "UI_Main", "UI_Educ", "UI_Rare", "UI_Menu", "Restart", "Greetings", "GivePill", "SellMed", "Bruise", "Ammonia", "Inject", "MedCard", "Discharge", "Examination", "Suitability", "Knife", "Bullet", "Stretcher", "Drip", "Defib", "TwistAndCalm", "CalmInjection", "PlasticSurgery", "BloodTest", "WoundRepair", "ExtractBullet", "ClosedFracture", "OpenFracture", "Xray", "Dislocation", "CPR", "ECG", "ApplyCast", "LectureIntern", "Regulation_Part1", "Regulation_Part2", "Regulation_Part3", "Oath", "Practice_RP1", "Calls", "PassAccept", "MedHeal", "GPSCancel"]
+GBindsSortedArray := ["ForceStop", "UI_Main", "UI_Educ", "UI_Rare", "UI_Menu", "Restart", "Greetings", "GivePill", "SellMed", "Bruise", "Ammonia", "Inject", "MedCard", "Discharge", "Examination", "Suitability", "Knife", "Bullet", "Stretcher", "Drip", "Defib", "TwistAndCalm", "CalmInjection", "PlasticSurgery", "BloodTest", "WoundRepair", "ExtractBullet", "ClosedFracture", "OpenFracture", "Xray", "Dislocation", "CPR", "ECG", "ApplyCast", "LectureIntern", "Regulation_Part1", "Regulation_Part2", "Regulation_Part3", "Oath", "Practice_RP1", "Calls", "PassAccept", "MedHeal", "GPSCancel", "HospitalID"]
 
 A_HotkeyInterval := 2000
 A_MaxHotkeysPerInterval := 50
@@ -2752,12 +2754,12 @@ CreateImageButton(SBTB04, 0, ButtonStyles["tab"]*)
 AddFixedElement(SBTB04)
 STB := SettingsUI.AddButton("x192 y6 w442 h338 0x100 vSTB Disabled", "")
 CreateImageButton(STB, 0, ButtonStyles["fake_for_group"]*)
-STB1 := SettingsUI.AddButton("x192 y6 w431 h1265 0x100 vSTB1 Disabled Hidden", "")
+STB1 := SettingsUI.AddButton("x192 y6 w431 h1293 0x100 vSTB1 Disabled Hidden", "") ; Binds background
 CreateImageButton(STB1, 0, ButtonStyles["fake_for_group"]*)
 SettingsUI.SetFont("cWhite s" 13, Font)
 SMP_GREETINGS := SettingsUI.AddText("x194 y44 w438 h30 +Center", "Привет, " UserName "!")
 SettingsUI.SetFont("cGray s" 8, Font)
-SMP_VERSION := SettingsUI.AddText("x338 y325", "AHK-FOR-RPM: v2.1" ' I ' "RP: v2.0.1")
+SMP_VERSION := SettingsUI.AddText("x338 y325", "AHK-FOR-RPM: v2.1" ' I ' "RP: v2.0.2")
 SettingsUI.SetFont("cWhite s" FontSize - 1, Font)
 SMP_LOGS := SettingsUI.AddListView("x198 y104 w452 h240", [""])
 SMP_LOGS.SetRounded(3)
@@ -3448,6 +3450,19 @@ prof_suitability(Element?, *) {
     ])
 }
 
+hospital_id(Element?, *) {
+    if (Name != "") and (Role != "") {
+        RPAction([
+            ["Chat", "/me достал удостоверение из кармана халата, открыл его и продемонстрировал человеку напротив {ENTER}", S100, S100],
+            ["Chat", "/do Информация в удостоверении: " Name " | Организация: Больница | " Role " | Фотография (3x4) | Дата выдачи: 11.04.2025 | Печать: HOSPITAL {ENTER}", S100, S250],
+            ["Chat", "/mee после подтверждения информации захлопнул документ, перекинул его во вторую руку и аккуратно положил в карман халата {ENTER}", S250, S250]
+        ])
+    } else {
+        MsgBox("Не заполнены данные для удостоверения! `n`nПерейдите в параметры и заполните поля:`nРП Имя Фамилия, Должность.")
+    }
+}
+
+
 MainBindUI := AutoCreateUI("\^o^/")
 AutoAddButton(MainBindUI, "Приветствие", greetings, "full")
 AutoAddButton(MainBindUI, "Передать таблетку", give_pill, "full")
@@ -3459,6 +3474,7 @@ AutoAddButton(MainBindUI, "Мед. Карта", med_card, "full")
 AutoAddButton(MainBindUI, "Выписка из 6 палаты", extract, "full")
 AutoAddButton(MainBindUI, "Мед. Осмотр", medical_examination, "full")
 AutoAddButton(MainBindUI, "Проф. Пригодность", prof_suitability, "full")
+AutoAddButton(MainBindUI, "Удостоверение", hospital_id, "full")
 mainbindsy := AutoInitUI(MainBindUI)
 
 
@@ -3920,6 +3936,7 @@ SetHotKey(G_Binds["Calls"][1], Calls)
 SetHotKey(G_Binds["PassAccept"][1], PassAccept)
 SetHotKey(G_Binds["MedHeal"][1], MedHeal)
 SetHotKey(G_Binds["GPSCancel"][1], GpsCansel)
+SetHotKey(G_Binds["HospitalID"][1], hospital_id)
 
 
 if UpdateCheck

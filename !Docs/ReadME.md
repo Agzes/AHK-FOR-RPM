@@ -1,6 +1,6 @@
 <img src="https://github.com/Agzes/AHK-FOR-RPM/blob/main/!ReadMe/Header.png" alt="image" width="1000">
 
-<div align="center">
+<div align="center"> 
     <h2>
     Документация к AFR Editor
     </h2>

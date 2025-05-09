@@ -1,0 +1,65 @@
+[
+	{
+		"Tittle": "AFR | Hospital",
+		"Description": "Базовая версия для фракции Hospital, отличается проработанными отыгровками",
+		"Version": "2.0.2",
+		"RVersion": "2.1 [3]",
+		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM/releases/download/latest/Hospital.exe",
+		"DownloadLink_AllInOne": "https://github.com/Agzes/AHK-FOR-RPM/releases/download/latest/Hospital.allinone.ahk",
+		"Status": "1"
+	},
+	{
+		"Tittle": "AFR Builder",
+		"Description": "Веб-Приложение для создания АХК на базе AHK-FOR-RPM с UI",
+		"Version": "1.0.0",
+		"RVersion": "2.2.0",
+		"DownloadLink": "./Editor/index.html",
+		"DownloadLink_AllInOne": "",
+		"Status": "7"
+	},
+	{
+		"Tittle": "AFR | EasyConfig",
+		"Description": "Версия для создания собственного АХК на базе AHK-FOR-RPM.",
+		"Version": "2.2.0",
+		"RVersion": "2.2.0",
+		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM",
+		"DownloadLink_AllInOne": "",
+		"Status": "6"
+	},
+	{
+		"Tittle": "AFR | CPD",
+		"Description": "В скором времени может получить обновление до AFR v.2.2",
+		"Version": "1.0.0",
+		"RVersion": "2.0",
+		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM/releases/download/latest/CPD.exe",
+		"DownloadLink_AllInOne": "",
+		"Status": "4"
+	},
+	{
+		"Tittle": "AFR | Meria",
+		"Description": "Legacy версия АХК для СМИ. В скором времени может получить обновление до AFR v.2.2",
+		"Version": "1.0.0",
+		"RVersion": "1.0 (Legacy)",
+		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM/tree/main/!LegacyVersions/AHK-Meria",
+		"DownloadLink_AllInOne": "",
+		"Status": "4"
+	},
+	{
+		"Tittle": "AFR | Mass Media",
+		"Description": "Legacy версия АХК для СМИ",
+		"Version": "1.0.0",
+		"RVersion": "1.0 (Legacy)",
+		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM/tree/main/!LegacyVersions/AHK-MassMedia",
+		"DownloadLink_AllInOne": "",
+		"Status": "4"
+	},
+	{
+		"Tittle": "Хотите добавить свой АХК?",
+		"Description": "Для этого создайте Issue на GitHub в репозиторий AHK-FOR-RPM",
+		"Version": "?",
+		"RVersion": "не имеет значения",
+		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM",
+		"DownloadLink_AllInOne": "",
+		"Status": "5"
+	}
+]

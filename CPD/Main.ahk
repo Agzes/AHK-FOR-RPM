@@ -7,11 +7,11 @@
 
 
 #SingleInstance Force
-#Include !CreateImageButton.ahk
-#Include !WinDarkUI.ahk
-#Include !GuiEnchancerKit.ahk
-#Include !ScroolBar.ahk
-#Include !DarkStyleMsgBox.ahk
+#Include %A_ScriptDir%\..\!Libs\!CreateImageButton.ahk
+#Include %A_ScriptDir%\..\!Libs\!WinDarkUI.ahk
+#Include %A_ScriptDir%\..\!Libs\!GuiEnchancerKit.ahk
+#Include %A_ScriptDir%\..\!Libs\!ScroolBar.ahk
+#Include %A_ScriptDir%\..\!Libs\!DarkStyleMsgBox.ahk
 #DllLoad "Gdiplus.dll"
 
 global logs := []

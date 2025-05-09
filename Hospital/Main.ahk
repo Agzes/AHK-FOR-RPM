@@ -5,7 +5,7 @@
 ; \_______________________________________/
 
 global logs := []
-#Requires AutoHotkey v2.0 
+#Requires AutoHotkey v2.0
 #SingleInstance Force
 #Include !CreateImageButton.ahk
 #Include !WinDarkUI.ahk
@@ -26,80 +26,80 @@ ButtonStyles["reset"] := [[0xFF1b1b1b, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2]
 
 ForceStopRP := False
 IsOldItemIsInput := False
-program_version := 2.1 ; !Don`t change 
-code_version := 5 ; !Don`t change 
+program_version := 2.1 ; !Don`t change
+code_version := 5 ; !Don`t change
 HotKeyStatus := true ; !Don`t change
-CurrentPage := "SBT01" 
+CurrentPage := "SBT01"
 Font := "Segoe UI" ; !Change > you can change this font to any other font you like (NEED INSTALL THIS FONT TO SYSTEM)
 FontSize := 11 ; !Change > for custom font work
 ScrollActive := false ;
 CurrentBindsRecords := "" ;
 
 
-
 global GBinds := Map()
 global GBinds_cfg := Map()
 InitGbinds(i) {
-    i["ForceStop"]         := ['Insert',"[ForceStop] - Остановка отыгровок"]
-    i["UI_Main"]           := ['F4',    "[UI] Основное"]
-    i["UI_Educ"]           := ['F6',    "[UI] Обучение мл. состава"]
-    i["UI_Rare"]           := ['F8',    "[UI] Редкое, операции"]
-    i["UI_Menu"]           := ['F9',    "[UI] Меню"]
-    i["Restart"]           := ['F10',   "Перезагрузка"]
-    i["Greetings"]         := ['!q',    "Приветствие"]
-    i["GivePill"]          := ['!t',    "Передать таблетку"]
-    i["SellMed"]           := ['!l',    "Продать мед"]
-    i["Bruise"]            := ['!y',    "Ушиб"]
-    i["Ammonia"]           := ['!h',    "Нашатырь"]
-    i["Inject"]            := ['!i',    "Инъекция"]
-    i["MedCard"]           := ['!m',    "Мед.Карта (выдача)"]
-    i["Discharge"]         := ['!v',    "Выписка из 6 палаты"]
-    i["Examination"]       := ['!o',    "Мед.осмотр"]
-    i["Suitability"]       := ['!p',    "Проф. Пригодность "]
-    i["Knife"]             := ['!u',    "Ножевое"]
-    i["Bullet"]            := ['!b',    "Пулевое"]
-    i["Stretcher"]         := ['!n',    "Носилки"]
-    i["Drip"]              := ['!k',    "Капельница"]
-    i["Defib"]             := ['!d',    "Дефибриллятор"]
-    i["TwistAndCalm"]      := ['!g',    "Скрутить + успокоительное"]
-    i["CalmInjection"]     := ['!j',    "Успокаивающий укол"]
-    i["PlasticSurgery"]    := ['!1',    "Пластическая операция"]
-    i["BloodTest"]         := ['!2',    "Взятие крови на анализ"]
-    i["WoundRepair"]       := ['!3',    "Обработать и зашить рану"]
-    i["ExtractBullet"]     := ['!5',    "Операция по извлечению пули"]
-    i["ClosedFracture"]    := ['!8',    "Закрытый перелом"]
-    i["OpenFracture"]      := ['!9',    "Открытый перелом"]
-    i["Xray"]              := ['!6',    "Рентген"]
-    i["Dislocation"]       := ['!7',    "Вывих"]
-    i["CPR"]               := ['',      "СЛР"]
-    i["ECG"]               := ['',      "ЭКГ"]
-    i["ApplyCast"]         := ['!0',    "Наложить гипс"]
-    i["LectureIntern"]     := ['^!1',   "Лекция интерну"]
-    i["Regulation_Part1"]  := ['^!2',  "Устав [1/3 часть] 'Вы готовы... ?'"]
-    i["Regulation_Part2"]  := ['^!3',  "Устав [2/3 часть] 3 Устава"]
-    i["Regulation_Part3"]  := ['^!4',  "Устав [3/3 часть] 3 Термин"]
-    i["Oath"]              := ['^!6',   "Клятва ['Вы готовы?']"]
-    i["Practice_RP1"]      := ['^!9',   "Практика [РП, задание]"]
-    i["Calls"]             := ['!c',    "/calls"]
-    i["PassAccept"]        := ['!r',    "/pass accept"]
-    i["MedHeal"]           := ['!e',    "/med heal _ 100"]
-    i["GPSCancel"]         := ['!s',    "/gps cancel"]
-    i["HospitalID"]        := ['!f',    "Удостоверение [см. Параметры]"]
+    i["ForceStop"] := ['Insert', "[ForceStop] - Остановка отыгровок"]
+    i["UI_Main"] := ['F4', "[UI] Основное"]
+    i["UI_Educ"] := ['F6', "[UI] Обучение мл. состава"]
+    i["UI_Rare"] := ['F8', "[UI] Редкое, операции"]
+    i["UI_Menu"] := ['F9', "[UI] Меню"]
+    i["Restart"] := ['F10', "Перезагрузка"]
+    i["Greetings"] := ['!q', "Приветствие"]
+    i["GivePill"] := ['!t', "Передать таблетку"]
+    i["SellMed"] := ['!l', "Продать мед"]
+    i["Bruise"] := ['!y', "Ушиб"]
+    i["Ammonia"] := ['!h', "Нашатырь"]
+    i["Inject"] := ['!i', "Инъекция"]
+    i["MedCard"] := ['!m', "Мед.Карта (выдача)"]
+    i["Discharge"] := ['!v', "Выписка из 6 палаты"]
+    i["Examination"] := ['!o', "Мед.осмотр"]
+    i["Suitability"] := ['!p', "Проф. Пригодность "]
+    i["Knife"] := ['!u', "Ножевое"]
+    i["Bullet"] := ['!b', "Пулевое"]
+    i["Stretcher"] := ['!n', "Носилки"]
+    i["Drip"] := ['!k', "Капельница"]
+    i["Defib"] := ['!d', "Дефибриллятор"]
+    i["TwistAndCalm"] := ['!g', "Скрутить + успокоительное"]
+    i["CalmInjection"] := ['!j', "Успокаивающий укол"]
+    i["PlasticSurgery"] := ['!1', "Пластическая операция"]
+    i["BloodTest"] := ['!2', "Взятие крови на анализ"]
+    i["WoundRepair"] := ['!3', "Обработать и зашить рану"]
+    i["ExtractBullet"] := ['!5', "Операция по извлечению пули"]
+    i["ClosedFracture"] := ['!8', "Закрытый перелом"]
+    i["OpenFracture"] := ['!9', "Открытый перелом"]
+    i["Xray"] := ['!6', "Рентген"]
+    i["Dislocation"] := ['!7', "Вывих"]
+    i["CPR"] := ['', "СЛР"]
+    i["ECG"] := ['', "ЭКГ"]
+    i["ApplyCast"] := ['!0', "Наложить гипс"]
+    i["LectureIntern"] := ['^!1', "Лекция интерну"]
+    i["Regulation_Part1"] := ['^!2', "Устав [1/3 часть] 'Вы готовы... ?'"]
+    i["Regulation_Part2"] := ['^!3', "Устав [2/3 часть] 3 Устава"]
+    i["Regulation_Part3"] := ['^!4', "Устав [3/3 часть] 3 Термин"]
+    i["Oath"] := ['^!6', "Клятва ['Вы готовы?']"]
+    i["Practice_RP1"] := ['^!9', "Практика [РП, задание]"]
+    i["Calls"] := ['!c', "/calls"]
+    i["PassAccept"] := ['!r', "/pass accept"]
+    i["MedHeal"] := ['!e', "/med heal _ 100"]
+    i["GPSCancel"] := ['!s', "/gps cancel"]
+    i["HospitalID"] := ['!f', "Удостоверение [см. Параметры]"]
 } InitGbinds(GBinds)
 
 InitGBindsCfg(i) {
     i["Global_HealCommand"] := true
     i["Global_HealPrice"] := 111
-    i["Global_InjectPrice"] := 1111 
+    i["Global_InjectPrice"] := 1111
     i["Greetings_UseName"] := false
     i["Greetings_UseRole"] := false
     i["MedCard_Command"] := true
-    
+    i["ID_Date"] := "03.05.25"
+    i["ID_Role"] := "Отсутствует"
 } InitGBindsCfg(GBinds_cfg)
 
 global G_Binds := GBinds
 global G_Binds_cfg := GBinds_cfg
-GBindsSortedArray := ["ForceStop","UI_Main","UI_Educ","UI_Rare","UI_Menu","Restart","Greetings","GivePill","SellMed","Bruise","Ammonia","Inject","MedCard","Discharge","Examination","Suitability","Knife","Bullet","Stretcher","Drip","Defib","TwistAndCalm","CalmInjection","PlasticSurgery","BloodTest","WoundRepair","ExtractBullet","ClosedFracture","OpenFracture","Xray","Dislocation","CPR","ECG","ApplyCast","LectureIntern","Regulation_Part1","Regulation_Part2","Regulation_Part3","Oath","Practice_RP1","Calls","PassAccept","MedHeal","GPSCancel","HospitalID"]
+GBindsSortedArray := ["ForceStop", "UI_Main", "UI_Educ", "UI_Rare", "UI_Menu", "Restart", "Greetings", "GivePill", "SellMed", "Bruise", "Ammonia", "Inject", "MedCard", "Discharge", "Examination", "Suitability", "Knife", "Bullet", "Stretcher", "Drip", "Defib", "TwistAndCalm", "CalmInjection", "PlasticSurgery", "BloodTest", "WoundRepair", "ExtractBullet", "ClosedFracture", "OpenFracture", "Xray", "Dislocation", "CPR", "ECG", "ApplyCast", "LectureIntern", "Regulation_Part1", "Regulation_Part2", "Regulation_Part3", "Oath", "Practice_RP1", "Calls", "PassAccept", "MedHeal", "GPSCancel", "HospitalID"]
 
 A_HotkeyInterval := 2000
 A_MaxHotkeysPerInterval := 50
@@ -108,7 +108,7 @@ global SBMaximum := 0
 global SBMaximumForOne := 0
 global CurrentProgress := 0
 
-LogAdd("[status] получение файлов конфига") 
+LogAdd("[status] получение файлов конфига")
 
 try {
     global G_Binds
@@ -120,7 +120,7 @@ try {
         G_Binds[key] := value
     }
     LogAdd("[info] `"Binds`" загружено")
-} 
+}
 try {
     global G_Binds_cfg
     LogAdd("[info] получение файлов конфига `"BindsCFG`" ")
@@ -133,22 +133,22 @@ try {
     LogAdd("[info] `"BindsCFG`" загружено")
 }
 
-UserName     := LoadConfig("UserName", "User")
-Role         := LoadConfig("Role",  "")
-Name         := LoadConfig("Name", "")
-FocusMethod  := LoadConfig("focus_method", 1)
-BeforeEsc    := LoadConfig("before_esc", 1)
-BeforeCheck  := LoadConfig("before_check", 0)
-BeforeLimit  := LoadConfig("before_limit", 0)
-ShowStatus   := LoadConfig("show_status", 1)
-UpdateCheck  := LoadConfig("update_check", 1)
+UserName := LoadConfig("UserName", "User")
+Role := LoadConfig("Role", "")
+Name := LoadConfig("Name", "")
+FocusMethod := LoadConfig("focus_method", 1)
+BeforeEsc := LoadConfig("before_esc", 1)
+BeforeCheck := LoadConfig("before_check", 0)
+BeforeLimit := LoadConfig("before_limit", 0)
+ShowStatus := LoadConfig("show_status", 1)
+UpdateCheck := LoadConfig("update_check", 1)
 
-S100  := LoadConfig("S100", 100) 
-S250  := LoadConfig("S250", 250) 
-S300  := LoadConfig("S300", 300) 
-S500  := LoadConfig("S500", 500) 
-S700  := LoadConfig("S700", 700) 
-S800  := LoadConfig("S800", 800) 
+S100 := LoadConfig("S100", 100)
+S250 := LoadConfig("S250", 250)
+S300 := LoadConfig("S300", 300)
+S500 := LoadConfig("S500", 500)
+S700 := LoadConfig("S700", 700)
+S800 := LoadConfig("S800", 800)
 S1000 := LoadConfig("S1000", 1000)
 S2000 := LoadConfig("S2000", 2000)
 S3000 := LoadConfig("S3000", 3000)
@@ -160,7 +160,6 @@ WinSetTransColor(0, StatusUI.Hwnd)
 ProgressBar := StatusUI.AddProgress("w300 h32 x0 y0 Background171717 c019C9A")
 ProgressBar.Value := 0
 ProgressBar.SetRounded(6)
-
 
 
 SaveBindsCFG() {
@@ -175,7 +174,7 @@ LoadConfig(configName, basic) {
         local value := RegRead("HKEY_CURRENT_USER\Software\Agzes\AHK_FOR_RPM\AHK_Hospital_v2", configName)
         LogAdd("[info] `" " configName " `" найдено")
         return value
-    } 
+    }
     return basic
 }
 SetWindowColor(hwnd, titleText?, titleBackground?, border?)
@@ -312,7 +311,7 @@ BindHotkeyInput(CtrlElement, *) {
     G_Binds[GBindsSortedArray[StrReplace(CtrlElement.Name, "BIND_", "")]][1] := HotkeyToBind(CtrlElement.Text)
     SaveBindCfg()
 }
-UpdateBindsInConfigurator(Element?, *){
+UpdateBindsInConfigurator(Element?, *) {
     for i, x in GBindsSortedArray {
         temp1 := GuiCtrlFromHwnd(BindHwnd[i])
         temp2 := G_Binds[x][1]
@@ -338,7 +337,7 @@ ExportBinds(Element, *) {
     PathToFile := FileSelect("S", "Hospital_cfg.json", "Сохранение файла конфигурации", "AHK_FOR_RPM Config file (*.json*)")
     if PathToFile != "" {
         if FileExist(PathToFile) {
-            Result := MsgBox("Файл уже существует! `nПерезаписать? (это удалит его содержимое)", "Warning" , "YesNo")
+            Result := MsgBox("Файл уже существует! `nПерезаписать? (это удалит его содержимое)", "Warning", "YesNo")
             if Result = "Yes"
             {
                 FileDelete(PathToFile)
@@ -692,12 +691,12 @@ RpSetUIGen(Ui, Type, Label, Value, Desc) {
             IsOldItemIsInput := False
         } else
             t := 10
-        t := ui.AddButton("w250 h54 y+" t  " x5 Disabled",)
+        t := ui.AddButton("w250 h54 y+" t " x5 Disabled",)
         CreateImageButton(t, 0, ButtonStyles["fake_for_group"]*)
         t := ui.AddText("x13 y" t.Y + 5, Label)
         t1 := SysGet(SM_CXMENUCHECK := 71)
         t2 := SysGet(SM_CYMENUCHECK := 72)
-        t := Ui.AddButton("x232 y" t.Y  " h17 w17", "?")
+        t := Ui.AddButton("x232 y" t.Y " h17 w17", "?")
         t.OnEvent("Click", tf)
         CreateImageButton(t, 0, ButtonStyles["fake_for_hotkey"]*)
         t := ui.AddButton("x10 y" t.Y + 21 " h23 w239 Disabled",)
@@ -707,14 +706,13 @@ RpSetUIGen(Ui, Type, Label, Value, Desc) {
         t.SetRounded(3)
 
         IsOldItemIsInput := True
-    } 
+    }
 
 }
 
 LogAdd("[status] Инициализация интерфейса")
 LogAdd("[status] Инициализация GDIP")
 UseGDIP()
-
 
 
 SettingsUI := GuiExt("", "!AHK | Hospital v2 ")
@@ -783,7 +781,6 @@ for i in logs {
 }
 
 
-
 LogSent("[info] Загрузка конфигуратора биндов")
 SBP_LABEL := SettingsUI.AddText("Hidden x194 y13 w420 h20 +Center", Chr(0xE138) " Конфигуратор Биндов")
 SettingsUI.SetFont("cWhite s" FontSize - 1, Font)
@@ -824,10 +821,8 @@ CreateImageButton(SBP_Reset, 0, ButtonStyles["reset"]*)
 SBP_Reset.OnEvent("Click", ResetBinds)
 
 
-
 LogSent("[info] Запуск ScrollBar")
 OnMessage(WM_VSCROLL, OnScroll)
-
 
 
 SSP_LABEL := SettingsUI.AddText("Hidden x194 y13 w437 h20 +Center", Chr(0xE115) " Параметры/Настройки")
@@ -923,7 +918,6 @@ CreateImageButton(SSP_P4_BUTTON, 0, ButtonStyles["fake_for_hotkey"]*)
 SSP_P5_BUTTON := SettingsUI.AddButton("Hidden x436 y293 w170", Chr(0xE115) " отыгровки")
 SSP_P5_BUTTON.OnEvent("Click", RPSettings)
 CreateImageButton(SSP_P5_BUTTON, 0, ButtonStyles["fake_for_hotkey"]*)
-
 
 
 TimeSetUI := GuiExt("", "!AHK | Hospital v2 ")
@@ -1047,6 +1041,8 @@ RpSetUIGen(RpSetUI, "Input", "Цена на инъекцию (Число)", "Glo
 RpSetUIGen(RpSetUI, "CheckBox", "[Приветствие] + Имя Фамилия", "Greetings_UseName", "Определяет будет ли использоваться РП ИмяФамилия в приветствии")
 RpSetUIGen(RpSetUI, "CheckBox", "[Приветствие] + Ранг", "Greetings_UseRole", "Определяет будет ли использоваться РП Ранг в приветствии")
 RpSetUIGen(RpSetUI, "CheckBox", "[Мед.Карта] /med givecard", "MedCard_Command", "Определяет будет ли автоматически вводиться команда /med givecard после отыгровок выдачи мед. карты.")
+RpSetUIGen(RpSetUI, "Input", "Удостоверение > дата", "ID_Date", "Изменяет дату выдачи удостоверения.")
+RpSetUIGen(RpSetUI, "Input", "Удостоверение > отдел", "ID_Role", "Изменяет отделение в удостоверении.")
 
 SetWindowTheme(RpSetUI)
 SetWindowAttribute(RpSetUI)
@@ -1131,8 +1127,8 @@ STB1012 := SettingsUI.AddButton("x198 y13 w430 h290 0x100 Disabled Hidden", "")
 CreateImageButton(STB1012, 0, ButtonStyles["fake_for_group"]*)
 
 SettingsUI.SetFont("cWhite s" FontSize - 2, Font)
-INPUT := SettingsUI.AddEdit("x198 y13 w447 h290 Hidden", 
-"AutoChat - функция позволяющая автоматически отправлять отыгровки без* вероятности кика с сервера. *функция в разработке, кикнуть может.  `n`nАвтоматически переходит к окну Minecraft. `nАвтоматически разделяет текст больше 255 символов на 2+ отправки. `nАвтоматически подбирает кд для отыгровок. `n!Автоматически убирает все ``  `nДля разделения отыгровок пропускайте строку.  `n`nПример: `n/me взял книгу с полки`n/do Книга в руках`n/me подошёл к столу и положил книгу`n/do Книга на столе")
+INPUT := SettingsUI.AddEdit("x198 y13 w447 h290 Hidden",
+    "AutoChat - функция позволяющая автоматически отправлять отыгровки без* вероятности кика с сервера. *функция в разработке, кикнуть может.  `n`nАвтоматически переходит к окну Minecraft. `nАвтоматически разделяет текст больше 255 символов на 2+ отправки. `nАвтоматически подбирает кд для отыгровок. `n!Автоматически убирает все ``  `nДля разделения отыгровок пропускайте строку.  `n`nПример: `n/me взял книгу с полки`n/do Книга в руках`n/me подошёл к столу и положил книгу`n/do Книга на столе")
 INPUT.SetRounded(7)
 SettingsUI.SetFont("cWhite s" FontSize - 1, Font)
 Clear(*) {
@@ -1167,10 +1163,8 @@ SendButton.OnEvent("Click", StartSendChat)
 CreateImageButton(SendButton, 0, ButtonStyles["fake_for_hotkey"]*)
 
 
-
 LogSent("[status] Интерфейс инициализирован")
 LogSent("[info] запускаю дополнительные скрипты интерфейса")
-
 
 
 #HotIf isScrollBarActive()
@@ -1182,14 +1176,12 @@ WheelDown:: {
 }
 
 
-
 LogSent("[info] конфигурирую данные интерфейса")
 MainPage := [SMP_GREETINGS, SMP_VERSION, SMP_LOGS]
 BindsPage := [SBP_LABEL, SBP_Import, SBP_Export, SBP_Reset]
 SettingsPage := [SSP_LABEL, SSP_PANEL_1, SSP_PANEL_2, SSP_PANEL_3, SSP_P1_NAME, SSP_P1_NAME_BG, SSP_P1_NAME_LABEL, SSP_P1_ROLE, SSP_P1_ROLE_BG, SSP_P1_ROLE_LABEL, SSP_P1_SAVEBUTTON, SSP_P1_USERNAME, SSP_P1_USERNAME_BG, SSP_P1_USERNAME_LABEL, SSP_P2_BEFORERP_LABEL, SSP_P2_CHECKNEED, SSP_P2_CHECKNEED_HELP, SSP_P2_CHECKNEED_TEXT, SSP_P2_ESCNEED, SSP_P2_ESCNEED_HELP, SSP_P2_CHECKNEED_TEXT, SSP_P2_LIMIT, SSP_P2_LIMIT_HELP, SSP_P2_LIMIT_TEXT, SSP_P2_STATUS, SSP_P2_STATUS_HELP, SSP_P2_STATUS_TEXT, SSP_P2_UIMETHOD, SSP_P2_UIMETHOD_BG, SSP_P2_UIMETHOD_LABEL, SSP_P2_UPDATE, SSP_P2_UPDATE_HELP, SSP_P2_UPDATE_TEXT, SSP_P3_BUTTON, SSP_P3_DESC, SSP_P3_STATS, SSP_P2_ESCNEED_TEXT, SSP_P2_OTHER, SSP_P4_BUTTON, SSP_P5_BUTTON]
 AutoChatPage := [STB1012, INPUT, ClearButton, SendButton, CounterText]
 OtherPage := [SOP_CONTACT, SOP_DEV, SOP_GITHUB, SOP_LABEL, SOP_LABEL2, SOP_CREDITS]
-
 
 
 LogSent("[info] применяю атрибуты и тему для окна")
@@ -1235,7 +1227,7 @@ AutoAddButton(ui, label, function, size) {
     }
     return t
 }
-hide_ui(Element?,*) {
+hide_ui(Element?, *) {
     temp := false
     if WinExist("AHK ! Hospital v2") {
         temp := true
@@ -1264,7 +1256,7 @@ hide_ui(Element?,*) {
         SendInput("{Esc}")
     }
 }
-ForceStop(Element?, *) { 
+ForceStop(Element?, *) {
     global ForceStopRP
     ForceStopRP := true
     ProgressBar.Opt("c9c0101")
@@ -1289,7 +1281,7 @@ RPAction(actions) {
 
     ForceStopRP := false
 
-    
+
     hide_ui()
     if AutoChatStart = true {
         global AutoChatStart := false
@@ -1307,14 +1299,14 @@ RPAction(actions) {
     if ShowStatus and actions.Length > 1
         ShowStatusBar()
 
-    Loop(actions.Length) {
+    Loop (actions.Length) {
         action := actions[A_Index]
         type := action[1]
         value := action[2]
 
         if action.Length < 5
             action.Push(true)
-        
+
         if ForceStopRP {
             HideStatusBar()
             return
@@ -1356,7 +1348,6 @@ RPAction(actions) {
 }
 
 
-
 greetings(Element?, *) {
     gt := "Здравствуйте, чем я могу вам помочь? {ENTER}"
     if G_Binds_cfg["Greetings_UseName"] and G_Binds_cfg["Greetings_UseRole"] {
@@ -1366,7 +1357,7 @@ greetings(Element?, *) {
     } else if G_Binds_cfg["Greetings_UseRole"] {
         gt := "Здравствуйте, я " Role ", чем я могу помочь? {ENTER}"
     }
-    
+
 
     RPAction([
         ["Chat", gt, S100, S100]
@@ -1417,7 +1408,7 @@ ammonia(Element?, *)
 inject(Element?, *)
 {
     list := ["Красная аптечка", "Аптечка с красным крестом", "Аптечка"]
-    
+
     RPAction([
         ["Chat", "/do " . list[Random(1, 3)] . " в руках у мед. работника {Enter}", S300, S300],
         ["Chat", "/mee достает из аптечки шприц, спиртовую салфетку и бинт, протирает место для укола спиртовой салфеткой и начинает делать укол аккуратно вводя иглу в мышечную ткань{ENTER}", S1000, S1000],
@@ -1467,7 +1458,7 @@ hospital_id(Element?, *) {
     if (Name != "") and (Role != "") {
         RPAction([
             ["Chat", "/me достал удостоверение из кармана халата, открыл его и продемонстрировал человеку напротив {ENTER}", S100, S100],
-            ["Chat", "/do Информация в удостоверении: " Name " | Организация: Больница | " Role " | Фотография (3x4) | Дата выдачи: 11.04.2025 | Печать: HOSPITAL {ENTER}", S100, S250],
+            ["Chat", "/do Информация в удостоверении: " Name " | " Role " Hospital RPM | Фотография 3x4 | Отделение: " G_Binds_cfg["ID_Role"] " | Личная подпись | Печать: HOSPITAL | Подпись глав.врача | Дата выдачи: " G_Binds_cfg["ID_Date"] " {ENTER}", S100, S250],
             ["Chat", "/mee после подтверждения информации захлопнул документ, перекинул его во вторую руку и аккуратно положил в карман халата {ENTER}", S250, S250]
         ])
     } else {
@@ -1905,52 +1896,51 @@ PassAccept(Element?, *) {
     ])
 }
 
-SetHotKey(G_Binds["ForceStop"]         [1], ForceStop)
-SetHotKey(G_Binds["UI_Main"]           [1], MainBindUIopen)
-SetHotKey(G_Binds["UI_Educ"]           [1], EducBindUIopen)
-SetHotKey(G_Binds["UI_Rare"]           [1], RareBindUIopen)
-SetHotKey(G_Binds["UI_Menu"]           [1], MenuUIopen)
-SetHotKey(G_Binds["Restart"]           [1], ReloadFromUI)
-SetHotKey(G_Binds["Greetings"]         [1], greetings)
-SetHotKey(G_Binds["GivePill"]          [1], give_pill)
-SetHotKey(G_Binds["SellMed"]           [1], sell_pill)
-SetHotKey(G_Binds["Bruise"]            [1], bruise)
-SetHotKey(G_Binds["Ammonia"]           [1], ammonia)
-SetHotKey(G_Binds["Inject"]            [1], inject)
-SetHotKey(G_Binds["MedCard"]           [1], med_card)
-SetHotKey(G_Binds["Discharge"]         [1], extract)
-SetHotKey(G_Binds["Examination"]       [1], medical_examination)
-SetHotKey(G_Binds["Suitability"]       [1], prof_suitability)
-SetHotKey(G_Binds["Knife"]             [1], knife)
-SetHotKey(G_Binds["Bullet"]            [1], peluvoe)
-SetHotKey(G_Binds["Stretcher"]         [1], stretcher)
-SetHotKey(G_Binds["Drip"]              [1], dropper)
-SetHotKey(G_Binds["Defib"]             [1], defibrillator)
-SetHotKey(G_Binds["TwistAndCalm"]      [1], twist)
-SetHotKey(G_Binds["CalmInjection"]     [1], calm)
-SetHotKey(G_Binds["PlasticSurgery"]    [1], plast_operation)
-SetHotKey(G_Binds["BloodTest"]         [1], blood)
-SetHotKey(G_Binds["WoundRepair"]       [1], wound)
-SetHotKey(G_Binds["ExtractBullet"]     [1], bullet)
-SetHotKey(G_Binds["ClosedFracture"]    [1], close_fracture)
-SetHotKey(G_Binds["OpenFracture"]      [1], open_fracture)
-SetHotKey(G_Binds["Xray"]              [1], rengen)
-SetHotKey(G_Binds["Dislocation"]       [1], dislocation)
-SetHotKey(G_Binds["CPR"]               [1], slrt)
-SetHotKey(G_Binds["ECG"]               [1], ekgg)
-SetHotKey(G_Binds["ApplyCast"]         [1], Cast)
-SetHotKey(G_Binds["LectureIntern"]     [1], lecture)
-SetHotKey(G_Binds["Regulation_Part1"]  [1], regulation1)
-SetHotKey(G_Binds["Regulation_Part2"]  [1], regulation2)
-SetHotKey(G_Binds["Regulation_Part3"]  [1], regulation3)
-SetHotKey(G_Binds["Oath"]              [1], oath_start)
-SetHotKey(G_Binds["Practice_RP1"]      [1], practice)
-SetHotKey(G_Binds["Calls"]             [1], Calls)
-SetHotKey(G_Binds["PassAccept"]        [1], PassAccept)
-SetHotKey(G_Binds["MedHeal"]           [1], MedHeal)
-SetHotKey(G_Binds["GPSCancel"]         [1], GpsCansel)
-SetHotKey(G_Binds["HospitalID"]        [1], hospital_id)
-
+SetHotKey(G_Binds["ForceStop"][1], ForceStop)
+SetHotKey(G_Binds["UI_Main"][1], MainBindUIopen)
+SetHotKey(G_Binds["UI_Educ"][1], EducBindUIopen)
+SetHotKey(G_Binds["UI_Rare"][1], RareBindUIopen)
+SetHotKey(G_Binds["UI_Menu"][1], MenuUIopen)
+SetHotKey(G_Binds["Restart"][1], ReloadFromUI)
+SetHotKey(G_Binds["Greetings"][1], greetings)
+SetHotKey(G_Binds["GivePill"][1], give_pill)
+SetHotKey(G_Binds["SellMed"][1], sell_pill)
+SetHotKey(G_Binds["Bruise"][1], bruise)
+SetHotKey(G_Binds["Ammonia"][1], ammonia)
+SetHotKey(G_Binds["Inject"][1], inject)
+SetHotKey(G_Binds["MedCard"][1], med_card)
+SetHotKey(G_Binds["Discharge"][1], extract)
+SetHotKey(G_Binds["Examination"][1], medical_examination)
+SetHotKey(G_Binds["Suitability"][1], prof_suitability)
+SetHotKey(G_Binds["Knife"][1], knife)
+SetHotKey(G_Binds["Bullet"][1], peluvoe)
+SetHotKey(G_Binds["Stretcher"][1], stretcher)
+SetHotKey(G_Binds["Drip"][1], dropper)
+SetHotKey(G_Binds["Defib"][1], defibrillator)
+SetHotKey(G_Binds["TwistAndCalm"][1], twist)
+SetHotKey(G_Binds["CalmInjection"][1], calm)
+SetHotKey(G_Binds["PlasticSurgery"][1], plast_operation)
+SetHotKey(G_Binds["BloodTest"][1], blood)
+SetHotKey(G_Binds["WoundRepair"][1], wound)
+SetHotKey(G_Binds["ExtractBullet"][1], bullet)
+SetHotKey(G_Binds["ClosedFracture"][1], close_fracture)
+SetHotKey(G_Binds["OpenFracture"][1], open_fracture)
+SetHotKey(G_Binds["Xray"][1], rengen)
+SetHotKey(G_Binds["Dislocation"][1], dislocation)
+SetHotKey(G_Binds["CPR"][1], slrt)
+SetHotKey(G_Binds["ECG"][1], ekgg)
+SetHotKey(G_Binds["ApplyCast"][1], Cast)
+SetHotKey(G_Binds["LectureIntern"][1], lecture)
+SetHotKey(G_Binds["Regulation_Part1"][1], regulation1)
+SetHotKey(G_Binds["Regulation_Part2"][1], regulation2)
+SetHotKey(G_Binds["Regulation_Part3"][1], regulation3)
+SetHotKey(G_Binds["Oath"][1], oath_start)
+SetHotKey(G_Binds["Practice_RP1"][1], practice)
+SetHotKey(G_Binds["Calls"][1], Calls)
+SetHotKey(G_Binds["PassAccept"][1], PassAccept)
+SetHotKey(G_Binds["MedHeal"][1], MedHeal)
+SetHotKey(G_Binds["GPSCancel"][1], GpsCansel)
+SetHotKey(G_Binds["HospitalID"][1], hospital_id)
 
 
 if UpdateCheck

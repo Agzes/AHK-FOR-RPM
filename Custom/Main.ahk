@@ -75,7 +75,6 @@ greetings(Element?, *) {
 
 ; \ AFR VERSION 2.2 | CONFIG
 
-
 ; <--------------->
 ;       LIBS 
 ; <--------------->
@@ -200,18 +199,23 @@ InitWindowForAFR() {
         WElem := i[5]
 
         ui := AutoCreateUI(WEmoj)
-        for i in WElem {
-            AutoAddButton(ui, G_Binds[i][2], G_BindsFunc[i][1], "full")
+        for i in WElem { 
+            AutoAddButton(ui, G_Binds[GBindsAction_cfg[i][1]][2], G_BindsFunc[GBindsAction_cfg[i][1]][1], "full")
+            
         }
         uiy := AutoInitUI(ui)
 
         G_WindowData[WName] := [ui, uiy]
 
-        TFuncW(Element?, *) {
-            G_WindowData[WName][1].Show("w260 h" G_WindowData[WName][2])
+        try { 
+            SetHotKey(G_Binds[WBind][1], CreateWindowFunction(WName))
+        }  catch {
+            MsgBox("Кажется произошла ошибка :( `n Не удалось назначить бинд для открытия окна!")
         }
-        SetHotKey(G_Binds[WBind][1], TFuncW)
     }
+}
+CreateWindowFunction(WName) {
+    return (Element?, *) => G_WindowData[WName][1].Show("w260 h" G_WindowData[WName][2])
 }
 InitBindsForAFR() {
     for i in G_AFRSettings {
@@ -232,10 +236,14 @@ InitBindsForAFR() {
         }
     }
     for i in GBindsSortedArray {
-        TName := GBindsAction_cfg[i][1]
-        TBind := G_Binds[TName][1]
-        TActi := G_BindsFunc[TName][1]
-        SetHotKey(TBind, TActi)
+        try {
+            TName := i
+            TBind := G_Binds[TName][1]
+            TActi := G_BindsFunc[TName][1]
+            SetHotKey(TBind, TActi)
+        }  catch {
+            LogSent("Note | Бинд: " i  " не имеет действие ")
+        }
     }
 }
 lastRandom := 0
@@ -1464,7 +1472,6 @@ UpdateUI := AutoCreateUI("Найдено новое обновление!`n")
 AutoAddButton(UpdateUI, Chr(0xE117) " Обновить", UpdateAHK, "full")
 AutoAddButton(UpdateUI, "Закрыть", CloseUpdateAHK, "full")
 UpdateUIy := AutoInitUI(UpdateUI)
-UpdateUI.Show("w260 h " UpdateUIy)
 
 if UpdateCheck {
     CheckForUpdate()

@@ -1,5 +1,14 @@
 [
 	{
+		"Tittle": "AFR | Hospital ALPHA",
+		"Description": "Alpha версия AHK Hospital, переход на AFR Edition",
+		"Version": "2.2",
+		"RVersion": "2.2",
+		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM/blob/main/Hospital/main.allinone.ahk",
+		"DownloadLink_AllInOne": "",
+		"Status": "7"
+	},
+	{
 		"Tittle": "AFR | Hospital",
 		"Description": "Базовая версия для фракции Hospital, отличается проработанными отыгровками",
 		"Version": "2.0.2",

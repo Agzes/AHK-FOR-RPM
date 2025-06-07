@@ -25,3 +25,10 @@
 > 3. Откройте .ahk файл AHK Hospital в блокноте или любом другом редакторе
 > 4. Замените **весь** конфиг AHK Hospital на ваш изменённый конфиг
 > 5. Сохраните файл и откройте его с помощью AutoHotKey!
+
+<br>
+
+### ⁉️ • Полезные ссылки
+> [Wiki AFR Editor](https://github.com/Agzes/AHK-FOR-RPM/blob/main/!Docs/Editor.md) - Полная документация для AFR Editor \
+> [Q&A AFR Editor](https://github.com/Agzes/AHK-FOR-RPM/blob/main/!Docs/Q%26A.md) - ответы на вопросы по AFR Editor \
+> [Build AFR Editor](https://github.com/Agzes/AHK-FOR-RPM/blob/main/!Docs/Build.md) - более подробное описание для сборки (изменения файла .ahk) 

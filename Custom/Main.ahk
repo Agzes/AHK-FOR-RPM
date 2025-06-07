@@ -4,8 +4,6 @@
 ; |         https://e-z.bio/agzes         |
 ; \_______________________________________/
 
-Init() ; AFR v.2.2 
-
 ; /  AFR VERSION 2.2 | CONFIG (test cfg (for run) )
 
 ; Переменные
@@ -21,6 +19,8 @@ BindsBGHeight := 400 ; Высота фона в Конфигураторе би�
 global GBinds := Map()
 global GBinds_cfg := Map()
 global GBindsAction_cfg := Map()
+
+Init() ; AFR v.2.2
 
 ; i["Name"] := [Bind, Description]
 InitGBinds(i) {
@@ -262,9 +262,7 @@ LogAdd(Text) {
 }
 LoadConfig(configName, basic) {
     try {
-        LogAdd("[info] получение файлов конфига `" " configName " `" ")
         local value := RegRead(ConfigPath, configName)
-        LogAdd("[info] `" " configName " `" найдено")
         return value
     } 
     return basic

@@ -4,8 +4,6 @@
 ; |         https://e-z.bio/agzes         |
 ; \_______________________________________/
 
-Init() ; AFR v.2.2
-
 
 ; / AFR VERSION 2.2 | CONFIG
 
@@ -2249,9 +2247,7 @@ Jxon_Dump(obj, indent := "", lvl := 1) {
     }
     LoadConfig(configName, basic) {
         try {
-            LogAdd("[info] получение файлов конфига `" " configName " `" ")
             local value := RegRead(ConfigPath, configName)
-            LogAdd("[info] `" " configName " `" найдено")
             return value
         }
         return basic

@@ -41,6 +41,8 @@
 > global GBinds := Map()            ; Не изменять
 > global GBinds_cfg := Map()        ; Не изменять
 > global GBindsAction_cfg := Map()  ; Не изменять
+> 
+> Init() ; AFR v.2.2 
 > ```
 
 ### 2.2 Конфиг биндов

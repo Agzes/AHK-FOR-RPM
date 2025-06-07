@@ -4,10 +4,13 @@
 ; |         https://e-z.bio/agzes         |
 ; \_______________________________________/
 
+
+; AllInOne | v.2.1 [patch 3]
 global logs := []
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
+{ ; Libs (библиотеки и прочее)
 
 ; ======================================================================================================================
 ; Name:              CreateImageButton()
@@ -2011,8 +2014,10 @@ Jxon_Dump(obj, indent := "", lvl := 1) {
     }
 }
 
-#DllLoad "Gdiplus.dll"
+}
 
+
+#DllLoad "Gdiplus.dll"
 
 LogAdd("[status] Инициализация")
 
@@ -2026,7 +2031,7 @@ ButtonStyles["reset"] := [[0xFF1b1b1b, 0xFF202020, 0xFFFFFFFF, 3, 0xFF202020, 2]
 ForceStopRP := False
 IsOldItemIsInput := False
 program_version := 2.1 ; !Don`t change
-code_version := 5 ; !Don`t change
+code_version := 6 ; !Don`t change
 HotKeyStatus := true ; !Don`t change
 CurrentPage := "SBT01"
 Font := "Segoe UI" ; !Change > you can change this font to any other font you like (NEED INSTALL THIS FONT TO SYSTEM)
@@ -2092,7 +2097,8 @@ InitGBindsCfg(i) {
     i["Greetings_UseName"] := false
     i["Greetings_UseRole"] := false
     i["MedCard_Command"] := true
-
+    i["ID_Date"] := "03.05.25"
+    i["ID_Role"] := "Отсутствует"
 } InitGBindsCfg(GBinds_cfg)
 
 global G_Binds := GBinds
@@ -3039,6 +3045,8 @@ RpSetUIGen(RpSetUI, "Input", "Цена на инъекцию (Число)", "Glo
 RpSetUIGen(RpSetUI, "CheckBox", "[Приветствие] + Имя Фамилия", "Greetings_UseName", "Определяет будет ли использоваться РП ИмяФамилия в приветствии")
 RpSetUIGen(RpSetUI, "CheckBox", "[Приветствие] + Ранг", "Greetings_UseRole", "Определяет будет ли использоваться РП Ранг в приветствии")
 RpSetUIGen(RpSetUI, "CheckBox", "[Мед.Карта] /med givecard", "MedCard_Command", "Определяет будет ли автоматически вводиться команда /med givecard после отыгровок выдачи мед. карты.")
+RpSetUIGen(RpSetUI, "Input", "Удостоверение > дата", "ID_Date", "Изменяет дату выдачи удостоверения.")
+RpSetUIGen(RpSetUI, "Input", "Удостоверение > отдел", "ID_Role", "Изменяет отделение в удостоверении.")
 
 SetWindowTheme(RpSetUI)
 SetWindowAttribute(RpSetUI)
@@ -3454,7 +3462,7 @@ hospital_id(Element?, *) {
     if (Name != "") and (Role != "") {
         RPAction([
             ["Chat", "/me достал удостоверение из кармана халата, открыл его и продемонстрировал человеку напротив {ENTER}", S100, S100],
-            ["Chat", "/do Информация в удостоверении: " Name " | Организация: Больница | " Role " | Фотография (3x4) | Дата выдачи: 11.04.2025 | Печать: HOSPITAL {ENTER}", S100, S250],
+            ["Chat", "/do Информация в удостоверении: " Name " | " Role " Hospital RPM | Фотография 3x4 | Отделение: " G_Binds_cfg["ID_Role"] " | Личная подпись | Печать: HOSPITAL | Подпись глав.врача | Дата выдачи: " G_Binds_cfg["ID_Date"] " {ENTER}", S100, S250],
             ["Chat", "/mee после подтверждения информации захлопнул документ, перекинул его во вторую руку и аккуратно положил в карман халата {ENTER}", S250, S250]
         ])
     } else {

@@ -12,6 +12,8 @@
 </a>
 <img src="!ReadMe/UI.png" alt="image" width="1000">
 
+<h4 align="center">*Кликабельно</h4>
+
 <h4 align="center">для работы в полноэкранном режиме minecraft необходимо скачать мод: <br> <a href="https://www.curseforge.com/minecraft/mc-mods/borderless/download/4858950">[Forge]</a> | <a href="https://www.curseforge.com/minecraft/mc-mods/cubes-without-borders/download/5496358">[Fabric]</a><br></h4>
 
 <br><br><br><br>

@@ -1,4 +1,4 @@
-[
+[	
 	{
 		"Tittle": "AFR | Hospital ALPHA",
 		"Description": "Alpha версия AHK Hospital, переход на AFR Edition",
@@ -46,12 +46,12 @@
 	},
 	{
 		"Tittle": "AFR | Meria",
-		"Description": "Legacy версия АХК для СМИ. В скором времени может получить обновление до AFR v.2.2",
+		"Description": "АХК для мэрии, основан на AFR v.2.2b и отыгровках от Mirml",
 		"Version": "1.0.0",
-		"RVersion": "1.0 (Legacy)",
-		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM/tree/main/!LegacyVersions/AHK-Meria",
+		"RVersion": "2.2",
+		"DownloadLink": "https://github.com/Agzes/AHK-FOR-RPM/tree/main/Meria",
 		"DownloadLink_AllInOne": "",
-		"Status": "4"
+		"Status": "7"
 	},
 	{
 		"Tittle": "AFR | Mass Media",

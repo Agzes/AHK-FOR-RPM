@@ -1,19 +1,12 @@
 <h4 align="center"><a href="https://github.com/Agzes/AHK-FOR-RPM/releases/tag/latest">[последние релизы]</a> <a href="nextsteps.md">[2.2 | Будущее обновление]</a></h4>
 
-<img src="!ReadMe/Header.png" alt="image" width="1000">
+<img src="!ReadMe/A.png" alt="image" width="1000">
+<img src="!ReadMe/B.png" alt="image" width="1000">
 <a href="https://agzes.netlify.app/AHK-FOR-RPM/Editor">
-    <img src="!ReadMe/Editor.png" alt="image" width="1000">
+    <img src="!ReadMe/C.png" alt="image" width="1000">
 </a>
-<a href="Hospital/">
-    <img src="!ReadMe/Hospital.png" alt="image" width="1000">
-</a>
-<a href="Meria">
-    <img src="!ReadMe/Government.png" alt="image" width="1000">
-</a>
-<a href="CPD/">
-    <img src="!ReadMe/cpd.png" alt="image" width="1000">
-</a>
-<img src="!ReadMe/UI.png" alt="image" width="1000">
+
+
 
 <h4 align="center">*Кликабельно</h4>
 
@@ -27,4 +20,5 @@ Credits: [Agzes/AHK-FOR-RPM/CREDITS.md](https://github.com/Agzes/AHK-FOR-RPM/blo
 </h1>
 <h6 align="center">Made with 💟 by Agzes
 
-![visits](https://visit-counter.vercel.app/counter.png?page=github.com%2FAgzes-AHK-FOR-RPM&s=40&c=6a9bee&bg=00000000&no=2&ff=digi&tb=&ta=)
+
+

@@ -14,9 +14,9 @@
 
 <div align="center">
     <h2>
-    Документация к версии "Custom" [EasyConfig]
+    Документация к версии "Custom"
     </h2>
 
     DOCS BETA v.1.0 | v.2.2.0 AFR Editor
-[[ EasyConfig.md ]](EasyConfig.md)
+[[ Custom.md ]](Custom.md)
 </div>

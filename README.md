@@ -1,4 +1,5 @@
-<h4 align="center"><a href="https://github.com/Agzes/AHK-FOR-RPM/releases/tag/latest">[последние релизы]</a> <a href="nextsteps.md">[2.2 | Будущее обновление]</a></h4>
+<h4 align="center">⚠️ AFR больше не является приоритетным, активная разработка прекращена. ⚠️</h4>
+<h4 align="center"><a href="https://github.com/Agzes/AHK-FOR-RPM/releases/tag/latest">[последние релизы]</a></h4> 
 
 <img src="!ReadMe/A.png" alt="image" width="1000">
 <img src="!ReadMe/B.png" alt="image" width="1000">

@@ -1,4 +1,4 @@
-# Credits - AHK-FOR-RPM 
+# Credits - AHK-FOR-RPM
 
 ## Developer:
 - **Agzes** - [GitHub](https://github.com/Agzes)
